@@ -1,0 +1,6 @@
+----------------------------------------------------------------
+2012-10-08 12:50:54.065 GMT:
+ Booting Derby version The Apache Software Foundation - Apache Derby - 10.6.1.0 - (938214): instance a816c00e-013a-406d-932e-000004a6b7d0 
+on database directory /chalmers/users/thituson/NetBeansProjects/jpa_shop/tmp   with class loader sun.misc.Launcher$AppClassLoader@42b36022
+
+Database Class Loader started - derby.database.classpath=''
