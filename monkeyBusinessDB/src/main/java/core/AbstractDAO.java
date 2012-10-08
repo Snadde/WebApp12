@@ -59,7 +59,7 @@ public abstract class AbstractDAO<T , K> implements IDAO<T, K> {
         try {
             em = getEntityManager();    
             em.getTransaction().begin();
-            em.remove(em.find(Product.class, id));             
+            em.remove(em.find(clazz, id));             
             em.getTransaction().commit();
         } catch (Exception ex) {
             //DbExceptionHandler.handle(ex);
@@ -97,7 +97,7 @@ public abstract class AbstractDAO<T , K> implements IDAO<T, K> {
         try {
             em = getEntityManager();    
             em.getTransaction().begin();
-          temp = (T) em.find(Product.class, id);
+          temp = em.find(clazz, id);
             em.getTransaction().commit();
         } catch (Exception ex) {
             //DbExceptionHandler.handle(ex);
