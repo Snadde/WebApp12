@@ -37,12 +37,12 @@ public class editProductBB implements Serializable{
     @Size(min = 1, max = 10, message = "Must use 1-10 chars")
     private String name;
     @NotNull
-    @Min(value = 1, message = "To small")
-    @Max(value = 10000, message = "To big")
+    @Min(value = 1, message = "Too small")
+    @Max(value = 10000, message = "Too big")
     private double price;
     @NotNull
-    @Min(value = 1, message = "To small")
-    @Max(value = 10, message = "To big")
+    @Min(value = 1, message = "Too small")
+    @Max(value = 10, message = "Too big")
     private Long requiredSkill;
     
     
@@ -64,7 +64,7 @@ public class editProductBB implements Serializable{
         }
         try {
             prodCat.update(new Product(id, name, price, requiredSkill));
-            return "products?faces-redirect=true"; // Go back
+            return "adminProducts?faces-redirect=true"; // Go back
         } catch (Exception e) {
             // Not implemented
             //return "error?faces-redirect=true&amp;cause=" + e.getMessage();

@@ -14,16 +14,16 @@ import javax.enterprise.context.*;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-@Named("products")
+@Named("adminproducts")
 @SessionScoped
-public class ProductsBB implements Serializable{
+public class AdminProductsBB implements Serializable{
     @Inject
     private ProductCatalogueBean productCatalogueBean;
     
-    public ProductsBB(){}
+    public AdminProductsBB(){}
     
     @Inject
-    public ProductsBB(ProductCatalogueBean productCatalogueBean){
+    public AdminProductsBB(ProductCatalogueBean productCatalogueBean){
         this.productCatalogueBean = productCatalogueBean;
     
     }
