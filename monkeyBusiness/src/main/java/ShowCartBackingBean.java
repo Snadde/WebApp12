@@ -17,14 +17,14 @@ import javax.inject.Named;
 @Named
 @SessionScoped
 public class ShowCartBackingBean implements Serializable{
-    @Inject
-    private  showCartBackingBean;
-    
+//    @Inject
+//    private  showCartBackingBean;
+//    
     public ShowCartBackingBean(){}
       
  
-    public List<Product> getAll() {
-        return ShowCartBackingBean.getAll();
-    }
+//    public List<Product> getAll() {
+//        return ShowCartBackingBean.getAll();
+//    }
     
 }
