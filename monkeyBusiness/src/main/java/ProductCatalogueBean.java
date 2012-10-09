@@ -16,14 +16,16 @@ import javax.enterprise.context.*;
  * @author thituson
  */
 
-@SessionScoped
+@ApplicationScoped
 public class ProductCatalogueBean implements Serializable {
     
     private final transient IProductCatalogue productCatalogue = JPAShop.INSTANCE.getProductCatalogue();
     
     public void add(Product p) {
         if(productCatalogue.find(p.getId())==null)
-        productCatalogue.add(p);
+        {
+            productCatalogue.add(p);
+        }
     }
     
     public Product find(Long id) {

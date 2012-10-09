@@ -30,6 +30,7 @@ public class editProductBB implements Serializable{
     @Inject // Handled by system, don't need to create class.
     private Conversation conv;
     
+    @Inject
     private ProductCatalogueBean prodCat;
     private Long id;
     @NotNull
@@ -48,7 +49,6 @@ public class editProductBB implements Serializable{
     
     public editProductBB(){}
     
-    @Inject
     public editProductBB(ProductCatalogueBean productCatalogueBean){
         this.prodCat = productCatalogueBean;
         
