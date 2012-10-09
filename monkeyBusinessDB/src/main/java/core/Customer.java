@@ -26,8 +26,7 @@ public class Customer implements Serializable{
     private  String lname;
     private  String email;
 
-    public Customer() {
-    }
+    public Customer() {}
 
     public Customer(Long id, Address address, String fname,
             String lname, String email) {

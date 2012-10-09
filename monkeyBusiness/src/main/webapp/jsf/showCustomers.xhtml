@@ -10,11 +10,11 @@
         <ui:composition template="./template.xhtml">
 
             <ui:define name="top">
-                top
+                
             </ui:define>
 
             <ui:define name="left">
-                left
+                
             </ui:define>
 
             <ui:define name="content">
@@ -81,7 +81,7 @@
                         
                         <h:form>     
                            <h:commandLink value="Edit" 
-                                          actionListener="#{customerEditControlBean.actionListener}"
+                                          actionListener="#{editCustomerControlBean.actionListener}"
                                           action="editCustomer?faces-redirect=true">
                                 <f:attribute name="customer" value="${customer}"/>
                            </h:commandLink><br/>    
@@ -89,7 +89,7 @@
                         
                         <h:form>     
                            <h:commandLink value="Delete" 
-                                          actionListener="#{customerDeleteControlBean.actionListener}"
+                                          actionListener="#{deleteCustomerControlBean.actionListener}"
                                           action="deleteCustomer?faces-redirect=true">
                                 <f:attribute name="customer" value="${customer}"/>
                            </h:commandLink><br/>    
