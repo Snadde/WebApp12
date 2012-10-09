@@ -16,29 +16,15 @@ import javax.inject.Named;
 
 @Named
 @SessionScoped
-public class AdminProductsBB implements Serializable{
+public class AdminProductsBackingBean implements Serializable{
+    
     @Inject
     private ProductCatalogueBean productCatalogueBean;
     
-    public AdminProductsBB(){}
+    public AdminProductsBackingBean(){}
     
-    @Inject
-    public AdminProductsBB(ProductCatalogueBean productCatalogueBean){
-        this.productCatalogueBean = productCatalogueBean;
-    
-    }
-
-    public void add(Product product)
-    {
-        productCatalogueBean.add(product);
-    }
-    
- 
     public List<Product> getAll() {
         return productCatalogueBean.getAll();
     }
-        
-    
-    
-    
+
 }
