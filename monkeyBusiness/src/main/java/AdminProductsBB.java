@@ -14,7 +14,7 @@ import javax.enterprise.context.*;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-@Named("adminproducts")
+@Named
 @SessionScoped
 public class AdminProductsBB implements Serializable{
     @Inject

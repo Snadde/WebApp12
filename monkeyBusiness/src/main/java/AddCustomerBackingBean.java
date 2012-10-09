@@ -9,25 +9,17 @@
  */
 import core.Address;
 import core.Customer;
-import core.Product;
-import java.awt.event.ActionEvent;
 import java.io.Serializable;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.enterprise.context.*;
-import javax.faces.event.ValueChangeEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-@Named("addCustomer")
+@Named
 @RequestScoped
-public class addCustomerBB implements Serializable{
+public class AddCustomerBackingBean implements Serializable{
     @Inject
     private CustomerRegistryBean customerRegistryBean;
     @NotNull
@@ -43,9 +35,9 @@ public class addCustomerBB implements Serializable{
     private  String email;
     private  Address address;
     
-    public addCustomerBB(){}
+    public AddCustomerBackingBean(){}
     
-    public addCustomerBB(CustomerRegistryBean customerRegistryBean){
+    public AddCustomerBackingBean(CustomerRegistryBean customerRegistryBean){
         this.customerRegistryBean = customerRegistryBean;
     
     }
@@ -54,7 +46,7 @@ public class addCustomerBB implements Serializable{
     public String action() {
         Customer customer = new Customer(id, address, fname, lname, email);
         customerRegistryBean.add(customer);
-        return "products?faces-redirect=true";  // Where to go, navigate 
+        return "adminProducts?faces-redirect=true";  // Where to go, navigate 
     }
 
     public CustomerRegistryBean getCustomerRegistryBean() {
