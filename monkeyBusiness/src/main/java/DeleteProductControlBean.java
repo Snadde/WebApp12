@@ -7,50 +7,41 @@
  *
  * @author thituson
  */
-
 import core.Product;
 import java.io.Serializable;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.enterprise.context.*;
-import javax.faces.event.ActionListener;
-import javax.faces.event.ValueChangeEvent;
+import javax.faces.event.ActionEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-@Named("deleteProduct")
+@Named
 @ConversationScoped
-public class deleteProductBB implements Serializable{
+public class DeleteProductControlBean implements Serializable{
     
     @Inject // Handled by system, don't need to create class.
     private Conversation conv;
     
-    private ProductCatalogueBean prodCat;
-    private Long id;
-    private String name;
-    private double price;
-    private Long requiredSkill;
-    
-    
-    
-    public deleteProductBB(){}
-    
     @Inject
-    public deleteProductBB(ProductCatalogueBean productCatalogueBean){
-        this.prodCat = productCatalogueBean;
-        
+    private ProductCatalogueBean prodCat;
+    @Inject
+    private DeleteProductBackingBean deleteProductBackingBean;      
+            
     
-    }
+    
+    public DeleteProductControlBean(){}
     
 
-    // Any name possible
     public String action() {
         if (!conv.isTransient()) {
             conv.end();
              Logger.getAnonymousLogger().log(Level.INFO, "CONVERSATION ENDS");
         }
-        try {
+        try 
+        {
+            
+            Long id = deleteProductBackingBean.getId();
             prodCat.remove(id);
             return "adminProducts?faces-redirect=true"; // Go back
         } catch (Exception e) {
@@ -58,42 +49,25 @@ public class deleteProductBB implements Serializable{
             //return "error?faces-redirect=true&amp;cause=" + e.getMessage();
             return null;
         }
+    
 
         
     }
 
-    public Long getId() {
-        return id;
-    }
-
-
-    public void actionListener(Product product) { // NOTE: faces.ActionEvent
+    public void actionListener(ActionEvent ae) { 
+        Product product = (Product) ae.getComponent().getAttributes().get("product");
         if (conv.isTransient()) {
             conv.begin();
              Logger.getAnonymousLogger().log(Level.INFO, "CONVERSATION BEGINS: Got pnumb {0}", product);
         }else{
             
         }
-        this.id = product.getId();
-        this.name = product.getName();
-        this.price = product.getPrice();
-        this.requiredSkill = product.getRequiredSkill();
+        deleteProductBackingBean.setId(product.getId());
+        deleteProductBackingBean.setName(product.getName());
+        deleteProductBackingBean.setPrice(product.getPrice());
+        deleteProductBackingBean.setRequiredSkill(product.getRequiredSkill());
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public Long getRequiredSkill() {
-        return requiredSkill;
-    }
-    
-    
-    
-    
-    
+ 
+      
 }

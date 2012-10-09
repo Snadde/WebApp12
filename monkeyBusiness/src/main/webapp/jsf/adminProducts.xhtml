@@ -66,8 +66,9 @@
                             </h:form>  
                             <h:form>
                                 <h:commandLink value="Delete" 
-                                               actionListener="#{deleteProduct.actionListener(product)}"
+                                               actionListener="#{deleteProductControlBean.actionListener}"
                                                action="deleteProduct?faces-redirect=true">
+                                     <f:attribute name="product" value="${product}"/>
                                 </h:commandLink><br/>
                             </h:form>  
                     </h:column>>

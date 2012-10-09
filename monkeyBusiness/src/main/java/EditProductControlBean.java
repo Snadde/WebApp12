@@ -18,7 +18,7 @@ import javax.inject.Named;
 
 @Named
 @ConversationScoped
-public class editProductControlBean implements Serializable{
+public class EditProductControlBean implements Serializable{
     
     @Inject // Handled by system, don't need to create class.
     private Conversation conv;
@@ -30,7 +30,7 @@ public class editProductControlBean implements Serializable{
             
     
     
-    public editProductControlBean(){}
+    public EditProductControlBean(){}
     
 
 

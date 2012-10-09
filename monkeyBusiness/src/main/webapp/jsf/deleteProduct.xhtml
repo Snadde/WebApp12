@@ -21,13 +21,13 @@
                 <h:form>
                     <h1>Delete Product</h1>
                     <h:panelGrid id="panel" columns="2" border="1" cellpadding="0" cellspacing="2">
-                        ID  <h:outputText value="#{deleteProduct.id}"  />
-                        Name<h:outputText value="#{deleteProduct.name}"  />
-                        Price<h:outputText value="#{deleteProduct.price}"  />
-                        Skill<h:outputText value="#{addProduct.requiredSkill}"  />
+                        ID  <h:outputText value="#{deleteProductBackingBean.id}"  />
+                        Name<h:outputText value="#{deleteProductBackingBean.name}"  />
+                        Price<h:outputText value="#{deleteProductBackingBean.price}"  />
+                        Skill<h:outputText value="#{deleteProductBackingBean.requiredSkill}"  />
                     </h:panelGrid>
                     <h:commandButton value="delete" 
-                                     action="#{deleteProduct.action}" />
+                                     action="#{deleteProductControlBean.action}" />
                     <h:commandButton value="cancel" 
                                      action="products?faces-redirect=true" />
                     
