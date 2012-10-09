@@ -6,6 +6,7 @@ import core.Product;
 import java.io.Serializable;
 import java.util.List;
 import javax.enterprise.context.*;
+import javax.inject.Named;
 
 
 
@@ -13,7 +14,7 @@ import javax.enterprise.context.*;
  *
  * @author Patrik Thituson, Gustaf Werlinder
  */
-
+@Named
 @SessionScoped
 public class CustomerRegistryBean implements Serializable {
     

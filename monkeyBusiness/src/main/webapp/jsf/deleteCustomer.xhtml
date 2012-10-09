@@ -21,16 +21,16 @@
                 <h:form>
                     <h1>Register</h1>
                     <h:panelGrid id="panel" columns="2" border="1" cellpadding="0" cellspacing="2">
-                        First Name <h:inputText value="#{addCustomerBackingBean.fname}"  />
-                        Last Name <h:inputText value="#{addCustomerBackingBean.lname}"  />
-                        E-mail <h:inputText value="#{addCustomerBackingBean.email}"  />
-                        Street <h:inputText value="#{addAddressBackingBean.street}"  />
-                        Nr <h:inputText value="#{addAddressBackingBean.nbr}"  />
-                        City <h:inputText value="#{addAddressBackingBean.town}"  />
+                        First Name <h:outputText value="#{addCustomerBackingBean.fname}"  />
+                        Last Name <h:outputText value="#{addCustomerBackingBean.lname}"  />
+                        E-mail <h:outputText value="#{addCustomerBackingBean.email}"  />
+                        Street <h:outputText value="#{addAddressBackingBean.street}"  />
+                        Nr <h:outputText value="#{addAddressBackingBean.nbr}"  />
+                        City <h:outputText value="#{addAddressBackingBean.town}"  />
                     </h:panelGrid>
                     
-                    <h:commandButton value="add" 
-                                     action="#{addCustomerControlBean.action}" />
+                    <h:commandButton value="delete" 
+                                     action="#{deleteCustomerControlBean.action}" />
                 </h:form>
             </ui:define>
 

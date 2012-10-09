@@ -37,7 +37,7 @@ public class AddCustomerControlBean implements Serializable{
         String email = addCustomerBackingBean.getEmail();
         Customer customer = new Customer(address, fname, lname, email);
         customersBackingBean.add(customer);
-        return "adminProducts?faces-redirect=true";  // Where to go, navigate 
+        return "showCustomers?faces-redirect=true";
     }
     
     
