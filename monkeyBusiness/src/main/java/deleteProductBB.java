@@ -52,7 +52,7 @@ public class deleteProductBB implements Serializable{
         }
         try {
             prodCat.remove(id);
-            return "products?faces-redirect=true"; // Go back
+            return "adminProducts?faces-redirect=true"; // Go back
         } catch (Exception e) {
             // Not implemented
             //return "error?faces-redirect=true&amp;cause=" + e.getMessage();

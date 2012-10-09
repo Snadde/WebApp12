@@ -59,7 +59,7 @@ public class addProductBB implements Serializable{
     public String action() {
         Product product = new Product(id, name, price, requiredSkill);
         prodCat.add(product);
-        return "products?faces-redirect=true";  // Where to go, navigate 
+        return "adminProducts?faces-redirect=true";  // Where to go, navigate 
     }
 
 
