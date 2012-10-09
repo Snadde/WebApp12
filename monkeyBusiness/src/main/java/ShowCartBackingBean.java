@@ -5,7 +5,7 @@
 
 /**
  *
- * @author thituson
+ * @author Martin Augustsson && Gustaf Werlinder
  */
 import core.Product;
 import java.io.Serializable;
@@ -16,15 +16,15 @@ import javax.inject.Named;
 
 @Named
 @SessionScoped
-public class AdminProductsBackingBean implements Serializable{
-    
+public class ShowCartBackingBean implements Serializable{
     @Inject
-    private ProductCatalogueBean productCatalogueBean;
+    private  showCartBackingBean;
     
-    public AdminProductsBackingBean(){}
-    
+    public ShowCartBackingBean(){}
+      
+ 
     public List<Product> getAll() {
-        return productCatalogueBean.getAll();
+        return ShowCartBackingBean.getAll();
     }
-
+    
 }
