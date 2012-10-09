@@ -23,10 +23,10 @@
                         ID <h:outputText value="#{editProduct.id}"  />
                         Name<h:inputText value="#{editProduct.name}"  />
                         Price<h:inputText value="#{editProduct.price}"  />
-                        Skill<h:inputText value="#{addProduct.requiredSkill}"  />
+                        Skill<h:inputText value="#{editProduct.requiredSkill}"  />
                     </h:panelGrid>
                     <h:commandButton value="edit" 
-                                     action="#{editProduct.action}" />
+                                     action="#{editProductControlBean.action}" />
                     <h:commandButton value="cancel" 
                                      action="products?faces-redirect=true" />
                 </h:form>

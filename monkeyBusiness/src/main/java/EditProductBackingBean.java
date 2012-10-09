@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.enterprise.context.*;
+import javax.faces.event.ActionEvent;
 import javax.faces.event.ActionListener;
 import javax.faces.event.ValueChangeEvent;
 import javax.inject.Inject;
@@ -25,13 +26,12 @@ import javax.validation.constraints.Size;
 
 @Named("editProduct")
 @ConversationScoped
-public class editProductBB implements Serializable{
+public class EditProductBackingBean implements Serializable{
     
     @Inject // Handled by system, don't need to create class.
     private Conversation conv;
     
-    @Inject
-    private ProductCatalogueBean prodCat;
+
     private Long id;
     @NotNull
     @Pattern(regexp = "^[a-zA-Z]*")
@@ -47,45 +47,8 @@ public class editProductBB implements Serializable{
     private Long requiredSkill;
     
     
-    public editProductBB(){}
-    
-    public editProductBB(ProductCatalogueBean productCatalogueBean){
-        this.prodCat = productCatalogueBean;
-        
-    
-    }
-    
+    public EditProductBackingBean(){}
 
-    // Any name possible
-    public String action() {
-        if (!conv.isTransient()) {
-            conv.end();
-             Logger.getAnonymousLogger().log(Level.INFO, "CONVERSATION ENDS");
-        }
-        try {
-            prodCat.update(new Product(id, name, price, requiredSkill));
-            return "adminProducts?faces-redirect=true"; // Go back
-        } catch (Exception e) {
-            // Not implemented
-            //return "error?faces-redirect=true&amp;cause=" + e.getMessage();
-            return null;
-        }
-
-        
-    }
-
-    public void actionListener(Product product) { // NOTE: faces.ActionEvent
-        if (conv.isTransient()) {
-            conv.begin();
-             Logger.getAnonymousLogger().log(Level.INFO, "CONVERSATION BEGINS: Got pnumb {0}", product);
-        }else{
-            
-        }
-        this.id = product.getId();
-        this.name = product.getName();
-        this.price = product.getPrice();
-        this.requiredSkill = product.getRequiredSkill();
-    }
 
     public Long getId() {
         return id;

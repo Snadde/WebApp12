@@ -59,8 +59,10 @@
                          </f:facet> 
                              <h:form>     
                                 <h:commandLink value="Edit" 
-                                               actionListener="#{editProduct.actionListener(product)}"
-                                               action="editProduct?faces-redirect=true"/><br/>
+                                               actionListener="#{editProductControlBean.actionListener}"
+                                               action="editProduct?faces-redirect=true">
+                                    <f:attribute name="product" value="${product}"/>
+                                </h:commandLink><br/>
                             </h:form>  
                             <h:form>
                                 <h:commandLink value="Delete" 

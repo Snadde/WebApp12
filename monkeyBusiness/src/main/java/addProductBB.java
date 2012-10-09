@@ -24,7 +24,7 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 @Named("addProduct")
-@SessionScoped
+@RequestScoped
 public class addProductBB implements Serializable{
     
     private ProductCatalogueBean prodCat;
@@ -47,21 +47,6 @@ public class addProductBB implements Serializable{
     
     
     public addProductBB(){}
-    
-    @Inject
-    public addProductBB(ProductCatalogueBean productCatalogueBean){
-        this.prodCat = productCatalogueBean;
-    
-    }
-    
-
-    // Any name possible
-    public String action() {
-        Product product = new Product(id, name, price, requiredSkill);
-        prodCat.add(product);
-        return "adminProducts?faces-redirect=true";  // Where to go, navigate 
-    }
-
 
 
     public void setId(Long id) {
@@ -77,19 +62,19 @@ public class addProductBB implements Serializable{
     }
 
     public Long getId() {
-        return 0L;
+        return id;
     }
 
     public String getName() {
-        return "";
+        return name;
     }
 
     public double getPrice() {
-        return 0;
+        return price;
     }
     
     public Long getRequiredSkill() {
-        return 1L;
+        return requiredSkill;
     }
 
     public void setRequiredSkill(Long requiredSkill) {
