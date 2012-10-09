@@ -19,14 +19,14 @@
 
             <ui:define name="content">
                 <h:form>
-                    <h1>Register</h1>
+                    <h1>Edit Profile</h1>
                     <h:panelGrid id="panel" columns="2" border="1" cellpadding="0" cellspacing="2">
-                        First Name <h:inputText value="#{addCustomerBackingBean.fname}"  />
-                        Last Name <h:inputText value="#{addCustomerBackingBean.lname}"  />
-                        E-mail <h:inputText value="#{addCustomerBackingBean.email}"  />
-                        Street <h:inputText value="#{addAddressBackingBean.street}"  />
-                        Nr <h:inputText value="#{addAddressBackingBean.nbr}"  />
-                        City <h:inputText value="#{addAddressBackingBean.town}"  />
+                        First Name <h:inputText value="#{editCustomerBackingBean.fname}"  />
+                        Last Name <h:inputText value="#{editCustomerBackingBean.lname}"  />
+                        E-mail <h:inputText value="#{editCustomerBackingBean.email}"  />
+                        Street <h:inputText value="#{editCustomerBackingBean.address.street}"  />
+                        Nr <h:inputText value="#{editCustomerBackingBean.address.nbr}"  />
+                        City <h:inputText value="#{editCustomerBackingBean.address.town}"  />
                     </h:panelGrid>
                     
                     <h:commandButton value="edit" 
