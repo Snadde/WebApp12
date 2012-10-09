@@ -7,42 +7,32 @@
  *
  * @author thituson
  */
-
 import core.Product;
 import java.io.Serializable;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.enterprise.context.*;
-import javax.faces.event.ActionListener;
-import javax.faces.event.ValueChangeEvent;
+import javax.faces.event.ActionEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-@Named("deleteProduct")
+@Named
 @ConversationScoped
-public class deleteProductBB implements Serializable{
+public class EditProductControlBean implements Serializable{
     
     @Inject // Handled by system, don't need to create class.
     private Conversation conv;
     
-    private ProductCatalogueBean prodCat;
-    private Long id;
-    private String name;
-    private double price;
-    private Long requiredSkill;
-    
-    
-    
-    public deleteProductBB(){}
-    
     @Inject
-    public deleteProductBB(ProductCatalogueBean productCatalogueBean){
-        this.prodCat = productCatalogueBean;
-        
+    private ProductCatalogueBean prodCat;
+    @Inject
+    private EditProductBackingBean editProductBackingBean;      
+            
     
-    }
     
+    public EditProductControlBean(){}
+    
+
 
     // Any name possible
     public String action() {
@@ -51,7 +41,12 @@ public class deleteProductBB implements Serializable{
              Logger.getAnonymousLogger().log(Level.INFO, "CONVERSATION ENDS");
         }
         try {
-            prodCat.remove(id);
+            Long id = editProductBackingBean.getId();
+            String name = editProductBackingBean.getName();
+            double price = editProductBackingBean.getPrice();
+            Long requiredSkill = editProductBackingBean.getRequiredSkill();
+            Product product = new Product(id, name, price, requiredSkill);
+            prodCat.update(product);
             return "adminProducts?faces-redirect=true"; // Go back
         } catch (Exception e) {
             // Not implemented
@@ -62,38 +57,20 @@ public class deleteProductBB implements Serializable{
         
     }
 
-    public Long getId() {
-        return id;
-    }
-
-
-    public void actionListener(Product product) { // NOTE: faces.ActionEvent
+    public void actionListener(ActionEvent ae) { 
+        Product product = (Product) ae.getComponent().getAttributes().get("product");
         if (conv.isTransient()) {
             conv.begin();
              Logger.getAnonymousLogger().log(Level.INFO, "CONVERSATION BEGINS: Got pnumb {0}", product);
         }else{
             
         }
-        this.id = product.getId();
-        this.name = product.getName();
-        this.price = product.getPrice();
-        this.requiredSkill = product.getRequiredSkill();
+        editProductBackingBean.setId(product.getId());
+        editProductBackingBean.setName(product.getName());
+        editProductBackingBean.setPrice(product.getPrice());
+        editProductBackingBean.setRequiredSkill(product.getRequiredSkill());
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public Long getRequiredSkill() {
-        return requiredSkill;
-    }
-    
-    
-    
-    
-    
+ 
+      
 }

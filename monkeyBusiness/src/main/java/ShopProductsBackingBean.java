@@ -5,7 +5,7 @@
 
 /**
  *
- * @author thituson
+ * @author Martin Augustsson && Gustaf Werlinder
  */
 import core.Product;
 import java.io.Serializable;
@@ -14,31 +14,17 @@ import javax.enterprise.context.*;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-@Named("adminproducts")
+@Named
 @SessionScoped
-public class AdminProductsBB implements Serializable{
+public class ShopProductsBackingBean implements Serializable{
     @Inject
     private ProductCatalogueBean productCatalogueBean;
     
-    public AdminProductsBB(){}
-    
-    @Inject
-    public AdminProductsBB(ProductCatalogueBean productCatalogueBean){
-        this.productCatalogueBean = productCatalogueBean;
-    
-    }
-
-    public void add(Product product)
-    {
-        productCatalogueBean.add(product);
-    }
-    
+    public ShopProductsBackingBean(){}
+      
  
     public List<Product> getAll() {
         return productCatalogueBean.getAll();
     }
-        
-    
-    
     
 }

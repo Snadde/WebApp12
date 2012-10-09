@@ -17,18 +17,12 @@ import javax.inject.Named;
 
 @Named("customers")
 @SessionScoped
-public class CustomersBB implements Serializable{
+public class CustomersBackingBean implements Serializable{
     @Inject
     private CustomerRegistryBean customerRegistryBean;
     
-    public CustomersBB(){}
+    public CustomersBackingBean(){}
     
-    @Inject
-    public CustomersBB(CustomerRegistryBean customerRegistryBean){
-        this.customerRegistryBean = customerRegistryBean;
-    
-    }
-
     public void add(Customer customer)
     {
         customerRegistryBean.add(customer);
