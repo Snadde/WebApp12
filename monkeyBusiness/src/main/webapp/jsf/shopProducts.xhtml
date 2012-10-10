@@ -56,9 +56,10 @@
                             <h:outputText value="Option" />
                          </f:facet> 
                              <h:form>     
-                                <h:commandLink value="Edit" 
-                                               actionListener="#{editProduct.actionListener(product)}"
-                                               action="editProduct?faces-redirect=true"/><br/>
+                                <h:commandLink value="Add" 
+                                               actionListener="#{cartControlBean.actionListener}"
+                                               action="editProduct?faces-redirect=true"/>
+                                <f:attribute name="product" value="${product}"/><br/>
                             </h:form>  
 
                     </h:column>>

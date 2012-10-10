@@ -18,13 +18,13 @@ import javax.inject.Named;
 @SessionScoped
 public class ShowCartBackingBean implements Serializable{
     @Inject
-    private  showCartBackingBean;
+    private cartBean cartBean;
     
     public ShowCartBackingBean(){}
       
  
     public List<Product> getAll() {
-        return ShowCartBackingBean.getAll();
+        return cartBean.getAll();
     }
     
 }
