@@ -18,7 +18,7 @@
             </ui:define>
 
             <ui:define name="content">
-                <h:dataTable id="table" value="#{shopProductsBackingBean.getAll()}" var="product" bgcolor="#F1F1F1" border="10" cellpadding="5" cellspacing="3" first="0" width="50%" dir="LTR" frame="hsides" rules="all"  >
+                <h:dataTable id="table" value="#{cartControlBean.getAll()}" var="entry" bgcolor="#F1F1F1" border="10" cellpadding="5" cellspacing="3" first="0" width="50%" dir="LTR" frame="hsides" rules="all"  >
 
                     <f:facet name="header">
                         <h:outputText value="Shopping Cart" />
@@ -28,34 +28,34 @@
                          <f:facet name="header">
                             <h:outputText value="Name" />
                          </f:facet> 
-                         <h:outputText value="#{product.name}"></h:outputText>
+                         <h:outputText value="#{entry.key.name}"></h:outputText>
                     </h:column>
 
                     <h:column>
                          <f:facet name="header">
                             <h:outputText value="Price" />
                          </f:facet> 
-                         <h:outputText value="#{product.price}"></h:outputText>
+                         <h:outputText value="#{entry.key.price}"></h:outputText>
                     </h:column>
                     <h:column>
                          <f:facet name="header">
                             <h:outputText value="Required Skill" />
                          </f:facet> 
-                         <h:outputText value="#{product.requiredSkill}"></h:outputText>
+                         <h:outputText value="#{entry.key.requiredSkill}"></h:outputText>
                     </h:column>
                     
                     <h:column>
                          <f:facet name="header">
                             <h:outputText value="Amount" />
                          </f:facet> 
-                         <h:outputText value="1"></h:outputText>
+                        <h:outputText value="#{entry.value}"></h:outputText>
                     </h:column>
                     
                     <h:column>
                          <f:facet name="header">
                             <h:outputText value="Cost" />
                          </f:facet> 
-                         <h:outputText value="404"></h:outputText>
+                         <h:outputText value="#{entry.value*entry.key.price}"></h:outputText>
                     </h:column>
                     
                     <h:column>
@@ -63,12 +63,16 @@
                             <h:outputText value="+/-" />
                          </f:facet> 
                              <h:form>     
-                                 <h:commandButton value="+" 
-                                               actionListener="#{editProduct.actionListener(product)}"
-                                               action="editProduct?faces-redirect=true"/><br/>
-                                 <h:commandButton value="–" 
-                                               actionListener="#{editProduct.actionListener(product)}"
-                                               action="editProduct?faces-redirect=true"/><br/>
+                                 <h:commandButton id="plusButton" value="+" 
+                                                  actionListener="#{cartControlBean.actionListener}"
+                                               action="showCart?faces-redirect=true">
+                                     <f:attribute name="prod" value="${entry.key}"/>
+                                 </h:commandButton><br/>
+                                 <h:commandButton id="minusButton" value="–" 
+                                               actionListener="#{cartControlBean.actionListener}"
+                                               action="showCart?faces-redirect=true">
+                                     <f:attribute name="prod" value="${entry.key}"/>
+                                 </h:commandButton><br/>
                             </h:form>  
 
                     </h:column>
@@ -78,9 +82,11 @@
                             <h:outputText value="Delete" />
                          </f:facet> 
                              <h:form>     
-                                 <h:commandButton value="Delete Product" 
-                                               actionListener="#{editProduct.actionListener(product)}"
-                                               action="editProduct?faces-redirect=true"/><br/>
+                                 <h:commandButton id="deleteButton" value="Delete Product" 
+                                                  actionListener="#{cartControlBean.actionListener}"
+                                               action="showCart?faces-redirect=true">
+                                     <f:attribute name="prod" value="${entry.key}"/>
+                                 </h:commandButton><br/>
                                 
                              </h:form>
                     </h:column>

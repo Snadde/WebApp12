@@ -29,6 +29,10 @@ public class Cart {
             productFreq.remove(product);
         }
     }
+    
+    public void delete(Product product){
+        productFreq.remove(product);
+    }
 
     public Map<Product, Integer> getProductFreq() {
         return productFreq;
