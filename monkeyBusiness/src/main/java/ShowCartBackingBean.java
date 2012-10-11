@@ -10,21 +10,22 @@
 import core.Product;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 import javax.enterprise.context.*;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-@Named
+@Named()
 @SessionScoped
 public class ShowCartBackingBean implements Serializable{
     @Inject
-    private cartBean cartBean;
+    private CartControlBean cartControlBean;
     
     public ShowCartBackingBean(){}
       
  
-    public List<Product> getAll() {
-        return cartBean.getAll();
+    public Map<Product,Integer> getAll() {
+        return cartControlBean.getAll();
     }
     
 }

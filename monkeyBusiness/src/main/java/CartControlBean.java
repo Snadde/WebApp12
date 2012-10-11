@@ -9,6 +9,7 @@
  */
 import core.Product;
 import java.io.Serializable;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.enterprise.context.*;
@@ -16,24 +17,26 @@ import javax.faces.event.ActionEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-@Named
-@ConversationScoped
+@Named()
+@SessionScoped
 public class CartControlBean implements Serializable{
+    
+    @Inject // Handled by system, don't need to create class.
+    private Conversation conv;
     
     @Inject
     private CartModelBean cartModelBean;    
     @Inject
     private ShopProductsBackingBean shopProductsBackingBean;
     @Inject
-    private ShowCartBackingBean showCartBackingBean;    
-    
+    private ShowCartBackingBean showCartBackingBean;
+
     public CartControlBean(){}
     
+    public Map<Product,Integer> getAll(){
+        return cartModelBean.getAll();
+    }
 
-    
-    //En actionlistener
-    
-    
     
     // Any name possible
     public String action() {
@@ -42,13 +45,9 @@ public class CartControlBean implements Serializable{
              Logger.getAnonymousLogger().log(Level.INFO, "CONVERSATION ENDS");
         }
         try {
-            Long id = editProductBackingBean.getId();
-            String name = editProductBackingBean.getName();
-            double price = editProductBackingBean.getPrice();
-            Long requiredSkill = editProductBackingBean.getRequiredSkill();
-            Product product = new Product(id, name, price, requiredSkill);
-            prodCat.update(product);
-            return "adminProducts?faces-redirect=true"; // Go back
+            
+//            cartModelBean.add(product);
+            return "shopProducts?faces-redirect=true"; // Go back
         } catch (Exception e) {
             // Not implemented
             //return "error?faces-redirect=true&amp;cause=" + e.getMessage();
@@ -58,20 +57,17 @@ public class CartControlBean implements Serializable{
         
     }
 
+    //En actionlistener
     public void actionListener(ActionEvent ae) { 
-        Product product = (Product) ae.getComponent().getAttributes().get("product");
+        Product product = (Product) ae.getComponent().getAttributes().get("prod");
+        System.out.println(product.toString());
         if (conv.isTransient()) {
             conv.begin();
              Logger.getAnonymousLogger().log(Level.INFO, "CONVERSATION BEGINS: Got pnumb {0}", product);
         }else{
             
         }
-        editProductBackingBean.setId(product.getId());
-        editProductBackingBean.setName(product.getName());
-        editProductBackingBean.setPrice(product.getPrice());
-        editProductBackingBean.setRequiredSkill(product.getRequiredSkill());
+                
     }
-
- 
       
 }

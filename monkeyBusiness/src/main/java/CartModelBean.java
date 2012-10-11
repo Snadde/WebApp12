@@ -18,7 +18,7 @@ import javax.enterprise.context.*;
  * @author thituson
  */
 
-@ApplicationScoped
+@SessionScoped
 public class CartModelBean implements Serializable {
     
     Cart cart = new Cart();
