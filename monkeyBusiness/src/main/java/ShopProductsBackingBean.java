@@ -20,11 +20,22 @@ public class ShopProductsBackingBean implements Serializable{
     @Inject
     private ProductCatalogueBean productCatalogueBean;
     
+    private Product prod;
+    
     public ShopProductsBackingBean(){}
       
  
     public List<Product> getAll() {
         return productCatalogueBean.getAll();
     }
+
+    public Product getProd() {
+        return prod;
+    }
+
+    public void setProd(Product prod) {
+        this.prod = prod;
+    }
+    
     
 }
