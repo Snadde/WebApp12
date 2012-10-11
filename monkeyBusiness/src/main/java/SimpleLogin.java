@@ -58,12 +58,23 @@ public class SimpleLogin implements Serializable{
 
    }
 
-    
-
    public boolean getIsLoggedIn() {
 
       return customer != null;
 
+   }
+   
+   public boolean getIsAdmin()
+   {
+       if(customer == null)
+       {
+           return false;
+       }
+       else
+       {
+           return customer.isIsAdmin();
+       }
+       
    }
 
 

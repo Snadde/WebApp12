@@ -37,6 +37,7 @@ public class AddCustomerControlBean implements Serializable{
         String email = addCustomerBackingBean.getEmail();
         String userName =addCustomerBackingBean.getUserName();
         String password = addCustomerBackingBean.getPassword();
+
         System.out.println("HAR AR USERNAME I CONTROLBEAN: " + userName);
         Customer customer = new Customer(address, fname, lname, email, userName, password);
         customersBackingBean.add(customer);

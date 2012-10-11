@@ -2,6 +2,7 @@ package core;
 
 import java.io.Serializable;
 import java.util.Random;
+import javax.management.relation.Role;
 import javax.persistence.CascadeType;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -27,12 +28,13 @@ public class Customer implements Serializable{
     private  String email;
     private  String userName;
     private  String password;
-
-      
+    private  boolean isAdmin = false;
+    
+            
     public Customer() {}
 
     public Customer(Long id, Address address, String fname,
-            String lname, String email, String userName, String password ) {
+            String lname, String email, String userName, String password) {
         this.id = id;
         this.address = address;
         this.fname = fname;
@@ -88,7 +90,6 @@ public class Customer implements Serializable{
         return fname;
     }
 
-
     public Long getId() {
         return id;
     }
@@ -107,6 +108,14 @@ public class Customer implements Serializable{
    public void setPassword(String password) {
        this.password = password; 
    }
+
+    public boolean isIsAdmin() {
+        return isAdmin;
+    }
+
+    public void setIsAdmin(boolean isAdmin) {
+        this.isAdmin = isAdmin;
+    }
 
     @Override
     public String toString() {

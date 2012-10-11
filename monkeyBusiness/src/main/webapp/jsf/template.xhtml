@@ -29,11 +29,13 @@
             <div id="left">
                 
                 <nav>
-                    <h:link value="AdminProducts" outcome="adminProducts"/><br/>
-                    <h:link value="Add Product" outcome="newProduct"/><br/>
-                    <h:link value="Register" outcome="newCustomer"/><br/>
-                    <h:link value="Show Customers" outcome="showCustomers"/><br/>
-                    <h:link value="Login" outcome="login"/><br/>
+                    <h:panelGroup rendered="#{simpleLogin.isAdmin}">
+                        <h:link value="AdminProducts" outcome="adminProducts"/><br/>
+                    </h:panelGroup>
+                        <h:link value="Add Product" outcome="newProduct"/><br/>
+                        <h:link value="Register" outcome="newCustomer"/><br/>
+                        <h:link value="Show Customers" outcome="showCustomers"/><br/>
+                        <h:link value="Login" outcome="login"/><br/>
                 </nav>
                 <ui:insert name="left">Left</ui:insert>
             </div>
