@@ -37,11 +37,12 @@ public class CartControlBean implements Serializable{
 
     public CartControlBean(){}
     
-    public List<Map.Entry<Product, Integer>> getAll(){
+    //public List<Map.Entry<Product, Integer>> getAll(){
+    public void getAll(){
         Map <Product, Integer> tempCartMap = cartModelBean.getAll();
         Set<Map.Entry<Product, Integer>> managerSet = tempCartMap.entrySet();
-        
-        return new ArrayList<Map.Entry<Product, Integer>>(managerSet);
+        showCartBackingBean.setCartProductList(new ArrayList<Map.Entry<Product, Integer>>(managerSet));
+        //return new ArrayList<Map.Entry<Product, Integer>>(managerSet);
     }
 
     public void addToCart(Product p){
@@ -61,9 +62,14 @@ public class CartControlBean implements Serializable{
                 break;
             case "minusButton":
                 cartModelBean.remove(product);
+                this.getAll();
                 break;
             case "deleteButton":
                 cartModelBean.delete(product);
+                this.getAll();
+                break;
+            case "showCart":
+                this.getAll();
                 break;
             default:
                 break;

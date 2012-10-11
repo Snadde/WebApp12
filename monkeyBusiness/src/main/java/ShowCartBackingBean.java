@@ -9,6 +9,7 @@
  */
 import core.Product;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import javax.enterprise.context.*;
@@ -21,6 +22,18 @@ public class ShowCartBackingBean implements Serializable{
     @Inject
     private CartControlBean cartControlBean;
     
+    private List cartProductList;
+    
     public ShowCartBackingBean(){}
 
+    public void setCartProductList(ArrayList<Map.Entry<Product, Integer>> cartProductList)
+    {
+        this.cartProductList = cartProductList;
+    }
+
+    public List getCartProductList() {
+        return cartProductList;
+    }
+    
+    
 }
