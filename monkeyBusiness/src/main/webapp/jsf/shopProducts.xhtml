@@ -57,8 +57,8 @@
                          </f:facet> 
                              <h:form>     
                                  <h:commandLink id="Addbutton" value="Add" 
-                                               actionListener="#{cartControlBean.actionListener}"/>
-                                <f:attribute name="prod" value="${product}"/>
+                                               action="#{cartControlBean.addToCart(product)}" />
+                     
                             </h:form> <br/>
 
                     </h:column>>
