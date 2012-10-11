@@ -14,20 +14,32 @@
     <h:body>
 
         <div id="top">
-            <ui:insert name="top">Top</ui:insert>
+            <ui:insert name="top">                            
+
+           </ui:insert>
+             <h:panelGroup rendered="#{simpleLogin.isLoggedIn}">
+                signed in as #{simpleLogin.customer.userName}
+                <h:form>
+                <h:commandButton value="Logout" 
+                                     action="#{simpleLogin.setLogout}" />  
+            </h:form>
+             </h:panelGroup>
         </div>
         <div>
             <div id="left">
                 
                 <nav>
-                    <h:link value="AdminProducts" outcome="adminProducts"/><br/>
-                    <h:link value="Add Product" outcome="newProduct"/><br/>
-                    <h:link value="Register" outcome="newCustomer"/><br/>
-                    <h:link value="Show Customers" outcome="showCustomers"/><br/>
-                    <h:form>
-                        <h:commandLink id="showCart" value="Show Cart" action="showCart?faces-redirect=true"
+                    <h:panelGroup rendered="#{simpleLogin.isAdmin}">
+                        <h:link value="AdminProducts" outcome="adminProducts"/><br/>
+                    </h:panelGroup>
+                        <h:link value="Add Product" outcome="newProduct"/><br/>
+                        <h:link value="Register" outcome="newCustomer"/><br/>
+                        <h:link value="Show Customers" outcome="showCustomers"/><br/>
+                        <h:link value="Login" outcome="login"/><br/>
+                        <h:form>
+                            <h:commandLink id="showCart" value="Show Cart" action="showCart?faces-redirect=true"
                                    actionListener="#{cartControlBean.actionListener}"/><br/>
-                    </h:form>
+                        </h:form>
                 </nav>
                 <ui:insert name="left">Left</ui:insert>
             </div>

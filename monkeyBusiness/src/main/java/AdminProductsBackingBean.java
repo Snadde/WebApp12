@@ -20,7 +20,7 @@ public class AdminProductsBackingBean implements Serializable{
     
     @Inject
     private ProductCatalogueBean productCatalogueBean;
-    
+
     public AdminProductsBackingBean(){}
     
     public List<Product> getAll() {

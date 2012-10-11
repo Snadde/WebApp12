@@ -35,7 +35,8 @@ public class EditCustomerBackingBean implements Serializable{
     private  String lname;
     private  String email;
     private  Address address;
-    
+    private String userName;
+    private String password;
     
     public EditCustomerBackingBean(){}
         
@@ -77,5 +78,22 @@ public class EditCustomerBackingBean implements Serializable{
 
     public void setAddress(Address address) {
         this.address = address;
-    }     
+    }  
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    
 }
