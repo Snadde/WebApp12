@@ -35,13 +35,13 @@
                          <f:facet name="header">
                             <h:outputText value="Price" />
                          </f:facet> 
-                         <h:outputText value="#{entry.key}"></h:outputText>
+                         <h:outputText value="#{entry.key.price}"></h:outputText>
                     </h:column>
                     <h:column>
                          <f:facet name="header">
                             <h:outputText value="Required Skill" />
                          </f:facet> 
-                         <h:outputText value="#{entry.key}"></h:outputText>
+                         <h:outputText value="#{entry.key.requiredSkill}"></h:outputText>
                     </h:column>
                     
                     <h:column>
@@ -55,7 +55,7 @@
                          <f:facet name="header">
                             <h:outputText value="Cost" />
                          </f:facet> 
-                         <h:outputText value="404"></h:outputText>
+                         <h:outputText value="#{entry.value*entry.key.price}"></h:outputText>
                     </h:column>
                     
                     <h:column>
@@ -63,12 +63,16 @@
                             <h:outputText value="+/-" />
                          </f:facet> 
                              <h:form>     
-                                 <h:commandButton value="+" 
-                                               actionListener="#{editProduct.actionListener(product)}"
-                                               action="editProduct?faces-redirect=true"/><br/>
-                                 <h:commandButton value="–" 
-                                               actionListener="#{editProduct.actionListener(product)}"
-                                               action="editProduct?faces-redirect=true"/><br/>
+                                 <h:commandButton id="plusButton" value="+" 
+                                                  actionListener="#{cartControlBean.actionListener}"
+                                               action="showCart?faces-redirect=true">
+                                     <f:attribute name="prod" value="${entry.key}"/>
+                                 </h:commandButton><br/>
+                                 <h:commandButton id="minusButton" value="–" 
+                                               actionListener="#{cartControlBean.actionListener}"
+                                               action="showCart?faces-redirect=true">
+                                     <f:attribute name="prod" value="${entry.key}"/>
+                                 </h:commandButton><br/>
                             </h:form>  
 
                     </h:column>
@@ -78,9 +82,11 @@
                             <h:outputText value="Delete" />
                          </f:facet> 
                              <h:form>     
-                                 <h:commandButton value="Delete Product" 
-                                               actionListener="#{editProduct.actionListener(product)}"
-                                               action="editProduct?faces-redirect=true"/><br/>
+                                 <h:commandButton id="deleteButton" value="Delete Product" 
+                                                  actionListener="#{cartControlBean.actionListener}"
+                                               action="showCart?faces-redirect=true">
+                                     <f:attribute name="prod" value="${entry.key}"/>
+                                 </h:commandButton><br/>
                                 
                              </h:form>
                     </h:column>

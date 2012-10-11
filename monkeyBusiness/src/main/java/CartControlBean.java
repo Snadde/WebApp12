@@ -38,8 +38,8 @@ public class CartControlBean implements Serializable{
     public CartControlBean(){}
     
     public List<Map.Entry<Product, Integer>> getAll(){
-//        Map <Product, Integer> tempCartMap = cartModelBean.getAll();
-        Set<Map.Entry<Product, Integer>> managerSet = cartModelBean.getAll().entrySet();
+        Map <Product, Integer> tempCartMap = cartModelBean.getAll();
+        Set<Map.Entry<Product, Integer>> managerSet = tempCartMap.entrySet();
         
         return new ArrayList<Map.Entry<Product, Integer>>(managerSet);
     }
@@ -51,20 +51,24 @@ public class CartControlBean implements Serializable{
             
         public void actionListener(ActionEvent ae) { 
 
+        Product product = (Product) ae.getComponent().getAttributes().get("prod");
         String id = ae.getComponent().getId();
         
-        if(id.equals("Addbutton")){
-            addToCart((Product) ae.getComponent().getAttributes().get("prod"));
+        switch(id){
+            case "plusButton":
+            case "Addbutton":
+                addToCart(product);
+                break;
+            case "minusButton":
+                cartModelBean.remove(product);
+                break;
+            case "deleteButton":
+                cartModelBean.delete(product);
+                break;
+            default:
+                break;
         }
-        else if(id.equals("DeleteButton")){
-        
-        }
-        else if(id.equals("-Button")){
-        
-        }
-        else if(id.equals("+Button")){
-        
-        }
+
     }        
    
       
