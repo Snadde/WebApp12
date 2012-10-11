@@ -36,6 +36,10 @@
                         <h:link value="Register" outcome="newCustomer"/><br/>
                         <h:link value="Show Customers" outcome="showCustomers"/><br/>
                         <h:link value="Login" outcome="login"/><br/>
+                        <h:form>
+                            <h:commandLink id="showCart" value="Show Cart" action="showCart?faces-redirect=true"
+                                   actionListener="#{cartControlBean.actionListener}"/><br/>
+                        </h:form>
                 </nav>
                 <ui:insert name="left">Left</ui:insert>
             </div>
