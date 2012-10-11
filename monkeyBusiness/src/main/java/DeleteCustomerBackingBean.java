@@ -8,18 +8,21 @@
  * @author thituson
  */
 import core.Address;
-import core.Customer;
 import java.io.Serializable;
 import javax.enterprise.context.*;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 @Named
-@RequestScoped
-public class AddCustomerBackingBean implements Serializable{
+@ConversationScoped
+public class DeleteCustomerBackingBean implements Serializable{
+    
+    @Inject // Handled by system, don't need to create class.
+    private Conversation conv;
 
     @NotNull
     private Long id;
@@ -33,8 +36,8 @@ public class AddCustomerBackingBean implements Serializable{
     private  String email;
     private  Address address;
     
-    public AddCustomerBackingBean(){}
- 
+    
+    public DeleteCustomerBackingBean(){}
         
     public Long getId() {
         return id;
@@ -74,17 +77,5 @@ public class AddCustomerBackingBean implements Serializable{
 
     public void setAddress(Address address) {
         this.address = address;
-    }
-
-    
-
-
-    
-    
-
-   
-        
-    
-    
-    
+    }     
 }

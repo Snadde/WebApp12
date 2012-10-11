@@ -69,7 +69,7 @@ public class Product implements Serializable {
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 31 * hash + Objects.hashCode(this.id);
+        hash = 71 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -88,5 +88,4 @@ public class Product implements Serializable {
         return true;
     }
 
-   
 }

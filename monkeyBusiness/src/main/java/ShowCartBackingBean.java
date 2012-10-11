@@ -22,8 +22,5 @@ public class ShowCartBackingBean implements Serializable{
     private CartControlBean cartControlBean;
     
     public ShowCartBackingBean(){}
-      
- 
-    
-    
+
 }

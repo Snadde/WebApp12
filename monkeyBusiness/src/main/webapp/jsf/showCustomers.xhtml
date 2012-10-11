@@ -1,0 +1,109 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <body>
+
+        <ui:composition template="./template.xhtml">
+
+            <ui:define name="top">
+                
+            </ui:define>
+
+            <ui:define name="left">
+                
+            </ui:define>
+
+            <ui:define name="content">
+                <h:dataTable id="table" value="#{customerRegistryBean.getAll()}" var="customer" bgcolor="#F1F1F1" border="10" cellpadding="5" cellspacing="3" first="0" width="50%" dir="LTR" frame="hsides" rules="all"  >
+
+                    <f:facet name="header">
+                        <h:outputText value="Customers      " />
+                        
+                    </f:facet> 
+                    
+                    <h:column>
+                         <f:facet name="header">
+                            <h:outputText value="ID" />
+                         </f:facet> 
+                         <h:outputText value="#{customer.id}"></h:outputText>
+                    </h:column>>
+
+                    <h:column>
+                         <f:facet name="header">
+                            <h:outputText value="First Name" />
+                         </f:facet> 
+                         <h:outputText value="#{customer.fname}"></h:outputText>
+                    </h:column>>
+                    
+                   <h:column>
+                         <f:facet name="header">
+                            <h:outputText value="Last Name" />
+                         </f:facet> 
+                         <h:outputText value="#{customer.lname}"></h:outputText>
+                    </h:column>>
+
+                    <h:column>
+                         <f:facet name="header">
+                            <h:outputText value="E-mail" />
+                         </f:facet> 
+                         <h:outputText value="#{customer.email}"></h:outputText>
+                    </h:column>>
+                    
+                    <h:column>
+                         <f:facet name="header">
+                            <h:outputText value="Street" />
+                         </f:facet> 
+                         <h:outputText value="#{customer.address.street}"></h:outputText>
+                    </h:column>>
+                    
+                    <h:column>
+                         <f:facet name="header">
+                            <h:outputText value="Number" />
+                         </f:facet> 
+                         <h:outputText value="#{customer.address.nbr}"></h:outputText>
+                    </h:column>>
+                    
+                    <h:column>
+                         <f:facet name="header">
+                            <h:outputText value="Town" />
+                         </f:facet> 
+                         <h:outputText value="#{customer.address.town}"></h:outputText>
+                    </h:column>>
+                    
+                    <h:column>
+                         <f:facet name="header">
+                            <h:outputText value="Option" />
+                         </f:facet>
+                        
+                        <h:form>     
+                           <h:commandLink value="Edit" 
+                                          actionListener="#{editCustomerControlBean.actionListener}"
+                                          action="editCustomer?faces-redirect=true">
+                                <f:attribute name="customer" value="${customer}"/>
+                           </h:commandLink><br/>    
+                        </h:form>  
+                        
+                        <h:form>     
+                           <h:commandLink value="Delete" 
+                                          actionListener="#{deleteCustomerControlBean.actionListener}"
+                                          action="deleteCustomer?faces-redirect=true">
+                                <f:attribute name="customer" value="${customer}"/>
+                           </h:commandLink><br/>    
+                        </h:form>  
+                    </h:column>>
+ 
+                </h:dataTable>
+            </ui:define>
+
+            <ui:define name="bottom">
+                bottom
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
