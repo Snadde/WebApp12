@@ -35,6 +35,7 @@ public class CartModelBean implements Serializable {
     }
 
     public Map<Product, Integer> getAll() {
+        System.out.println(cart.getProductFreq().toString());
         return cart.getProductFreq();
     }
     

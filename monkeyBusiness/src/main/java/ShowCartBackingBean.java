@@ -24,8 +24,6 @@ public class ShowCartBackingBean implements Serializable{
     public ShowCartBackingBean(){}
       
  
-    public Map<Product,Integer> getAll() {
-        return cartControlBean.getAll();
-    }
+    
     
 }
