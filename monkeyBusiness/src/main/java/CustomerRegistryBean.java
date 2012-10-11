@@ -5,6 +5,7 @@ import core.JPAShop;
 import core.Product;
 import java.io.Serializable;
 import java.util.List;
+import javax.ejb.SessionContext;
 import javax.enterprise.context.*;
 import javax.inject.Named;
 
@@ -44,6 +45,11 @@ public class CustomerRegistryBean implements Serializable {
    
     public List<Customer> getAll() {
         return customerRegistry.getAll();
+    }
+    
+    public List<Customer> validateLogin(String userName, String password)
+    {
+        return customerRegistry.validateLogin(userName, password);
     }
     
     
