@@ -35,7 +35,7 @@ public class TestAll {
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
         Address adress = new Address("Tempgata", 2, "tempstad");
-        Customer customer = new Customer(adress,"","","");
+        Customer customer = new Customer(adress,"","","","","");
         Product b1 = new Product("abc", 111F, 1L);
         Product b2 = new Product("def", 222F,1L);
         Product b3 = new Product("ghi", 333F,1L);

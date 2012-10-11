@@ -9,5 +9,6 @@ import java.util.List;
 public interface ICustomerRegistry extends IDAO<Customer, Long> {
 
     List<Customer> getByName(String name);
+    List<Customer> validateLogin(String userName, String password);
     
 }

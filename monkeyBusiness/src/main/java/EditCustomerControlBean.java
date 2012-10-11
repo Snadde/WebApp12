@@ -47,7 +47,9 @@ public class EditCustomerControlBean implements Serializable{
             String fname = editCustomerBackingBean.getFname();
             String lname = editCustomerBackingBean.getLname();
             String email = editCustomerBackingBean.getEmail();
-            Customer customer = new Customer(id, address, fname, lname, email);
+            String userName =editCustomerBackingBean.getUserName();
+            String password = editCustomerBackingBean.getPassword();
+            Customer customer = new Customer(id, address, fname, lname, email, userName, password);
             customerRegistryBean.update(customer);
             return "showCustomers?faces-redirect=true"; // Go back
         } catch (Exception e) {

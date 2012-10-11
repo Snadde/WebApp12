@@ -46,5 +46,10 @@ public class CustomerRegistryBean implements Serializable {
         return customerRegistry.getAll();
     }
     
+    public List<Customer> validateLogin(String userName, String password)
+    {
+        return customerRegistry.validateLogin(userName, password);
+    }
+    
     
 }

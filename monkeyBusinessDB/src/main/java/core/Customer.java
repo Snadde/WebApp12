@@ -25,26 +25,33 @@ public class Customer implements Serializable{
     private  String fname;
     private  String lname;
     private  String email;
+    private  String userName;
+    private  String password;
 
+      
     public Customer() {}
 
     public Customer(Long id, Address address, String fname,
-            String lname, String email) {
+            String lname, String email, String userName, String password ) {
         this.id = id;
         this.address = address;
         this.fname = fname;
         this.lname = lname;
         this.email = email;
+        this.userName = userName;
+        this.password = password;
     }
 
     public Customer(Address address, String fname,
-            String lname, String email) {
+            String lname, String email, String userName, String password) {
         // For now. Later database will generate id
         //this.id = new Long(new Random().nextInt(100));
         this.address = address;
         this.fname = fname;
         this.lname = lname;
         this.email = email;
+        this.userName = userName;
+        this.password = password;
     }
 
     public void addProductToCart(Product product) {
@@ -89,6 +96,17 @@ public class Customer implements Serializable{
     public String getLname() {
         return lname;
     }
+    public String getUserName() {
+        return userName; 
+    }
+
+   public void setUserName(String username) {
+       this.userName = username; 
+   }
+
+   public void setPassword(String password) {
+       this.password = password; 
+   }
 
     @Override
     public String toString() {
