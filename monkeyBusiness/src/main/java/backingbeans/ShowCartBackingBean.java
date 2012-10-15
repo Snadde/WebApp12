@@ -1,3 +1,5 @@
+package backingbeans;
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -7,6 +9,7 @@
  *
  * @author Martin Augustsson && Gustaf Werlinder
  */
+import controlbeans.CartControlBean;
 import core.Product;
 import java.io.Serializable;
 import java.util.ArrayList;

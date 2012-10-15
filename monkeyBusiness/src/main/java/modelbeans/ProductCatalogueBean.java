@@ -1,3 +1,5 @@
+package modelbeans;
+
 
 import core.IProductCatalogue;
 import core.JPAShop;

@@ -1,3 +1,5 @@
+package controlbeans;
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -7,6 +9,7 @@
  *
  * @author thituson
  */
+import backingbeans.EditProductBackingBean;
 import core.Product;
 import java.io.Serializable;
 import java.util.logging.Level;
@@ -15,10 +18,11 @@ import javax.enterprise.context.*;
 import javax.faces.event.ActionEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
+import modelbeans.ProductCatalogueBean;
 
 @Named
 @ConversationScoped
-public class DeleteProductControlBean implements Serializable{
+public class EditProductControlBean implements Serializable{
     
     @Inject // Handled by system, don't need to create class.
     private Conversation conv;
@@ -26,30 +30,34 @@ public class DeleteProductControlBean implements Serializable{
     @Inject
     private ProductCatalogueBean prodCat;
     @Inject
-    private DeleteProductBackingBean deleteProductBackingBean;      
+    private EditProductBackingBean editProductBackingBean;      
             
     
     
-    public DeleteProductControlBean(){}
+    public EditProductControlBean(){}
     
 
+
+    // Any name possible
     public String action() {
         if (!conv.isTransient()) {
             conv.end();
              Logger.getAnonymousLogger().log(Level.INFO, "CONVERSATION ENDS");
         }
-        try 
-        {
-            
-            Long id = deleteProductBackingBean.getId();
-            prodCat.remove(id);
+        try {
+            Long id = editProductBackingBean.getId();
+            String name = editProductBackingBean.getName();
+            double price = editProductBackingBean.getPrice();
+            Long requiredSkill = editProductBackingBean.getRequiredSkill();
+            Long category = editProductBackingBean.getCategory();
+            Product product = new Product(id, name, price, requiredSkill, category);
+            prodCat.update(product);
             return "adminProducts?faces-redirect=true"; // Go back
         } catch (Exception e) {
             // Not implemented
             //return "error?faces-redirect=true&amp;cause=" + e.getMessage();
             return null;
         }
-    
 
         
     }
@@ -62,11 +70,11 @@ public class DeleteProductControlBean implements Serializable{
         }else{
             
         }
-        deleteProductBackingBean.setId(product.getId());
-        deleteProductBackingBean.setName(product.getName());
-        deleteProductBackingBean.setPrice(product.getPrice());
-        String requiredSkill = prodCat.getSkillStringValue(product.getRequiredSkill());
-        deleteProductBackingBean.setRequiredSkill(requiredSkill);
+        editProductBackingBean.setId(product.getId());
+        editProductBackingBean.setName(product.getName());
+        editProductBackingBean.setPrice(product.getPrice());
+        editProductBackingBean.setRequiredSkill(product.getRequiredSkill());
+        editProductBackingBean.setCategory(product.getCategory());
     }
 
  

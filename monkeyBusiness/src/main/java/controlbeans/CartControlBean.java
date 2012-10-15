@@ -1,3 +1,5 @@
+package controlbeans;
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -7,6 +9,8 @@
  *
  * @author thituson
  */
+import backingbeans.ShopProductsBackingBean;
+import backingbeans.ShowCartBackingBean;
 import core.Product;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -19,6 +23,7 @@ import javax.enterprise.context.*;
 import javax.faces.event.ActionEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
+import modelbeans.CartModelBean;
 
 @Named()
 @SessionScoped
