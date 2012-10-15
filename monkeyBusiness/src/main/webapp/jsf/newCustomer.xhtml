@@ -19,15 +19,20 @@
 
             <ui:define name="content">
                 <h:form>
-                    <h1>Add Product</h1>
+                    <h1>Register</h1>
                     <h:panelGrid id="panel" columns="2" border="1" cellpadding="0" cellspacing="2">
-                        ID  <h:inputText value="#{addProductBackingBean.id}"  />
-                        Name<h:inputText value="#{addProductBackingBean.name}"  />
-                        Price<h:inputText value="#{addProductBackingBean.price}"  />
-                        Skill<h:inputText value="#{addProductBackingBean.requiredSkill}"  />
+                        First Name <h:inputText value="#{addCustomerBackingBean.fname}"  />
+                        Last Name <h:inputText value="#{addCustomerBackingBean.lname}"  />
+                        E-mail <h:inputText value="#{addCustomerBackingBean.email}"  />
+                        Street <h:inputText value="#{addAddressBackingBean.street}"  />
+                        Nr <h:inputText value="#{addAddressBackingBean.nbr}"  />
+                        City <h:inputText value="#{addAddressBackingBean.town}"  />
+                        User Name <h:inputText value="#{addCustomerBackingBean.userName}"  />
+                        Password <h:inputSecret value="#{addCustomerBackingBean.password}"  />
                     </h:panelGrid>
+                    
                     <h:commandButton value="add" 
-                                     action="#{addProductControlBean.action}" />
+                                     action="#{addCustomerControlBean.action}" />
                 </h:form>
             </ui:define>
 

@@ -10,7 +10,7 @@
         <ui:composition template="./template.xhtml">
 
             <ui:define name="top">
-               
+                
             </ui:define>
 
             <ui:define name="left">
@@ -18,17 +18,24 @@
             </ui:define>
 
             <ui:define name="content">
-                <h:form>
-                    <h1>Add Product</h1>
-                    <h:panelGrid id="panel" columns="2" border="1" cellpadding="0" cellspacing="2">
-                        ID  <h:inputText value="#{addProductBackingBean.id}"  />
-                        Name<h:inputText value="#{addProductBackingBean.name}"  />
-                        Price<h:inputText value="#{addProductBackingBean.price}"  />
-                        Skill<h:inputText value="#{addProductBackingBean.requiredSkill}"  />
-                    </h:panelGrid>
-                    <h:commandButton value="add" 
-                                     action="#{addProductControlBean.action}" />
-                </h:form>
+                
+              <h:form>
+				<table>
+					<tr>
+						<td><h:outputText value="Enter Login ID: " /></td>
+						<td><h:inputText id="loginname" value="#{simpleLogin.loginname}" /></td>
+					</tr>
+					<tr>
+						<td><h:outputText value="Enter Password: " /></td>
+						<td><h:inputSecret id="password" value="#{simpleLogin.password}" /></td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td><h:commandButton value="Login" action="#{simpleLogin.CheckValidUser}" /></td>
+					</tr>
+				</table>
+		</h:form>
+                
             </ui:define>
 
             <ui:define name="bottom">

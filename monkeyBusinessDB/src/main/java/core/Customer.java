@@ -2,6 +2,7 @@ package core;
 
 import java.io.Serializable;
 import java.util.Random;
+import javax.management.relation.Role;
 import javax.persistence.CascadeType;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -25,27 +26,34 @@ public class Customer implements Serializable{
     private  String fname;
     private  String lname;
     private  String email;
-
-    public Customer() {
-    }
+    private  String userName;
+    private  String password;
+    private  boolean isAdmin = false;
+    
+            
+    public Customer() {}
 
     public Customer(Long id, Address address, String fname,
-            String lname, String email) {
+            String lname, String email, String userName, String password) {
         this.id = id;
         this.address = address;
         this.fname = fname;
         this.lname = lname;
         this.email = email;
+        this.userName = userName;
+        this.password = password;
     }
 
     public Customer(Address address, String fname,
-            String lname, String email) {
+            String lname, String email, String userName, String password) {
         // For now. Later database will generate id
         //this.id = new Long(new Random().nextInt(100));
         this.address = address;
         this.fname = fname;
         this.lname = lname;
         this.email = email;
+        this.userName = userName;
+        this.password = password;
     }
 
     public void addProductToCart(Product product) {
@@ -82,13 +90,31 @@ public class Customer implements Serializable{
         return fname;
     }
 
-
     public Long getId() {
         return id;
     }
 
     public String getLname() {
         return lname;
+    }
+    public String getUserName() {
+        return userName; 
+    }
+
+   public void setUserName(String username) {
+       this.userName = username; 
+   }
+
+   public void setPassword(String password) {
+       this.password = password; 
+   }
+
+    public boolean isIsAdmin() {
+        return isAdmin;
+    }
+
+    public void setIsAdmin(boolean isAdmin) {
+        this.isAdmin = isAdmin;
     }
 
     @Override
