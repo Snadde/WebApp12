@@ -29,7 +29,8 @@ public class AddProductControlBean implements Serializable{
         String name = addProductbb.getName();
         double price = addProductbb.getPrice();
         Long requiredSkill = addProductbb.getRequiredSkill();
-        Product product = new Product(name, price, requiredSkill);
+        Long category = addProductbb.getCategory();
+        Product product = new Product(name, price, requiredSkill, category);
         prodCat.add(product);
         return "adminProducts?faces-redirect=true";  // Where to go, navigate 
     }

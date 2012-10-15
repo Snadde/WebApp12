@@ -29,8 +29,9 @@ public class TestCustomer {
         customerReg = (CustomerRegistry) JPAShop.INSTANCE.getCustomerRegistry();
         orderBook = (OrderBook)JPAShop.INSTANCE.getOrderBook();
         addr = new Address("Gatan", 15, "GOTEBAAAARG");
-        customerOne = new Customer(addr, "fornamn", "efternamn", "email.com", "username", "password");
-        prod = new Product("ProdNamn", 123, 1L);
+        customerOne = new Customer(addr, "fornamn", "efternamn", "email.com", "apa", "apa");
+        customerOne.setIsAdmin(true);
+        prod = new Product("ProdNamn", 123, 1L, 1L);
         
     }
 
