@@ -1,4 +1,6 @@
 
+import modelbeans.CartModelBean;
+import modelbeans.CustomerRegistryBean;
 import core.Customer;
 import java.io.Serializable;
 import java.util.List;
@@ -8,85 +10,93 @@ import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-
 @Named
 @SessionScoped
-public class SimpleLogin implements Serializable{
-        @Inject
-        CustomerRegistryBean customerRegistryBean; 
-        
-        private String loginname;
-	private String password;
-        private Customer customer;
+public class SimpleLogin implements Serializable {
+    @Inject
+    CartModelBean cartModelBean;
+    @Inject
+    CustomerRegistryBean customerRegistryBean;
+    private String loginname;
+    private String password;
+    private Customer customer;
 
-	public SimpleLogin(){}
+    public SimpleLogin() {
+    }
 
-	public String getLoginname(){
-		return loginname;
-	}
+    public String getLoginname() {
+        return loginname;
+    }
 
-	public void setLoginname(String loginname){
-		this.loginname = loginname;
-	}
+    public void setLoginname(String loginname) {
+        this.loginname = loginname;
+    }
 
-	public String getPassword(){
-		return password;
-	}
+    public String getPassword() {
+        return password;
+    }
 
-	public void setPassword(String password){
-		this.password = password;
-	}
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-	public String CheckValidUser(){
+    public String CheckValidUser() {
 
-	List<Customer> results = customerRegistryBean.validateLogin(loginname, password);
-       if (!results.isEmpty()) {
+        List<Customer> results = customerRegistryBean.validateLogin(loginname, password);
+        if (!results.isEmpty()) {
             customer = results.get(0);
+        } else {
+            return "login?faces-redirect=true";
         }
-      else {
-         return "login?faces-redirect=true";
-      }
-       return "showCustomers?faces-redirect=true";
-   }
+        customer.setCart(cartModelBean.getCart());
+        return "showCustomers?faces-redirect=true";
+    }
 
     
+    public String LoginFromCheckout() {
 
-   public void setLogout() {
-      
-       System.out.println("LOGGED OUT MOTHERFUCKER!!!!");
-      customer = null;
+        List<Customer> results = customerRegistryBean.validateLogin(loginname, password);
+        if (!results.isEmpty()) {
+            customer = results.get(0);
+        }
+        else {
+            return "purchase?faces-redirect=true";
+        }
+        customer.setCart(cartModelBean.getCart());
+        return "purchase?faces-redirect=true";
+    }
 
-   }
+    public void setLogout() {
 
-   public boolean getIsLoggedIn() {
+        System.out.println("LOGGED OUT MOTHERFUCKER!!!!");
+        customer = null;
 
-      return customer != null;
+    }
 
-   }
-   
-   public boolean getIsAdmin()
-   {
-       if(customer == null)
-       {
-           return false;
-       }
-       else
-       {
-           return customer.isIsAdmin();
-       }
-       
-   }
+    public boolean getIsLoggedIn() {
 
+        return customer != null;
 
-   //@Produces
-   //@LoggedIn 
-   public Customer getCurrentUser() {
+    }
 
-      return customer;
+    public boolean getIsAdmin() {
+        if (customer == null) {
+            return false;
+        } else {
+            return customer.isIsAdmin();
+        }
 
-   }
-   
-   public Customer getCustomer(){
-       return customer;
-   }
+    }
+
+    //@Produces
+    //@LoggedIn 
+    public Customer getCurrentUser() {
+
+        return customer;
+
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
 }

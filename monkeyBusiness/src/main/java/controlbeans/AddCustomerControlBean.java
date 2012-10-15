@@ -1,3 +1,5 @@
+package controlbeans;
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -7,6 +9,9 @@
  *
  * @author thituson
  */
+import backingbeans.AddAddressBackingBean;
+import backingbeans.AddCustomerBackingBean;
+import backingbeans.CustomersBackingBean;
 import core.Address;
 import core.Customer;
 import core.Product;

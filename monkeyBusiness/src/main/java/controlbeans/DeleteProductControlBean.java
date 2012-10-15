@@ -1,3 +1,5 @@
+package controlbeans;
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -7,6 +9,7 @@
  *
  * @author thituson
  */
+import backingbeans.DeleteProductBackingBean;
 import core.Product;
 import java.io.Serializable;
 import java.util.logging.Level;
@@ -15,10 +18,11 @@ import javax.enterprise.context.*;
 import javax.faces.event.ActionEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
+import modelbeans.ProductCatalogueBean;
 
 @Named
 @ConversationScoped
-public class EditProductControlBean implements Serializable{
+public class DeleteProductControlBean implements Serializable{
     
     @Inject // Handled by system, don't need to create class.
     private Conversation conv;
@@ -26,33 +30,30 @@ public class EditProductControlBean implements Serializable{
     @Inject
     private ProductCatalogueBean prodCat;
     @Inject
-    private EditProductBackingBean editProductBackingBean;      
+    private DeleteProductBackingBean deleteProductBackingBean;      
             
     
     
-    public EditProductControlBean(){}
+    public DeleteProductControlBean(){}
     
 
-
-    // Any name possible
     public String action() {
         if (!conv.isTransient()) {
             conv.end();
              Logger.getAnonymousLogger().log(Level.INFO, "CONVERSATION ENDS");
         }
-        try {
-            Long id = editProductBackingBean.getId();
-            String name = editProductBackingBean.getName();
-            double price = editProductBackingBean.getPrice();
-            Long requiredSkill = editProductBackingBean.getRequiredSkill();
-            Product product = new Product(id, name, price, requiredSkill);
-            prodCat.update(product);
+        try 
+        {
+            
+            Long id = deleteProductBackingBean.getId();
+            prodCat.remove(id);
             return "adminProducts?faces-redirect=true"; // Go back
         } catch (Exception e) {
             // Not implemented
             //return "error?faces-redirect=true&amp;cause=" + e.getMessage();
             return null;
         }
+    
 
         
     }
@@ -65,10 +66,11 @@ public class EditProductControlBean implements Serializable{
         }else{
             
         }
-        editProductBackingBean.setId(product.getId());
-        editProductBackingBean.setName(product.getName());
-        editProductBackingBean.setPrice(product.getPrice());
-        editProductBackingBean.setRequiredSkill(product.getRequiredSkill());
+        deleteProductBackingBean.setId(product.getId());
+        deleteProductBackingBean.setName(product.getName());
+        deleteProductBackingBean.setPrice(product.getPrice());
+        String requiredSkill = prodCat.getSkillStringValue(product.getRequiredSkill());
+        deleteProductBackingBean.setRequiredSkill(requiredSkill);
     }
 
  

@@ -1,3 +1,5 @@
+package backingbeans;
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -8,18 +10,21 @@
  * @author thituson
  */
 import core.Address;
-import core.Customer;
 import java.io.Serializable;
 import javax.enterprise.context.*;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 @Named
-@RequestScoped
-public class AddCustomerBackingBean implements Serializable{
+@ConversationScoped
+public class DeleteCustomerBackingBean implements Serializable{
+    
+    @Inject // Handled by system, don't need to create class.
+    private Conversation conv;
 
     @NotNull
     private Long id;
@@ -32,11 +37,9 @@ public class AddCustomerBackingBean implements Serializable{
     private  String lname;
     private  String email;
     private  Address address;
-    private String userName;
-    private String password;
     
-    public AddCustomerBackingBean(){}
- 
+    
+    public DeleteCustomerBackingBean(){}
         
     public Long getId() {
         return id;
@@ -76,33 +79,5 @@ public class AddCustomerBackingBean implements Serializable{
 
     public void setAddress(Address address) {
         this.address = address;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    
-
-
-    
-    
-
-   
-        
-    
-    
-    
+    }     
 }

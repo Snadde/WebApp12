@@ -1,3 +1,5 @@
+package backingbeans;
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -23,7 +25,7 @@ public class DeleteProductBackingBean implements Serializable{
     private Long id;
     private String name;
     private double price;
-    private Long requiredSkill;
+    private String requiredSkill;
     
     
     
@@ -61,11 +63,11 @@ public class DeleteProductBackingBean implements Serializable{
         this.price = price;
     }
 
-    public Long getRequiredSkill() {
+    public String getRequiredSkill() {
         return requiredSkill;
     }
 
-    public void setRequiredSkill(Long requiredSkill) {
+    public void setRequiredSkill(String requiredSkill) {
         this.requiredSkill = requiredSkill;
     }
 

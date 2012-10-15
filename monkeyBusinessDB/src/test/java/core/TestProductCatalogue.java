@@ -36,7 +36,7 @@ public class TestProductCatalogue {
     @Test
     public void testAddFind() {
 
-        Product product1 = new Product( "name", 123F, 1L);
+        Product product1 = new Product( "name", 123F, 1L, 1L);
         Product product2 = null;
         ProductCatalogue prodCat = (ProductCatalogue) ProductCatalogue.newInstance("shop_test_pu");
 
@@ -53,7 +53,7 @@ public class TestProductCatalogue {
     public void testRemove() {
        
 
-        Product product1 = new Product( "name", 123F,1L);
+        Product product1 = new Product( "name", 123F,1L, 1L);
         Product product2 = null;
         ProductCatalogue prodCat = (ProductCatalogue) ProductCatalogue.newInstance("shop_test_pu");
 
@@ -70,7 +70,7 @@ public class TestProductCatalogue {
     @Test
     public void testUpdate() 
     {
-        Product product1 = new Product( "name", 123F,1L);
+        Product product1 = new Product( "name", 123F,1L ,1L);
         Product product2 = null;
         Product product3 = null;
         
@@ -78,7 +78,7 @@ public class TestProductCatalogue {
 
         prodCat.add(product1);
         
-        product2 = new Product(product1.getId(), "hej", 321F,1L);
+        product2 = new Product(product1.getId(), "hej", 321F,1L, 1L);
         prodCat.update(product2);
         product3 = prodCat.find(product1.getId());
         Assert.assertFalse(product1.toString().equals(product3.toString()));
@@ -88,9 +88,9 @@ public class TestProductCatalogue {
     @Test
     public void testCount(){
         ProductCatalogue prodCat = (ProductCatalogue) ProductCatalogue.newInstance("shop_test_pu");
-        Product product1 = new Product( "name", 123F,1L);
-        Product product2 = new Product( "name1", 123F,1L);
-        Product product3 = new Product( "name2", 123F,1L);
+        Product product1 = new Product( "name", 123F, 1L, 1L);
+        Product product2 = new Product( "name1", 123F, 1L, 1L);
+        Product product3 = new Product( "name2", 123F, 1L, 1L);
         int x = prodCat.getCount();
         prodCat.add(product1);
         prodCat.add(product2);

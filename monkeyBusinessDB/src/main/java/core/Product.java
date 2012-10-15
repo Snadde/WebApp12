@@ -20,25 +20,28 @@ public class Product implements Serializable {
     private  Long id;
     private  String name;
     private  double price;
-    private  Long requiredSkill;  
+    private  Long requiredSkill;
+    private Long category;
 
 
 
     public Product() {
     }
     
-    public Product(Long id, String name, double price, Long requiredSkill) {
+    public Product(Long id, String name, double price, Long requiredSkill, Long category) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.requiredSkill = requiredSkill;
+        this.category = category;
     }
        
-    public Product(String name, double price, Long requiredSkill) {
+    public Product(String name, double price, Long requiredSkill, Long category) {
 
         this.name = name;
         this.price = price;
         this.requiredSkill = requiredSkill;
+        this.category = category;
     }
     
     public String getName() {
@@ -60,6 +63,15 @@ public class Product implements Serializable {
     public void setRequiredSkill(Long requiredSkill) {
         this.requiredSkill = requiredSkill;
     }
+
+    public Long getCategory() {
+        return category;
+    }
+
+    public void setCategory(Long category) {
+        this.category = category;
+    }
+    
     
     @Override
     public String toString() {
@@ -87,5 +99,6 @@ public class Product implements Serializable {
         }
         return true;
     }
+    
 
 }
