@@ -3,6 +3,8 @@ package core;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 
 /**
  * All customers
@@ -28,4 +30,16 @@ public final class CustomerRegistry extends AbstractDAO<Customer, Long> implemen
         }
         return found;
     }
+    
+    @Override
+    public List<Customer> validateLogin(String userName, String password) {
+        EntityManager em = emf.createEntityManager();
+        String customerByUserName = "select c from Customer c where c.userName = :userName and c.password = :password";
+        TypedQuery<Customer> tq = em.createQuery(customerByUserName, Customer.class);
+        tq.setParameter("userName", userName);
+        tq.setParameter("password", password);
+        List<Customer> customers = tq.getResultList();
+        System.out.println("HAR KOMMER LISTA FRAN DATABAS: " + customers);
+        return customers;
+    }    
 }

@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <body>
+
+        <ui:composition template="./template.xhtml">
+
+            <ui:define name="top">
+                
+            </ui:define>
+
+            <ui:define name="left">
+                
+            </ui:define>
+
+            <ui:define name="content">
+                <h:panelGroup rendered="#{simpleLogin.isAdmin}">
+                    <h:dataTable id="table" value="#{adminProductsBackingBean.getAll()}" var="product" bgcolor="#F1F1F1" border="10" cellpadding="5" cellspacing="3" first="0" width="50%" dir="LTR" frame="hsides" rules="all"  >
+                        <f:facet name="header">
+                            <h:outputText value="Products      " />
+                            <h:link value="Add Product" outcome="newProduct"/>
+                        </f:facet> 
+
+                        <h:column>
+                             <f:facet name="header">
+                                <h:outputText value="ID" />
+                             </f:facet> 
+                             <h:outputText value="#{product.id}"></h:outputText>
+                        </h:column>>
+
+                        <h:column>
+                             <f:facet name="header">
+                                <h:outputText value="Name" />
+                             </f:facet> 
+                             <h:outputText value="#{product.name}"></h:outputText>
+                        </h:column>>
+
+                        <h:column>
+                             <f:facet name="header">
+                                <h:outputText value="Price" />
+                             </f:facet> 
+                             <h:outputText value="#{product.price}"></h:outputText>
+                        </h:column>>
+                        <h:column>
+                             <f:facet name="header">
+                                <h:outputText value="RequiredSkill" />
+                             </f:facet> 
+                             <h:outputText value="#{product.requiredSkill}"></h:outputText>
+                        </h:column>>
+
+                        <h:column>
+                             <f:facet name="header">
+                                <h:outputText value="Option" />
+                             </f:facet> 
+                                 <h:form>     
+                                    <h:commandLink value="Edit" 
+                                                   actionListener="#{editProductControlBean.actionListener}"
+                                                   action="editProduct?faces-redirect=true">
+                                        <f:attribute name="product" value="${product}"/>
+                                    </h:commandLink><br/>
+                                </h:form>  
+                                <h:form>
+                                    <h:commandLink value="Delete" 
+                                                   actionListener="#{deleteProductControlBean.actionListener}"
+                                                   action="deleteProduct?faces-redirect=true">
+                                         <f:attribute name="product" value="${product}"/>
+                                    </h:commandLink><br/>
+                                </h:form>  
+                        </h:column>>
+
+                    </h:dataTable>
+                </h:panelGroup>>        
+            </ui:define>
+
+            <ui:define name="bottom">
+                bottom
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
