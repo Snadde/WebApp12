@@ -1,4 +1,6 @@
 
+import modelbeans.CartModelBean;
+import modelbeans.CustomerRegistryBean;
 import core.Customer;
 import java.io.Serializable;
 import java.util.List;

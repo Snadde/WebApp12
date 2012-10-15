@@ -1,3 +1,5 @@
+package controlbeans;
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -7,6 +9,8 @@
  *
  * @author thituson
  */
+import backingbeans.AddAddressBackingBean;
+import backingbeans.DeleteCustomerBackingBean;
 import core.Address;
 import core.Customer;
 import java.io.Serializable;
@@ -16,6 +20,7 @@ import javax.enterprise.context.*;
 import javax.faces.event.ActionEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
+import modelbeans.CustomerRegistryBean;
 
 @Named
 @ConversationScoped

@@ -1,3 +1,5 @@
+package modelbeans;
+
 
 import core.Customer;
 import core.ICustomerRegistry;
