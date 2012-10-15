@@ -93,6 +93,12 @@
  
                 </h:dataTable>
                 <h:outputText value="Total Cost: #{showCartBackingBean.totalCartCost}"/>
+                <h:form>
+                    <h:commandButton id="buyButton" value="BUY!!!!11!!" style="background-color: forestgreen; color: #ffffff;"
+                                 actionListener="#{cartControlBean.actionListener}"
+                                 action="shopProducts?faces-redirect=true">
+                    </h:commandButton>
+                </h:form>
             </ui:define>
 
             <ui:define name="bottom">
