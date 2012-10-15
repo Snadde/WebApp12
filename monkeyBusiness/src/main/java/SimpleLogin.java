@@ -49,7 +49,7 @@ public class SimpleLogin implements Serializable {
             return "login?faces-redirect=true";
         }
         customer.setCart(cartModelBean.getCart());
-        return "showCustomers?faces-redirect=true";
+        return "shopProducts?faces-redirect=true";
     }
 
     
