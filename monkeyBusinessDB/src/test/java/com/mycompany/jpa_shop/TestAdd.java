@@ -54,12 +54,12 @@ public class TestAdd {
     
     @Test
     public void testSearch() {
-       Product p = new Product("test", 999, 1L);
-       Product p1 = new Product("test2", 888, 1L);
-       Product p2 = new Product("test3", 666,1L);
-       Product p3 = new Product("hej", 1999,1L);
-       Product p4 = new Product("1hej", 1337,1L);
-       Product p5 = new Product("2hej", 50,1L);
+       Product p = new Product("test", 999, 1L, 1L);
+       Product p1 = new Product("test2", 888, 1L, 1L);
+       Product p2 = new Product("test3", 666,1L, 1L);
+       Product p3 = new Product("hej", 1999,1L, 1L);
+       Product p4 = new Product("1hej", 1337,1L, 1L);
+       Product p5 = new Product("2hej", 50,1L, 1L);
        Product result;
        preg.add(p);
        preg.add(p1);  
