@@ -42,8 +42,20 @@ public class CartControlBean implements Serializable{
         Map <Product, Integer> tempCartMap = cartModelBean.getAll();
         Set<Map.Entry<Product, Integer>> managerSet = tempCartMap.entrySet();
         showCartBackingBean.setCartProductList(new ArrayList<Map.Entry<Product, Integer>>(managerSet));
-        //return new ArrayList<Map.Entry<Product, Integer>>(managerSet);
+        calculateTotalCartCost(managerSet);
+        
     }
+    
+    public void calculateTotalCartCost(Set<Map.Entry<Product, Integer>> managerSet){
+        double totalCost = 0;
+        for(Map.Entry entry : managerSet)
+        {
+            Product p = (Product) entry.getKey();
+            totalCost += p.getPrice() * (int) entry.getValue();
+        }
+        showCartBackingBean.setTotalCartCost(totalCost);
+    }
+            
 
     public void addToCart(Product p){
         cartModelBean.add(p);
@@ -59,6 +71,7 @@ public class CartControlBean implements Serializable{
             case "plusButton":
             case "Addbutton":
                 addToCart(product);
+                this.getAll();
                 break;
             case "minusButton":
                 cartModelBean.remove(product);
