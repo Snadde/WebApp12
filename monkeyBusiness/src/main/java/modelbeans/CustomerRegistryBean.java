@@ -34,6 +34,17 @@ public class CustomerRegistryBean implements Serializable {
         return customerRegistry.find(id);
     }
 
+    public boolean isUserNameTaken(String name)
+    {
+        if(customerRegistry.findByUserName(name)!=null)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
    
     public void update(Customer customer) {
         customerRegistry.update(customer);
