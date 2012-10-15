@@ -10,5 +10,6 @@ public interface ICustomerRegistry extends IDAO<Customer, Long> {
 
     List<Customer> getByName(String name);
     List<Customer> validateLogin(String userName, String password);
+    Customer findByUserName(String name);
     
 }

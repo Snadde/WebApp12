@@ -20,7 +20,7 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 @Named
-@RequestScoped
+@ConversationScoped
 public class AddCustomerBackingBean implements Serializable{
 
     @NotNull
@@ -32,9 +32,13 @@ public class AddCustomerBackingBean implements Serializable{
     @Pattern(regexp = "^[a-zA-Z]*")
     @Size(min = 1, message = "Must enter a name")
     private  String lname;
+    @Size(min = 1, message = "Must enter a email")
     private  String email;
+    
     private  Address address;
+    @Size(min = 1, message = "Must enter a username")
     private String userName;
+    @Size(min = 1, message = "Must enter a password")
     private String password;
     
     public AddCustomerBackingBean(){}
