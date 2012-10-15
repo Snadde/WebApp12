@@ -21,10 +21,15 @@
                 <h:form>
                     <h1>Add Product</h1>
                     <h:panelGrid id="panel" columns="2" border="1" cellpadding="0" cellspacing="2">
-                        ID  <h:inputText value="#{addProductBackingBean.id}"  />
                         Name<h:inputText value="#{addProductBackingBean.name}"  />
                         Price<h:inputText value="#{addProductBackingBean.price}"  />
-                        Skill<h:inputText value="#{addProductBackingBean.requiredSkill}"  />
+                        Category<h:selectOneMenu value="#{addProductBackingBean.category}">
+                                    <f:selectItems value="#{productCatalogueBean.getCategories()}" />
+                                </h:selectOneMenu>        
+                        
+                        Skill   <h:selectOneMenu value="#{addProductBackingBean.requiredSkill}">
+                                    <f:selectItems value="#{productCatalogueBean.getSkillValues()}" />
+                                </h:selectOneMenu>           
                     </h:panelGrid>
                     <h:commandButton value="add" 
                                      action="#{addProductControlBean.action}" />

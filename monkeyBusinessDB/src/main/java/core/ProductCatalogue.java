@@ -32,7 +32,7 @@ public final class ProductCatalogue extends AbstractDAO<Product, Long> implement
     }
     
    
-    
+    @Override
     public List<Product> getByNameLike(String name) {
         EntityManager em = emf.createEntityManager();
         String productsByName = "select b from Product b where b.name like :name";

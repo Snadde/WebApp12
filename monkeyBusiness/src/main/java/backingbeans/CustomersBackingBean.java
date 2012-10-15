@@ -1,3 +1,5 @@
+package backingbeans;
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -14,6 +16,7 @@ import java.util.List;
 import javax.enterprise.context.*;
 import javax.inject.Inject;
 import javax.inject.Named;
+import modelbeans.CustomerRegistryBean;
 
 @Named("customers")
 @SessionScoped

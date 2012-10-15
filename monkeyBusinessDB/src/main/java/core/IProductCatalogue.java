@@ -10,5 +10,7 @@ import java.util.List;
 public interface IProductCatalogue extends IDAO<Product, Long> {
 
     List<Product> getByName(String name);
+    List<Product> getByNameLike(String name);
+    
     
 }

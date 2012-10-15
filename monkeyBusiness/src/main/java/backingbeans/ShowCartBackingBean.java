@@ -1,3 +1,5 @@
+package backingbeans;
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -7,6 +9,7 @@
  *
  * @author Martin Augustsson && Gustaf Werlinder
  */
+import controlbeans.CartControlBean;
 import core.Product;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -16,13 +19,14 @@ import javax.enterprise.context.*;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-@Named()
+@Named
 @SessionScoped
 public class ShowCartBackingBean implements Serializable{
     @Inject
     private CartControlBean cartControlBean;
     
     private List cartProductList;
+    private double totalCartCost;
     
     public ShowCartBackingBean(){}
 
@@ -34,6 +38,15 @@ public class ShowCartBackingBean implements Serializable{
     public List getCartProductList() {
         return cartProductList;
     }
+
+    public double getTotalCartCost() {
+        return totalCartCost;
+    }
+
+    public void setTotalCartCost(double totalCartCost) {
+        this.totalCartCost = totalCartCost;
+    }
+    
     
     
 }
