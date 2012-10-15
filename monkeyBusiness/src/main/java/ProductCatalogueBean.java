@@ -89,6 +89,10 @@ public class ProductCatalogueBean implements Serializable {
 		return skillValues;
     }
     
+    public List<Product> getByName(String name) {
+        return productCatalogue.getByNameLike(name);
+    }
+    
     public String getSkillStringValue(Long skillValue)
     {
         String skillStringValue = "No skill";
