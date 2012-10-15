@@ -36,9 +36,9 @@ public class TestAll {
         EntityTransaction tx = em.getTransaction();
         Address adress = new Address("Tempgata", 2, "tempstad");
         Customer customer = new Customer(adress,"","","","","");
-        Product b1 = new Product("abc", 111F, 1L);
-        Product b2 = new Product("def", 222F,1L);
-        Product b3 = new Product("ghi", 333F,1L);
+        Product b1 = new Product("abc", 111F, 1L, 1L);
+        Product b2 = new Product("def", 222F,1L, 1L);
+        Product b3 = new Product("ghi", 333F,1L, 1L);
         customer.addProductToCart(b1);
         customer.addProductToCart(b2);
         customer.addProductToCart(b3);

@@ -45,7 +45,8 @@ public class EditProductControlBean implements Serializable{
             String name = editProductBackingBean.getName();
             double price = editProductBackingBean.getPrice();
             Long requiredSkill = editProductBackingBean.getRequiredSkill();
-            Product product = new Product(id, name, price, requiredSkill);
+            Long category = editProductBackingBean.getCategory();
+            Product product = new Product(id, name, price, requiredSkill, category);
             prodCat.update(product);
             return "adminProducts?faces-redirect=true"; // Go back
         } catch (Exception e) {
@@ -69,6 +70,7 @@ public class EditProductControlBean implements Serializable{
         editProductBackingBean.setName(product.getName());
         editProductBackingBean.setPrice(product.getPrice());
         editProductBackingBean.setRequiredSkill(product.getRequiredSkill());
+        editProductBackingBean.setCategory(product.getCategory());
     }
 
  
