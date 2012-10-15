@@ -81,6 +81,10 @@ public class Customer implements Serializable{
     public Cart getCart() {
         return cart;
     }
+    
+    public void setCart(Cart cart) {
+        this.cart = cart;
+    }    
 
     public String getEmail() {
         return email;
@@ -120,5 +124,5 @@ public class Customer implements Serializable{
     @Override
     public String toString() {
         return "Customer{" + "id=" + id + ", address=" + address + ", fname=" + fname + ", lname=" + lname + ", email=" + email + '}';
-    }    
+    }        
 }
