@@ -14,20 +14,37 @@
     <h:body>
 
         <div id="top">
-            <ui:insert name="top">Top</ui:insert>
+            <ui:insert name="top">                            
+
+           </ui:insert>
+            
+             <h:panelGroup rendered="#{simpleLogin.isLoggedIn}">
+                 <h:form>
+                 signed in as #{simpleLogin.customer.userName}
+               
+                <h:commandButton value="Logout" 
+                                     action="#{simpleLogin.setLogout}" />  
+                 </h:form>
+             </h:panelGroup>
+             <h:panelGroup rendered="#{!simpleLogin.isLoggedIn}">
+                You are not logged in
+                <h:link value="Login" outcome="login"/> ||
+                <h:link value="Register" outcome="newCustomer"/>
+             </h:panelGroup>
         </div>
         <div>
             <div id="left">
                 
                 <nav>
-                    <h:link value="AdminProducts" outcome="adminProducts"/><br/>
-                    <h:link value="Add Product" outcome="newProduct"/><br/>
-                    <h:link value="Register" outcome="newCustomer"/><br/>
-                    <h:link value="Show Customers" outcome="showCustomers"/><br/>
-                    <h:form>
-                        <h:commandLink id="showCart" value="Show Cart" action="showCart?faces-redirect=true"
+                    <h:panelGroup rendered="#{simpleLogin.isAdmin}">
+                        <h:link value="AdminProducts" outcome="adminProducts"/><br/>
+                        <h:link value="Show Customers" outcome="showCustomers"/><br/>
+                    </h:panelGroup>
+                        <h:form>
+                            <h:commandLink id="showCart" value="Show Cart" action="showCart?faces-redirect=true"
                                    actionListener="#{cartControlBean.actionListener}"/><br/>
-                    </h:form>
+                        </h:form>
+                    <h:link value="Products" outcome="shopProducts"/><br/>
                 </nav>
                 <ui:insert name="left">Left</ui:insert>
             </div>

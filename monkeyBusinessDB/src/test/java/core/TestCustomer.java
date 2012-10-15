@@ -29,7 +29,7 @@ public class TestCustomer {
         customerReg = (CustomerRegistry) JPAShop.INSTANCE.getCustomerRegistry();
         orderBook = (OrderBook)JPAShop.INSTANCE.getOrderBook();
         addr = new Address("Gatan", 15, "GOTEBAAAARG");
-        customerOne = new Customer(addr, "fornamn", "efternamn", "email.com");
+        customerOne = new Customer(addr, "fornamn", "efternamn", "email.com", "username", "password");
         prod = new Product("ProdNamn", 123, 1L);
         
     }
@@ -45,7 +45,7 @@ public class TestCustomer {
     public void testAddCustomer()
     {
         Address addr = new Address("Gatan", 15, "GOTEBAAAARG");
-        Customer cus1 = new Customer(addr, "fornamn", "efternamn", "email.com");
+        Customer cus1 = new Customer(addr, "fornamn", "efternamn", "email.com","username", "password");
         customerReg.add(cus1);
         Customer cus2 = customerReg.find(cus1.getId());
         Assert.assertEquals(cus1.toString(), cus2.toString());

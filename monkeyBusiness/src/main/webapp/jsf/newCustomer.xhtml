@@ -10,7 +10,7 @@
         <ui:composition template="./template.xhtml">
 
             <ui:define name="top">
-                top
+               
             </ui:define>
 
             <ui:define name="left">
@@ -27,6 +27,8 @@
                         Street <h:inputText value="#{addAddressBackingBean.street}"  />
                         Nr <h:inputText value="#{addAddressBackingBean.nbr}"  />
                         City <h:inputText value="#{addAddressBackingBean.town}"  />
+                        User Name <h:inputText value="#{addCustomerBackingBean.userName}"  />
+                        Password <h:inputSecret value="#{addCustomerBackingBean.password}"  />
                     </h:panelGrid>
                     
                     <h:commandButton value="add" 

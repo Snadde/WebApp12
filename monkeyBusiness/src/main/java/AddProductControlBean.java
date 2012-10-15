@@ -9,6 +9,7 @@
  */
 import core.Product;
 import java.io.Serializable;
+import javax.annotation.security.RolesAllowed;
 import javax.enterprise.context.*;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -22,7 +23,8 @@ public class AddProductControlBean implements Serializable{
     private AddProductBackingBean addProductbb;
     
     public AddProductControlBean(){}
-        
+    
+    @RolesAllowed("Admin")
     public String action() {
         String name = addProductbb.getName();
         double price = addProductbb.getPrice();
