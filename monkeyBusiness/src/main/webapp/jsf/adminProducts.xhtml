@@ -10,11 +10,11 @@
         <ui:composition template="./template.xhtml">
 
             <ui:define name="top">
-                
+
             </ui:define>
 
             <ui:define name="left">
-                
+
             </ui:define>
 
             <ui:define name="content">
@@ -26,50 +26,57 @@
                         </f:facet> 
 
                         <h:column>
-                             <f:facet name="header">
+                            <f:facet name="header">
                                 <h:outputText value="ID" />
-                             </f:facet> 
-                             <h:outputText value="#{product.id}"></h:outputText>
+                            </f:facet> 
+                            <h:outputText value="#{product.id}"></h:outputText>
                         </h:column>>
 
                         <h:column>
-                             <f:facet name="header">
+                            <f:facet name="header">
                                 <h:outputText value="Name" />
-                             </f:facet> 
-                             <h:outputText value="#{product.name}"></h:outputText>
+                            </f:facet> 
+                            <h:outputText value="#{product.name}"></h:outputText>
                         </h:column>>
 
                         <h:column>
-                             <f:facet name="header">
+                            <f:facet name="header">
                                 <h:outputText value="Price" />
-                             </f:facet> 
-                             <h:outputText value="#{product.price}"></h:outputText>
+                            </f:facet> 
+                            <h:outputText value="#{product.price}"></h:outputText>
                         </h:column>>
                         <h:column>
-                             <f:facet name="header">
+                            <f:facet name="header">
                                 <h:outputText value="RequiredSkill" />
-                             </f:facet> 
-                             <h:outputText value="#{product.requiredSkill}"></h:outputText>
+                            </f:facet> 
+                            <h:outputText value="#{productCatalogueBean.getSkillStringValue(product.requiredSkill)}"></h:outputText>
                         </h:column>>
 
                         <h:column>
-                             <f:facet name="header">
+                            <f:facet name="header">
+                                <h:outputText value="Category" />
+                            </f:facet> 
+                            <h:outputText value="#{productCatalogueBean.getCategoryStringValue(product.category)}"></h:outputText>
+                        </h:column>>
+
+                        <h:column>
+                            <f:facet name="header">
                                 <h:outputText value="Option" />
-                             </f:facet> 
-                                 <h:form>     
-                                    <h:commandLink value="Edit" 
-                                                   actionListener="#{editProductControlBean.actionListener}"
-                                                   action="editProduct?faces-redirect=true">
-                                        <f:attribute name="product" value="${product}"/>
-                                    </h:commandLink><br/>
-                                </h:form>  
-                                <h:form>
-                                    <h:commandLink value="Delete" 
-                                                   actionListener="#{deleteProductControlBean.actionListener}"
-                                                   action="deleteProduct?faces-redirect=true">
-                                         <f:attribute name="product" value="${product}"/>
-                                    </h:commandLink><br/>
-                                </h:form>  
+                            </f:facet> 
+                            <h:form>     
+                                <h:commandLink value="Edit" 
+                                               actionListener="#{editProductControlBean.actionListener}"
+                                               action="editProduct?faces-redirect=true">
+                                    <f:attribute name="product" value="${product}"/>
+                                </h:commandLink><br/>
+                            </h:form>  
+                            <h:form>
+                                <h:commandLink value="Delete" 
+                                               actionListener="#{deleteProductControlBean.actionListener}"
+                                               action="deleteProduct?faces-redirect=true">
+                                    <f:attribute name="product" value="${product}"/>
+                                </h:commandLink><br/>
+                            </h:form>  
                         </h:column>>
 
                     </h:dataTable>

@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
 
     <body>
 
@@ -23,12 +24,18 @@
                         ID <h:outputText value="#{editProductBackingBean.id}"  />
                         Name<h:inputText value="#{editProductBackingBean.name}"  />
                         Price<h:inputText value="#{editProductBackingBean.price}"  />
-                        Skill<h:inputText value="#{editProductBackingBean.requiredSkill}"  />
+                        Category<h:selectOneMenu value="#{editProductBackingBean.category}">
+                                    <f:selectItems value="#{productCatalogueBean.getCategories()}" />
+                                </h:selectOneMenu>        
+                        Skill
+                        <h:selectOneMenu value="#{editProductBackingBean.requiredSkill}">
+                            <f:selectItems value="#{productCatalogueBean.getSkillValues()}" />
+                        </h:selectOneMenu>           
                     </h:panelGrid>
                     <h:commandButton value="edit" 
                                      action="#{editProductControlBean.action}" />
                     <h:commandButton value="cancel" 
-                                     action="products?faces-redirect=true" />
+                                     action="adminProducts?faces-redirect=true" />
                 </h:form>
             </ui:define>
 

@@ -45,6 +45,9 @@ public class EditProductBackingBean implements Serializable{
     @Min(value = 1, message = "Too small")
     @Max(value = 10, message = "Too big")
     private Long requiredSkill;
+    @NotNull
+    @Min(value = 1, message = "Too small")
+    private Long category;
     
     
     public EditProductBackingBean(){}
@@ -81,5 +84,14 @@ public class EditProductBackingBean implements Serializable{
     public void setRequiredSkill(Long requiredSkill) {
         this.requiredSkill = requiredSkill;
     }
+
+    public Long getCategory() {
+        return category;
+    }
+
+    public void setCategory(Long category) {
+        this.category = category;
+    }
+    
       
 }

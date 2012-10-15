@@ -65,7 +65,8 @@ public class DeleteProductControlBean implements Serializable{
         deleteProductBackingBean.setId(product.getId());
         deleteProductBackingBean.setName(product.getName());
         deleteProductBackingBean.setPrice(product.getPrice());
-        deleteProductBackingBean.setRequiredSkill(product.getRequiredSkill());
+        String requiredSkill = prodCat.getSkillStringValue(product.getRequiredSkill());
+        deleteProductBackingBean.setRequiredSkill(requiredSkill);
     }
 
  

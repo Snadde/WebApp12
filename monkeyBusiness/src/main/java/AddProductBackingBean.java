@@ -8,6 +8,7 @@
  * @author thituson
  */
 import java.io.Serializable;
+import java.util.Map;
 import javax.enterprise.context.*;
 import javax.inject.Named;
 import javax.validation.constraints.Max;
@@ -20,10 +21,7 @@ import javax.validation.constraints.Size;
 @RequestScoped
 public class AddProductBackingBean implements Serializable{
     
-    private ProductCatalogueBean prodCat;
     @NotNull
-    @Min(value = 1, message = "To small")
-    @Max(value = 1000, message = "To big")
     private Long id;
     @NotNull
     @Pattern(regexp = "^[a-zA-Z]*")
@@ -34,10 +32,12 @@ public class AddProductBackingBean implements Serializable{
     @Max(value = 10000, message = "To big")
     private double price;
     @NotNull
-    @Min(value = 1, message = "To small")
-    @Max(value = 10, message = "To big")
+    @Min(value = 1, message = "Please enter a skill level")
     private Long requiredSkill;
-    
+    @NotNull
+    @Min(value = 1, message = "Please enter a category")
+    private Long category;
+     
     
     public AddProductBackingBean(){}
 
@@ -73,9 +73,13 @@ public class AddProductBackingBean implements Serializable{
     public void setRequiredSkill(Long requiredSkill) {
         this.requiredSkill = requiredSkill;
     }
-   
-        
-    
-    
-    
+
+    public Long getCategory() {
+        return category;
+    }
+
+    public void setCategory(Long category) {
+        this.category = category;
+    }
+      
 }
