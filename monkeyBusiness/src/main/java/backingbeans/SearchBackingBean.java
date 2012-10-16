@@ -1,13 +1,12 @@
 package backingbeans;
 
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * The sorting algorithm for sorting results is inspired by http://www.mkyong.com/jsf2/jsf-2-datatable-sorting-example/
  */
 
 /**
  *
- * @author thituson
+ * @author marschu & thituson
  */
 import core.Product;
 import java.io.Serializable;
