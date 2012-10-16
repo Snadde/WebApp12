@@ -53,6 +53,46 @@
                     <h:link value="Products" outcome="shopProducts"/><br/>
                     <h:link value="Search" outcome="searchEngine"/><br/>
                 </nav>
+                <hr />
+                    <h:form>
+                            <h:commandLink id="showCart" value="Show Cart" action="showCart?faces-redirect=true"
+                                   actionListener="#{cartControlBean.actionListener}"/><br/>
+                    </h:form>
+                
+                
+                <h:dataTable id="tablefastCart" style="font-size: 9px;" value="#{showCartBackingBean.cartProductList}" var="entry" cellpadding="5" cellspacing="1" first="0" width="100px" dir="LTR" frame="hsides" rules="all"  >
+
+                    
+                    <h:column>
+                         <f:facet name="header">
+                            <h:outputText value="Name" />
+                         </f:facet> 
+                         <h:outputText value="#{entry.key.name}"></h:outputText>
+                    </h:column>
+                    
+                    <h:column>
+                         <f:facet name="header">
+                            <h:outputText value="Amount" />
+                         </f:facet> 
+                        <h:outputText value="#{entry.value}"></h:outputText>
+                    </h:column>
+                    
+                    <h:column>
+                         <f:facet name="header">
+                            <h:outputText value="Cost" />
+                         </f:facet> 
+                         <h:outputText value="#{entry.value*entry.key.price}"></h:outputText>
+                    </h:column>
+                    
+
+                </h:dataTable>
+                
+                
+                
+                
+                
+                
+                <h:outputText value="Total Cost: #{showCartBackingBean.totalCartCost}"/>
                 <ui:insert name="left">Left</ui:insert>
             </div>
             <div id="content" class="left_content">
