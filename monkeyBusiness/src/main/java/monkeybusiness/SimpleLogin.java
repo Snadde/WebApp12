@@ -1,3 +1,4 @@
+package monkeybusiness;
 
 import modelbeans.CartModelBean;
 import modelbeans.CustomerRegistryBean;
@@ -63,6 +64,7 @@ public class SimpleLogin implements Serializable {
             return "purchase?faces-redirect=true";
         }
         customer.setCart(cartModelBean.getCart());
+        System.out.println(customer.getCart());
         return "purchase?faces-redirect=true";
     }
 

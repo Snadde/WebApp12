@@ -9,6 +9,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -38,7 +39,8 @@ public class PurchaseOrder  implements Serializable {
     private  transient Date date = new Date();
     @OneToMany(fetch= FetchType.EAGER, cascade={CascadeType.PERSIST, CascadeType.REMOVE})
     private  List<OrderItem> items;
-    @ManyToOne( cascade={CascadeType.PERSIST})
+    @ManyToOne//( cascade={CascadeType.REFRESH},fetch = FetchType.EAGER)
+    //@JoinColumn(name = "CUSTOMER_ID")
     private  Customer customer;
     private State state = State.ACCEPTED;
 

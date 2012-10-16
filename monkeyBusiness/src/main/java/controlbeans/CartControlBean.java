@@ -4,7 +4,6 @@ package controlbeans;
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author thituson
@@ -25,54 +24,51 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import modelbeans.CartModelBean;
 
-@Named()
+@Named
 @SessionScoped
-public class CartControlBean implements Serializable{
-    
+public class CartControlBean implements Serializable {
+
     @Inject // Handled by system, don't need to create class.
     private Conversation conv;
-    
     @Inject
-    private CartModelBean cartModelBean;    
+    private CartModelBean cartModelBean;
     @Inject
     private ShopProductsBackingBean shopProductsBackingBean;
     @Inject
     private ShowCartBackingBean showCartBackingBean;
 
+    public CartControlBean() {
+    }
 
-    public CartControlBean(){}
-    
     //public List<Map.Entry<Product, Integer>> getAll(){
-    public void getAll(){
-        Map <Product, Integer> tempCartMap = cartModelBean.getAll();
+    public void getAll() {
+        Map<Product, Integer> tempCartMap = cartModelBean.getAll();
         Set<Map.Entry<Product, Integer>> managerSet = tempCartMap.entrySet();
         showCartBackingBean.setCartProductList(new ArrayList<Map.Entry<Product, Integer>>(managerSet));
         calculateTotalCartCost(managerSet);
-        
+
     }
-    
-    public void calculateTotalCartCost(Set<Map.Entry<Product, Integer>> managerSet){
+
+    public void calculateTotalCartCost(Set<Map.Entry<Product, Integer>> managerSet) {
         double totalCost = 0;
-        for(Map.Entry entry : managerSet)
-        {
+        for (Map.Entry entry : managerSet) {
             Product p = (Product) entry.getKey();
             totalCost += p.getPrice() * (int) entry.getValue();
         }
         showCartBackingBean.setTotalCartCost(totalCost);
     }
-            
 
-    public void addToCart(Product p){
+    public void addToCart(Product p) {
         cartModelBean.add(p);
-                
+
     }
-            
-        public void actionListener(ActionEvent ae) { 
+
+    public void actionListener(ActionEvent ae) {
 
         Product product = (Product) ae.getComponent().getAttributes().get("prod");
         String id = ae.getComponent().getId();
-        
-        switch(id){
+
+        switch (id) {
             case "plusButton":
             case "Addbutton":
                 addToCart(product);
@@ -93,7 +89,5 @@ public class CartControlBean implements Serializable{
                 break;
         }
 
-    }        
-   
-      
+    }
 }

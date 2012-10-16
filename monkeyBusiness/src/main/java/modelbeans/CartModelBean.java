@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 import javax.enterprise.context.*;
+import javax.inject.Named;
 
 /*
  * To change this template, choose Tools | Templates
@@ -19,7 +20,7 @@ import javax.enterprise.context.*;
  *
  * @author thituson
  */
-
+@Named
 @SessionScoped
 public class CartModelBean implements Serializable {
     

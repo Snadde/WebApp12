@@ -18,7 +18,7 @@ import javax.inject.Named;
  * @author Patrik Thituson, Gustaf Werlinder
  */
 @Named
-@SessionScoped
+@ApplicationScoped
 public class CustomerRegistryBean implements Serializable {
     
     private final transient ICustomerRegistry customerRegistry = JPAShop.INSTANCE.getCustomerRegistry();

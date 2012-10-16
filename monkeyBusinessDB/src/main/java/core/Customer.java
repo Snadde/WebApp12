@@ -30,7 +30,7 @@ public class Customer implements Serializable{
     private  String password;
     private  boolean isAdmin = false;
     
-            
+         
     public Customer() {}
 
     public Customer(Long id, Address address, String fname,
