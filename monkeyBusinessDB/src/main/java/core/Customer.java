@@ -1,21 +1,34 @@
 package core;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import javax.management.relation.Role;
 import javax.persistence.CascadeType;
+import javax.persistence.CollectionTable;
+import javax.persistence.ElementCollection;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 /**
  *
  * @author hajo
  */
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+@Table(name="CUSTOMER")
+
 public class Customer implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -29,6 +42,10 @@ public class Customer implements Serializable{
     private  String userName;
     private  String password;
     private  boolean isAdmin = false;
+    @ElementCollection(fetch = FetchType.LAZY)
+    @CollectionTable(name = "CUSTOMER_GROUP")
+    @Enumerated(EnumType.STRING)
+    private final List<Group> groups = new ArrayList<>();
     
             
     public Customer() {}
@@ -125,4 +142,14 @@ public class Customer implements Serializable{
     public String toString() {
         return "Customer{" + "id=" + id + ", address=" + address + ", fname=" + fname + ", lname=" + lname + ", email=" + email + '}';
     }        
+     public void addGroup(Group group) {
+        groups.add(group);
+    }
+    public void removeGroup(Group group) {
+        groups.remove(group);
+    }
+
+    public List<Group> getGroups() {
+        return groups;
+    }
 }

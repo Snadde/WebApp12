@@ -14,6 +14,7 @@ import backingbeans.AddCustomerBackingBean;
 import backingbeans.CustomersBackingBean;
 import core.Address;
 import core.Customer;
+import core.Group;
 import core.Product;
 import java.io.Serializable;
 import java.util.logging.Level;
@@ -75,6 +76,7 @@ public class AddCustomerControlBean implements Serializable{
         }
         
         Customer customer = new Customer(address, fname, lname, email, userName, password);
+        customer.addGroup(Group.ADMIN);
         customerRegistryBean.add(customer);
         return "showCustomers?faces-redirect=true";
     }
