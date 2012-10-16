@@ -32,10 +32,13 @@
                     </h:column>>
 
                     <h:column>
-                         <f:facet name="header">
-                            <h:outputText value="Name" />
-                         </f:facet> 
-                         <h:outputText value="#{product.name}"></h:outputText>
+                        <h:form> 
+                        <h:commandLink id="showProduct" value="#{product.name}" 
+                                               action="showProduct?faces-redirect=true"
+                                               actionListener="#{showProductControlBean.actionListener}"> 
+                                               <f:attribute name="product" value="${product}" />            
+                        </h:commandLink>
+                        </h:form>    
                     </h:column>>
 
                     <h:column>

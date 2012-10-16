@@ -76,7 +76,7 @@ public class AddCustomerControlBean implements Serializable{
         
         Customer customer = new Customer(address, fname, lname, email, userName, password);
         customerRegistryBean.add(customer);
-        return "showCustomers?faces-redirect=true";
+        return "shopProducts?faces-redirect=true";
     }
     
     
