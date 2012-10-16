@@ -12,6 +12,8 @@ package backingbeans;
 import core.Product;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -34,10 +36,11 @@ public class SearchBackingBean implements Serializable{
 
     private String searchName;
     private List<Product> resultProducts = new ArrayList<Product>();
+    private boolean sortNameUp = true;
+    private boolean sortPriceUp = true;
+    private boolean sortSkillUp = true;
+    private boolean sortCategoryUp = true;
 
-   
-    
-    
     public SearchBackingBean(){}
 
     public String getSearchName() {
@@ -58,5 +61,119 @@ public class SearchBackingBean implements Serializable{
     }
     
     
-      
+    public String sortByName() 
+    {
+ 
+        if(sortNameUp)
+        {
+        Collections.sort(resultProducts, new Comparator<Product>() {
+             @Override
+             public int compare(Product p1, Product p2) 
+             {
+                 return p1.getName().compareTo(p2.getName());
+             }
+            });	
+            sortNameUp = false;
+        }
+        else
+        {
+            Collections.sort(resultProducts, new Comparator<Product>() {
+             @Override
+             public int compare(Product p1, Product p2) 
+             {
+                 return p2.getName().compareTo(p1.getName());
+             }
+            });	
+            sortNameUp = true;
+        }
+        
+        return null;
+    }
+    
+    public String sortByPrice()
+    {
+        if(sortPriceUp)
+        {
+        Collections.sort(resultProducts, new Comparator<Product>() {
+             @Override
+             public int compare(Product p1, Product p2) 
+             {
+                 return ((Double)p1.getPrice()).compareTo((Double)p2.getPrice());
+             }
+            });	
+            sortPriceUp = false;
+        }
+        else
+        {
+            Collections.sort(resultProducts, new Comparator<Product>() {
+             @Override
+             public int compare(Product p1, Product p2) 
+             {
+                 return ((Double)p2.getPrice()).compareTo((Double)p1.getPrice());
+             }
+            });	
+            sortPriceUp = true;
+        }
+        
+        return null;
+    }
+    
+    public String sortBySkill()
+    {
+        if(sortSkillUp)
+        {
+        Collections.sort(resultProducts, new Comparator<Product>() {
+             @Override
+             public int compare(Product p1, Product p2) 
+             {
+                 return p1.getRequiredSkill().compareTo(p2.getRequiredSkill());
+             }
+            });	
+            sortSkillUp = false;
+        }
+        else
+        {
+            Collections.sort(resultProducts, new Comparator<Product>() {
+             @Override
+             public int compare(Product p1, Product p2) 
+             {
+                 return p2.getRequiredSkill().compareTo(p1.getRequiredSkill());
+             }
+            });	
+            sortSkillUp = true;
+        }
+        
+        return null;
+    }
+    
+    public String sortByCategory()
+    {
+        if(sortCategoryUp)
+        {
+        Collections.sort(resultProducts, new Comparator<Product>() {
+             @Override
+             public int compare(Product p1, Product p2) 
+             {
+                 return p1.getCategory().compareTo(p2.getCategory());
+             }
+            });	
+            sortCategoryUp = false;
+        }
+        else
+        {
+            Collections.sort(resultProducts, new Comparator<Product>() {
+             @Override
+             public int compare(Product p1, Product p2) 
+             {
+                 return p2.getCategory().compareTo(p1.getCategory());
+             }
+            });	
+            sortCategoryUp = true;
+        }
+        
+        return null;
+    }
+
+
+
 }
