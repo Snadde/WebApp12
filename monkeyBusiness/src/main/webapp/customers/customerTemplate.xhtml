@@ -26,8 +26,8 @@
                 <h:outputText value=" Logged in as ${request.remoteUser}" />
                 <h:commandLink value=" Edit Profile" 
                                actionListener="#{editCustomerControlBean.actionListener}"
-                               action="editCustomer?faces-redirect=true">
-                    <f:attribute name="customer" value="${simpleLogin.customer}"/>
+                               action="editProfile?faces-redirect=true">
+                    <f:attribute name="customer" value="#{simpleLogin.getCustomer(request.remoteUser)}"/>
                 </h:commandLink><br/>    
             </h:form>
         </div>
