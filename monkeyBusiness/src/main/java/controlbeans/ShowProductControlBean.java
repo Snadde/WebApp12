@@ -37,38 +37,15 @@ public class ShowProductControlBean implements Serializable{
     public ShowProductControlBean(){}
     
 
-//    public String action() {
-//        if (!conv.isTransient()) {
-//            conv.end();
-//             Logger.getAnonymousLogger().log(Level.INFO, "CONVERSATION ENDS");
-//        }
-//        try 
-//        {
-//            
-//            Long id = showProductBackingBean.getId();
-//            prodCat.remove(id);
-//            return "adminProducts?faces-redirect=true"; // Go back
-//        } catch (Exception e) {
-//            // Not implemented
-//            //return "error?faces-redirect=true&amp;cause=" + e.getMessage();
-//            return null;
-//        }
-//    
-//
-//        
-//    }
-
     public void actionListener(ActionEvent ae) { 
         Product product = (Product) ae.getComponent().getAttributes().get("product");
        
-        showProductBackingBean.setId(product.getId());
-        showProductBackingBean.setName(product.getName());
-        showProductBackingBean.setPrice(product.getPrice());
+        showProductBackingBean.setProd(product);
         String requiredSkill = prodCat.getSkillStringValue(product.getRequiredSkill());
         showProductBackingBean.setRequiredSkill(requiredSkill);
-        showProductBackingBean.setCategory(product.getCategory());
-        showProductBackingBean.setImageLink(product.getImageLink());
-        //showProductBackingBean.setImageLink("./../resources/images/angry-monkey.jpg");
+        String category = prodCat.getCategoryStringValue(product.getCategory());
+        showProductBackingBean.setCategory(category);
+
         
     }
 
