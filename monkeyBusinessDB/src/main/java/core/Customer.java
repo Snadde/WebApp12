@@ -1,6 +1,7 @@
 package core;
 
 import java.io.Serializable;
+import java.util.Objects;
 import java.util.Random;
 import javax.management.relation.Role;
 import javax.persistence.CascadeType;
@@ -124,5 +125,29 @@ public class Customer implements Serializable{
     @Override
     public String toString() {
         return "Customer{" + "id=" + id + ", address=" + address + ", fname=" + fname + ", lname=" + lname + ", email=" + email + '}';
-    }        
+    } 
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 97 * hash + Objects.hashCode(this.id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Customer other = (Customer) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return true;
+    }
+    
+    
 }

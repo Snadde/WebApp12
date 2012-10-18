@@ -49,8 +49,10 @@
                         <h:form>
                             <h:commandLink id="showCart" value="Show Cart" action="showCart?faces-redirect=true"
                                    actionListener="#{cartControlBean.actionListener}"/><br/>
+                            <h:commandLink value="Purchase Orders" 
+                                           action="#{customerPurchaseOrdersControlBean.action}"/><br/>
                         </h:form>
-                    <h:link value="Purchase Orders" outcome="customerPurchaseOrders"/><br/>
+                    
                     <h:link value="Products" outcome="shopProducts"/><br/>
                     <h:link value="Search" outcome="searchEngine"/><br/>
                 </nav>

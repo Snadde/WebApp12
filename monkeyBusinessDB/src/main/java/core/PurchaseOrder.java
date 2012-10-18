@@ -35,8 +35,8 @@ public class PurchaseOrder  implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id ; //= new Long(new Random().nextInt(100));
-    @Temporal(TemporalType.DATE)
-    private  transient Date date = new Date();
+    @Temporal(TemporalType.TIMESTAMP)
+    private transient Date date = new Date();
     @OneToMany(fetch= FetchType.EAGER, cascade={CascadeType.PERSIST, CascadeType.REMOVE})
     private  List<OrderItem> items;
     @ManyToOne//( cascade={CascadeType.REFRESH},fetch = FetchType.EAGER)

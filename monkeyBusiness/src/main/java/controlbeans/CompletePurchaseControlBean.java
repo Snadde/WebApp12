@@ -13,6 +13,7 @@ import javax.enterprise.context.SessionScoped;
 import javax.faces.event.ActionEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
+import modelbeans.CartModelBean;
 import modelbeans.OrderBookModelBean;
 import monkeybusiness.SimpleLogin;
 
@@ -33,6 +34,10 @@ public class CompletePurchaseControlBean implements Serializable{
     private SimpleLogin simpleLogin;
     @Inject
     private OrderBookModelBean orderBookModelBean;
+    @Inject
+    private CustomerPurchaseOrdersControlBean customerPurchaseOrdersControlBean;
+    @Inject
+    private CartModelBean cartModelBean;
     
     PurchaseOrder purchaseOrder;
     Customer customer;
@@ -40,15 +45,17 @@ public class CompletePurchaseControlBean implements Serializable{
     public void completePurchaseOrder(){}
     
     
-    public String actionListener() {
+    public void actionListener() {
         customer = simpleLogin.getCustomer();
-        System.out.println("Customer:" + customer);
+//        System.out.println("Customer:" + customer);
         
         purchaseOrder = customer.finishShopping();
-        System.out.println("PO: " + purchaseOrder);
+//        System.out.println("PO: " + purchaseOrder);
         orderBookModelBean.addOrder(purchaseOrder);     
-        System.out.println("PO2: " + purchaseOrder);
-        return "customerPurchaseOrders?faces-redirect=true";
+//        System.out.println("PO2: " + purchaseOrder);
+        cartModelBean.clearCart();
+        customer.setCart(cartModelBean.getCart());
+        customerPurchaseOrdersControlBean.action();
 
     }
     

@@ -9,6 +9,7 @@ import core.Customer;
 import core.Product;
 import core.PurchaseOrder;
 import java.io.Serializable;
+import java.util.ArrayList;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.event.ActionEvent;
 import javax.inject.Inject;
@@ -37,10 +38,16 @@ public class CustomerPurchaseOrdersControlBean implements Serializable{
     public void CustomerPurcchaseOrdersControlBean(){}
         
     public void actionListener() {
+        this.action();
+    }
+    
+    public String action(){
         Customer customer = simpleLogin.getCustomer();
         customerPOBackingBean.setCustomer(customer);
-        customerPOBackingBean.setCustomerPurchaseOrders(orderBookModelBean.getByCustomer(customer));
+        customerPOBackingBean.setCustomerPurchaseOrdersList(orderBookModelBean.getByCustomer(customer));
+        System.out.println("LISTA PO: " + orderBookModelBean.getByCustomer(customer));
         
-    }
+        return "customerPurchaseOrders?faces-redirect=true";
+    } 
     
 }

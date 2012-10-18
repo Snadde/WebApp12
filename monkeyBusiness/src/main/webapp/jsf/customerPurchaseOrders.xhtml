@@ -18,8 +18,40 @@
             </ui:define>
 
             <ui:define name="content">
-             
+                
+                <h:dataTable id="purchaseOrdersTable" 
+                             value="#{customerPurchaseOrdersBackingBean.customerPurchaseOrdersList}" 
+                             var="purchaseOrders" 
+                             bgcolor="#F1F1F1" 
+                             border="3"
+                             cellpadding="5" 
+                             cellspacing="3" 
+                             first="0" 
+                             width="70%" 
+                             dir="LTR" 
+                             frame="border" 
+                             rules="all"  >
 
+                    <f:facet name="header">
+                        <h:outputText value="Purchase Orders" />
+                    </f:facet> 
+                    
+                    <h:column>
+                         <f:facet name="header">
+                            <h:outputText value="Date" />
+                         </f:facet> 
+                        <h:outputText value="#{purchaseOrders.date}"></h:outputText>
+                    </h:column>
+
+                    <h:column>
+                         <f:facet name="header">
+                            <h:outputText value="State" />
+                         </f:facet> 
+                         <h:outputText value="#{purchaseOrders.state}"></h:outputText>
+                    </h:column>
+                    
+                </h:dataTable>
+                             
             </ui:define>
 
             <ui:define name="bottom">
