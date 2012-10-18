@@ -38,7 +38,18 @@
 
 
                 <h:panelGroup rendered="#{simpleLogin.isLoggedIn}">
-                    <h:dataTable id="table" value="#{showCartBackingBean.cartProductList}" var="entry" bgcolor="#F1F1F1" border="10" cellpadding="5" cellspacing="3" first="0" width="50%" dir="LTR" frame="hsides" rules="all"  >
+                    <h:dataTable id="table" 
+                                 value="#{showCartBackingBean.cartProductList}" 
+                                 var="entry" 
+                                 bgcolor="#F1F1F1" 
+                                 border="10" 
+                                 cellpadding="5" 
+                                 cellspacing="3" 
+                                 first="0" 
+                                 width="50%" 
+                                 dir="LTR" 
+                                 frame="hsides" 
+                                 rules="all"  >
 
                         <f:facet name="header">
                             <h:outputText value="Shopping Cart" />
@@ -88,8 +99,8 @@
                     <br/><br/><br/><br/><br/><br/><br/><br/><br/>
                     <h:form>
                         <h:commandButton id="buyButton" value="Buy!" style="background-color: forestgreen; color: #ffffff;"
-                                         actionListener="#{cartControlBean.actionListener}"
-                                         action="shopProducts?faces-redirect=true">
+                                         actionListener="#{completePurchaseControlBean.actionListener}"
+                                         action="customerPurchaseOrders?faces-redirect=true">
                         </h:commandButton>
                     </h:form>
                 </h:panelGroup>
