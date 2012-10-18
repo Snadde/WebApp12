@@ -36,8 +36,7 @@ public class EditCustomerControlBean implements Serializable{
     private EditCustomerBackingBean editCustomerBackingBean;
     @Inject
     private CustomerRegistryBean customerRegistryBean;
-
-    
+        
     public EditCustomerControlBean(){}
         
 
@@ -58,6 +57,7 @@ public class EditCustomerControlBean implements Serializable{
             String password = editCustomerBackingBean.getPassword();
             Customer customer = new Customer(id, address, fname, lname, email, userName, password);
             customerRegistryBean.update(customer);
+            
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Profile saved"));
             return null;
         } catch (Exception e) {
