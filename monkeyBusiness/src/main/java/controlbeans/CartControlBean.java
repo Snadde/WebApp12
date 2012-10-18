@@ -6,18 +6,15 @@ package controlbeans;
  */
 /**
  *
- * @author thituson
+ * @author Gustaf Werlinder && Martin Augustsson
  */
 import backingbeans.ShopProductsBackingBean;
 import backingbeans.ShowCartBackingBean;
 import core.Product;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.enterprise.context.*;
 import javax.faces.event.ActionEvent;
 import javax.inject.Inject;
@@ -40,7 +37,6 @@ public class CartControlBean implements Serializable {
     public CartControlBean() {
     }
 
-    //public List<Map.Entry<Product, Integer>> getAll(){
     public void getAll() {
         Map<Product, Integer> tempCartMap = cartModelBean.getAll();
         Set<Map.Entry<Product, Integer>> managerSet = tempCartMap.entrySet();

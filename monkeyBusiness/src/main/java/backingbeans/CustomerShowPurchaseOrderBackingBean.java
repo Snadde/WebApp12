@@ -9,14 +9,9 @@ package backingbeans;
  *
  * @author Martin Augustsson && Gustaf Werlinder
  */
-import controlbeans.CartControlBean;
-import core.Product;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import javax.enterprise.context.*;
-import javax.inject.Inject;
 import javax.inject.Named;
 
 @Named
@@ -43,7 +38,4 @@ public class CustomerShowPurchaseOrderBackingBean implements Serializable{
     public void setTotalOrderCost(double totalOrderCost) {
         this.totalOrderCost = totalOrderCost;
     }
-   
-   
-    
 }

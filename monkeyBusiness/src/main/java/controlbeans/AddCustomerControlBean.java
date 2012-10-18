@@ -11,10 +11,8 @@ package controlbeans;
  */
 import backingbeans.AddAddressBackingBean;
 import backingbeans.AddCustomerBackingBean;
-import backingbeans.CustomersBackingBean;
 import core.Address;
 import core.Customer;
-import core.Product;
 import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;

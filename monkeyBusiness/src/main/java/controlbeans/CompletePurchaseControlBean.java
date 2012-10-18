@@ -6,11 +6,9 @@ package controlbeans;
 
 import backingbeans.CustomerPurchaseOrdersBackingBean;
 import core.Customer;
-import core.Product;
 import core.PurchaseOrder;
 import java.io.Serializable;
 import javax.enterprise.context.SessionScoped;
-import javax.faces.event.ActionEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
 import modelbeans.CartModelBean;

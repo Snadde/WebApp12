@@ -8,7 +8,6 @@ package modelbeans;
 import core.Customer;
 import core.IOrderBook;
 import core.JPAShop;
-import core.OrderBook;
 import core.PurchaseOrder;
 import java.util.List;
 import javax.enterprise.context.ApplicationScoped;

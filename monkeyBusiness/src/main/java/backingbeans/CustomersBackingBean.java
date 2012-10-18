@@ -10,7 +10,6 @@ package backingbeans;
  * @author thituson
  */
 import core.Customer;
-import core.Product;
 import java.io.Serializable;
 import java.util.List;
 import javax.enterprise.context.*;
@@ -30,13 +29,8 @@ public class CustomersBackingBean implements Serializable{
     {
         customerRegistryBean.add(customer);
     }
-    
- 
+     
     public List<Customer> getAll() {
         return customerRegistryBean.getAll();
     }
-        
-    
-    
-    
 }
