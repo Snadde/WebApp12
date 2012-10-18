@@ -39,6 +39,7 @@ public class AddProductBackingBean implements Serializable{
     @NotNull
     @Min(value = 1, message = "Please enter a category")
     private Long category;
+    private String imageLink;
      
     
     public AddProductBackingBean(){}
@@ -82,6 +83,14 @@ public class AddProductBackingBean implements Serializable{
 
     public void setCategory(Long category) {
         this.category = category;
+    }
+
+    public String getImageLink() {
+        return imageLink;
+    }
+
+    public void setImageLink(String imageLink) {
+        this.imageLink = imageLink;
     }
       
 }
