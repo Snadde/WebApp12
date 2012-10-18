@@ -12,7 +12,6 @@ package controlbeans;
  */
 import backingbeans.AddAddressBackingBean;
 import backingbeans.AddCustomerBackingBean;
-import backingbeans.CustomersBackingBean;
 import core.Address;
 import core.Customer;
 import core.Product;
