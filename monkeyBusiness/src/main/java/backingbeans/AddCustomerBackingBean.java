@@ -34,8 +34,7 @@ public class AddCustomerBackingBean implements Serializable {
     @Size(min = 1, message = "Must enter a password")
     private String password;
 
-    public AddCustomerBackingBean() {
-    }
+    public AddCustomerBackingBean(){}
 
     /**
      *
