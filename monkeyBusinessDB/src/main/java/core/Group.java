@@ -1,16 +1,10 @@
 package core;
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- *
- * @author hajo
+ * 
+ * @author Patrik Thituson
  */
 public enum Group {
     ADMIN,
-    POWERUSER,
-    USER;
+    CUSTOMER;
 }

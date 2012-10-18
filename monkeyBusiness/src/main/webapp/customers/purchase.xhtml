@@ -19,25 +19,6 @@
 
             <ui:define name="content">
 
-                <h:form rendered="#{!simpleLogin.isLoggedIn}">
-                    <table>
-                        <tr>
-                            <td><h:outputText value="Enter Login ID: " /></td>
-                            <td><h:inputText id="loginname" value="#{simpleLogin.loginname}" /></td>
-                        </tr>
-                        <tr>
-                            <td><h:outputText value="Enter Password: " /></td>
-                            <td><h:inputSecret id="password" value="#{simpleLogin.password}" /></td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td><h:commandButton value="Login" action="#{simpleLogin.LoginFromCheckout}" /></td>
-                        </tr>
-                    </table>
-                </h:form>
-
-
-                <h:panelGroup rendered="#{simpleLogin.isLoggedIn}">
                     <h:dataTable id="table" value="#{showCartBackingBean.cartProductList}" var="entry" bgcolor="#F1F1F1" border="10" cellpadding="5" cellspacing="3" first="0" width="50%" dir="LTR" frame="hsides" rules="all"  >
 
                         <f:facet name="header">
@@ -92,7 +73,6 @@
                                          action="shopProducts?faces-redirect=true">
                         </h:commandButton>
                     </h:form>
-                </h:panelGroup>
             </ui:define>
 
             <ui:define name="bottom">

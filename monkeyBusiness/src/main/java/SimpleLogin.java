@@ -74,7 +74,7 @@ public class SimpleLogin implements Serializable {
     }
 
         public String logout() {
-        String result = ".././jsf/index?faces-redirect=true";
+        String result = "/jsf/index?faces-redirect=true";
 
         FacesContext context = FacesContext.getCurrentInstance();
         HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
