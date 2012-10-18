@@ -20,7 +20,7 @@ public class OrderItem implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    @OneToOne( cascade={CascadeType.PERSIST})
+    @OneToOne
     private Product product;
     private int quantity;
 

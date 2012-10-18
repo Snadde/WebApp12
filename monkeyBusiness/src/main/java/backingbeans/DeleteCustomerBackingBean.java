@@ -14,7 +14,6 @@ import java.io.Serializable;
 import javax.enterprise.context.*;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;

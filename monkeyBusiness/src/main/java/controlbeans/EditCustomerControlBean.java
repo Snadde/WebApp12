@@ -17,6 +17,8 @@ import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.enterprise.context.*;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -34,8 +36,7 @@ public class EditCustomerControlBean implements Serializable{
     private EditCustomerBackingBean editCustomerBackingBean;
     @Inject
     private CustomerRegistryBean customerRegistryBean;
-
-    
+        
     public EditCustomerControlBean(){}
         
 
@@ -55,7 +56,9 @@ public class EditCustomerControlBean implements Serializable{
             String password = editCustomerBackingBean.getPassword();
             Customer customer = new Customer(address, fname, lname, email, userName, password);
             customerRegistryBean.update(customer);
-            return "showCustomers?faces-redirect=true"; // Go back
+            
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Profile saved"));
+            return null;
         } catch (Exception e) {
             // Not implemented
             //return "error?faces-redirect=true&amp;cause=" + e.getMessage();

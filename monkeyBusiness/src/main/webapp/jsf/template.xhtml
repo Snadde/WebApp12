@@ -9,7 +9,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <link href="./../resources/css/default.css" rel="stylesheet" type="text/css" />
         <link href="./../resources/css/cssLayout.css" rel="stylesheet" type="text/css" />
-        <title>Facelets Template</title>
+        <title>Monkey Business</title>
     </h:head>
 
     <h:body>
@@ -21,6 +21,7 @@
 
             <h:form>
                 <h:panelGroup rendered="#{simpleLogin.isLoggedIn(request.remoteUser)}">
+
                     <h:commandButton value="Logout" 
                                      action="#{simpleLogin.logout()}" />
                     <h:outputText value=" Logged in as ${request.remoteUser}" />
@@ -40,15 +41,79 @@
             <div id="left">
 
                 <nav>
-
                     <h:form>
                         <h:commandLink id="showCart" value="Show Cart" action="showCart?faces-redirect=true"
                                        actionListener="#{cartControlBean.actionListener}"/><br/>
+                        <h:commandLink value="Purchase Orders" 
+                                       action="#{customerPurchaseOrdersControlBean.action}"/><br/>
                     </h:form>
+
                     <h:link value="Products" outcome="shopProducts"/><br/>
                     <h:link value="Search" outcome="searchEngine"/><br/>
                 </nav>
-                <ui:insert name="left">Left</ui:insert>
+                <hr />
+
+
+
+                <h:dataTable id="tablefastCart" style="font-size: 10px;" value="#{showCartBackingBean.cartProductList}" 
+                             var="entry" cellpadding="5" cellspacing="1" first="0" width="100px" dir="LTR" frame="hsides" 
+                             rules="all">
+
+
+                    <h:column>
+
+                        <f:facet name="header">
+                            <h:outputText value="Name" />
+                        </f:facet> 
+                        <h:outputText value="#{entry.key.name}"></h:outputText>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="No." />
+                        </f:facet> 
+                        <h:outputText value="#{entry.value}"></h:outputText>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Cost" />
+                        </f:facet> 
+                        <h:outputText value="#{entry.value*entry.key.price}"></h:outputText>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="+/-" />
+                        </f:facet> 
+                        <h:form>     
+
+                            <h:commandLink id="plusButton" value="+" 
+                                           actionListener="#{cartControlBean.actionListener}">
+                                <f:attribute name="prod" value="${entry.key}"/>
+                            </h:commandLink>
+                            <h:commandLink id="minusButton" value="–" 
+                                           actionListener="#{cartControlBean.actionListener}">
+                                <f:attribute name="prod" value="${entry.key}"/>
+                            </h:commandLink><br/>
+                        </h:form>  
+
+                    </h:column>
+
+
+                </h:dataTable>              
+
+                <h:outputText value="Total Cost: #{showCartBackingBean.totalCartCost}"/>
+
+                <br/><br/>
+                <h:form>
+                    <h:commandButton id="buyButton" value="Proceed to checkout" style="background-color: forestgreen; color: #ffffff;"
+                                     actionListener="#{cartControlBean.actionListener}"
+                                     action="purchase?faces-redirect=true">
+                    </h:commandButton>
+                </h:form>
+
+                <ui:insert name="left"></ui:insert>
             </div>
             <div id="content" class="left_content">
                 <ui:insert name="content">Content</ui:insert>

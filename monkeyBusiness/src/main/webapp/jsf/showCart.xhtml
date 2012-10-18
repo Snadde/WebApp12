@@ -94,7 +94,7 @@
                 </h:dataTable>
                 <h:outputText value="Total Cost: #{showCartBackingBean.totalCartCost}"/>
                 <h:form>
-                    <h:commandButton id="buyButton" value="Proceed to checkout" style="background-color: forestgreen; color: #ffffff;"
+                    <h:commandButton id="checkOutButton" value="Proceed to checkout" style="background-color: forestgreen; color: #ffffff;"
                                  actionListener="#{cartControlBean.actionListener}"
                                  action="/customers/purchase?faces-redirect=true">
                     </h:commandButton>

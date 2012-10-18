@@ -1,17 +1,68 @@
-<?xml version='1.0' encoding='UTF-8' ?>
+<?xml version='1.0' encoding='UTF-8' ?> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
-    <h:head>
-        <title>Facelet Title</title>
-    </h:head>
-    <h:body>
-        <ui:composition template="./template.xhtml">
-            
-            
-        </ui:composition>
-       
-    </h:body>
-</html>
+      xmlns:f="http://java.sun.com/jsf/core">
 
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="./resources/css/default.css" rel="stylesheet" type="text/css" />
+        <link href="./resources/css/cssLayout.css" rel="stylesheet" type="text/css" />
+        <title>Monkey Business</title>
+    </h:head>
+
+    <h:body>
+
+        <div id="top">
+            <ui:insert name="top">                            
+
+           </ui:insert>
+            
+             <h:panelGroup rendered="#{simpleLogin.isLoggedIn}">
+                 <h:form>
+                 Signed in as #{simpleLogin.customer.userName}
+               
+                    <h:commandButton value="Logout" 
+                                     action="#{simpleLogin.setLogout}" />
+                    <h:commandLink value=" Edit Profile" 
+                                          actionListener="#{editCustomerControlBean.actionListener}"
+                                          action="editCustomer?faces-redirect=true">
+                        <f:attribute name="customer" value="${simpleLogin.customer}"/>
+                           </h:commandLink><br/>    
+                 </h:form>
+             </h:panelGroup>
+             <h:panelGroup rendered="#{!simpleLogin.isLoggedIn}">
+                <h:link value="Login" outcome="login"/> ||
+                <h:link value="Register" outcome="newCustomer"/>
+             </h:panelGroup>
+        </div>
+        <div>
+            <div id="left">
+                
+                <nav>
+                    <h:panelGroup rendered="#{simpleLogin.isAdmin}">
+                        <h:link value="AdminProducts" outcome="adminProducts"/><br/>
+                        <h:link value="Show Customers" outcome="showCustomers"/><br/>
+                        <h:link value="Add Customer" outcome="newCustomer"/><br/>
+                    </h:panelGroup>
+                        <h:form>
+                            <h:commandLink id="showCart" value="Show Cart" action="showCart?faces-redirect=true"
+                                   actionListener="#{cartControlBean.actionListener}"/><br/>
+                        </h:form>
+                    <h:link value="Products" outcome="shopProducts"/><br/>
+                    <h:link value="Search" outcome="searchEngine"/><br/>
+                </nav>
+                <ui:insert name="left">Left</ui:insert>
+            </div>
+            <div id="content" class="left_content">
+                <ui:insert name="content">Content</ui:insert>
+            </div>
+        </div>
+        <div id="bottom">
+            <ui:insert name="bottom">Bottom</ui:insert>
+        </div>
+
+    </h:body>
+
+</html>

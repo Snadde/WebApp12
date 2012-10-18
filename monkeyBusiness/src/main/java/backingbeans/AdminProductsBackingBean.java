@@ -1,13 +1,8 @@
 package backingbeans;
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- *
- * @author thituson
+ * This Class simply contains a method to get all products from the product catalogue
+ * @author Patrik Thituson
  */
 import core.Product;
 import java.io.Serializable;
@@ -25,7 +20,10 @@ public class AdminProductsBackingBean implements Serializable{
     private ProductCatalogueBean productCatalogueBean;
 
     public AdminProductsBackingBean(){}
-    
+    /**
+     * 
+     * @return List of all the products
+     */
     public List<Product> getAll() {
         return productCatalogueBean.getAll();
     }

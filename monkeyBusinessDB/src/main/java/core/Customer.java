@@ -3,9 +3,7 @@ package core;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
-import javax.management.relation.Role;
-import javax.persistence.CascadeType;
+import java.util.Objects;
 import javax.persistence.CollectionTable;
 import javax.persistence.ElementCollection;
 import javax.persistence.Embedded;
@@ -13,12 +11,9 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -47,7 +42,7 @@ public class Customer implements Serializable{
     @Enumerated(EnumType.STRING)
     private final List<Group> groups = new ArrayList<>();
     
-            
+         
     public Customer() {}
 
     public Customer(Address address, String fname,
@@ -116,6 +111,7 @@ public class Customer implements Serializable{
 
     @Override
     public String toString() {
+
         return "Customer{" + "user name"+userName + ", address=" + address + ", fname=" + fname + ", lname=" + lname + ", email=" + email + '}';
     }        
      public void addGroup(Group group) {
@@ -127,5 +123,28 @@ public class Customer implements Serializable{
 
     public List<Group> getGroups() {
         return groups;
+    }
+
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 97 * hash + Objects.hashCode(this.userName);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Customer other = (Customer) obj;
+        if (!Objects.equals(this.userName, other.userName)) {
+            return false;
+        }
+        return true;
     }
 }

@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <body>
+
+        <ui:composition template="./template.xhtml">
+
+            <ui:define name="top">
+
+            </ui:define>
+
+            <ui:define name="left">
+
+            </ui:define>
+
+            <ui:define name="content">
+                <img src="#{showProductBackingBean.prod.imageLink}" height="200" width="200" alt="Sensible description of your image." />
+
+
+                <h:panelGrid id="panel" columns="2" border="1" cellpadding="0" cellspacing="2">
+                    ID  <h:outputText value="#{showProductBackingBean.prod.id}"  />
+                    Name<h:outputText value="#{showProductBackingBean.prod.name}"  />
+                    Price<h:outputText value="#{showProductBackingBean.prod.price}"  />
+                    Skill<h:outputText value="#{showProductBackingBean.requiredSkill}"  />
+                    Category<h:outputText value="#{showProductBackingBean.category}"  />
+                    <h:form>
+                        <h:commandLink id="Addbutton" value="Add" 
+                                       action="shopProducts?faces-redirect=true"
+                                       actionListener="#{cartControlBean.actionListener}"> 
+                            <f:attribute name="prod" value="${showProductBackingBean.prod}" />            
+                        </h:commandLink>
+                    </h:form>
+                </h:panelGrid>
+            </ui:define>
+
+            <ui:define name="bottom">
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
