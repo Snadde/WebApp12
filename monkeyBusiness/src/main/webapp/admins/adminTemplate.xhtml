@@ -19,10 +19,10 @@
 
             </ui:insert>
             <h:form>   
-             <h:commandButton action="#{simpleLogin.logout()}" value="Logout" />
-             <h:outputText value=" Logged in as ${request.remoteUser}" />
-             </h:form>
-             
+                <h:commandButton action="#{simpleLogin.logout()}" value="Logout" />
+                <h:outputText value=" Logged in as ${request.remoteUser}" />
+            </h:form>
+
         </div>
         <div>
             <div id="left">
@@ -30,13 +30,14 @@
                 <nav>
                     <h:link value="AdminProducts" outcome="adminProducts"/><br/>
                     <h:link value="Show Customers" outcome="showCustomers"/><br/>
-                                   </nav>
+                </nav>
                 <ui:insert name="left">Left</ui:insert>
             </div>
             <div id="content" class="left_content">
                 <ui:insert name="content">Content</ui:insert>
             </div>
         </div>
+        <div style="clear: both;" />
         <div id="bottom">
             <ui:insert name="bottom">Bottom</ui:insert>
         </div>

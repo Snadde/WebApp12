@@ -90,21 +90,20 @@
                         <f:facet name="header">
                             <h:outputText value="+/-" />
 
-                         </f:facet> 
-                             <h:form>     
+                        </f:facet> 
+                        <h:form>     
+                            <h:commandLink id="plusButton" value="+" onclick="addProduct()"
+                                           actionListener="#{cartControlBean.actionListener}">
+                                <f:attribute name="prod" value="${entry.key}"/>
+                            </h:commandLink>
+                        </h:form>
 
-                                 <h:commandLink id="plusButton" value="+" onclick="addProduct()"
-                                                  actionListener="#{cartControlBean.actionListener}">
-                                     <f:attribute name="prod" value="${entry.key}"/>
-                                     </h:commandLink>
-                             </h:form>
-                        
                         <h:form id="deleteButton">
                             <h:commandLink id="minusButton" value="–" onclick="delProduct()"
-                                               actionListener="#{cartControlBean.actionListener}">
-                                     <f:attribute name="prod" value="${entry.key}"/>
-                                 </h:commandLink><br/>
-                            </h:form>  
+                                           actionListener="#{cartControlBean.actionListener}">
+                                <f:attribute name="prod" value="${entry.key}"/>
+                            </h:commandLink><br/>
+                        </h:form>  
 
                     </h:column>
 
@@ -127,6 +126,7 @@
                 <ui:insert name="content">Content</ui:insert>
             </div>
         </div>
+        <div style="clear: both;" />
         <div id="bottom">
             <ui:insert name="bottom">Bottom</ui:insert>
         </div>

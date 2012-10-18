@@ -2,7 +2,7 @@
         {
             color = $("#tablefastCart").css("background-color");
             //$(this).css("background-color", "green");
-            $("#tablefastCart").css("background-color", "green");
+            $("#tablefastCart").css("background-color", "#C9FF8F");
             
               for(i=0 ; i<1 ; i++) 
               {
@@ -16,7 +16,7 @@
         {
             color = $("#tablefastCart").css("background-color");
            // $(this).css("background-color", "red");
-            $("#tablefastCart").css("background-color", "red");
+            $("#tablefastCart").css("background-color", "#FF6666");
             
               for(i=0 ; i<1 ; i++) 
               {

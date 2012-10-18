@@ -9,6 +9,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <link href="./../resources/css/default.css" rel="stylesheet" type="text/css" />
         <link href="./../resources/css/cssLayout.css" rel="stylesheet" type="text/css" />
+        <h:outputScript library="./js/lib" name="jquery-1.7.1.min.js"  target="head" />
+        <h:outputScript library="./js/events" name="events.js" target="head" /> 
         <title>Facelets Template</title>
     </h:head>
 
@@ -39,68 +41,68 @@
                     <h:form>
                         <h:commandLink id="showCart" value="Show Cart" action="/jsf/showCart?faces-redirect=true"
                                        actionListener="#{cartControlBean.actionListener}"/><br/>
-                         <h:commandLink value="Purchase Orders" 
+                        <h:commandLink value="Purchase Orders" 
                                        action="#{customerPurchaseOrdersControlBean.action(request.remoteUser)}"/><br/>
                     </h:form>
                     <h:link value="Products" outcome="/jsf/shopProducts"/><br/>
                     <h:link value="Search" outcome="/jsf/searchEngine"/><br/>
-                                    <h:dataTable id="tablefastCart" style="font-size: 10px;" value="#{showCartBackingBean.cartProductList}" 
-                             var="entry" cellpadding="5" cellspacing="1" first="0" width="100px" dir="LTR" frame="hsides" 
-                             rules="all">
+                    <h:dataTable id="tablefastCart" style="font-size: 10px;" value="#{showCartBackingBean.cartProductList}" 
+                                 var="entry" cellpadding="5" cellspacing="1" first="0" width="100px" dir="LTR" frame="hsides" 
+                                 rules="all">
 
 
-                    <h:column>
+                        <h:column>
 
-                        <f:facet name="header">
-                            <h:outputText value="Name" />
-                        </f:facet> 
-                        <h:outputText value="#{entry.key.name}"></h:outputText>
-                    </h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Name" />
+                            </f:facet> 
+                            <h:outputText value="#{entry.key.name}"></h:outputText>
+                        </h:column>
 
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="No." />
-                        </f:facet> 
-                        <h:outputText value="#{entry.value}"></h:outputText>
-                    </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="No." />
+                            </f:facet> 
+                            <h:outputText value="#{entry.value}"></h:outputText>
+                        </h:column>
 
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="Cost" />
-                        </f:facet> 
-                        <h:outputText value="#{entry.value*entry.key.price}"></h:outputText>
-                    </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Cost" />
+                            </f:facet> 
+                            <h:outputText value="#{entry.value*entry.key.price}"></h:outputText>
+                        </h:column>
 
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="+/-" />
-                        </f:facet> 
-                        <h:form>     
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="+/-" />
+                            </f:facet> 
+                            <h:form>     
 
-                            <h:commandLink id="plusButton" value="+" 
-                                           actionListener="#{cartControlBean.actionListener}">
-                                <f:attribute name="prod" value="${entry.key}"/>
-                            </h:commandLink>
-                            <h:commandLink id="minusButton" value="–" 
-                                           actionListener="#{cartControlBean.actionListener}">
-                                <f:attribute name="prod" value="${entry.key}"/>
-                            </h:commandLink><br/>
-                        </h:form>  
+                                <h:commandLink id="plusButton" value="+" onclick="addProduct()"
+                                               actionListener="#{cartControlBean.actionListener}">
+                                    <f:attribute name="prod" value="${entry.key}"/>
+                                </h:commandLink>
+                                <h:commandLink id="minusButton" value="–" onclick="delProduct()"
+                                               actionListener="#{cartControlBean.actionListener}">
+                                    <f:attribute name="prod" value="${entry.key}"/>
+                                </h:commandLink><br/>
+                            </h:form>  
 
-                    </h:column>
+                        </h:column>
 
 
-                </h:dataTable>              
+                    </h:dataTable>              
 
-                <h:outputText value="Total Cost: #{showCartBackingBean.totalCartCost}"/>
+                    <h:outputText value="Total Cost: #{showCartBackingBean.totalCartCost}"/>
 
-                <br/><br/>
-                <h:form>
-                    <h:commandButton id="buyButton" value="Proceed to checkout" style="background-color: forestgreen; color: #ffffff;"
-                                     actionListener="#{cartControlBean.actionListener}"
-                                     action="/customers/purchase?faces-redirect=true">
-                    </h:commandButton>
-                </h:form>
+                    <br/><br/>
+                    <h:form>
+                        <h:commandButton id="buyButton" value="Proceed to checkout" style="background-color: forestgreen; color: #ffffff;"
+                                         actionListener="#{cartControlBean.actionListener}"
+                                         action="/customers/purchase?faces-redirect=true">
+                        </h:commandButton>
+                    </h:form>
                 </nav>
                 <ui:insert name="left">Left</ui:insert>
             </div>
@@ -108,6 +110,7 @@
                 <ui:insert name="content">Content</ui:insert>
             </div>
         </div>
+        <div style="clear: both;" />
         <div id="bottom">
             <ui:insert name="bottom">Bottom</ui:insert>
         </div>
