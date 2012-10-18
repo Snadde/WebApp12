@@ -40,7 +40,12 @@
                          <f:facet name="header">
                             <h:outputText value="Date" />
                          </f:facet> 
-                        <h:outputText value="#{purchaseOrders.date}"></h:outputText>
+                        <h:form>
+                            <h:commandLink value="#{purchaseOrders.date}" actionListener="#{customerShowPurchaseOrderControlBean.actionListener}"
+                                          action="customerShowPurchaseOrder?faces-redirect=true">
+                            <f:attribute name="purchaseOrder" value="${purchaseOrders}"/>
+                        </h:commandLink>
+                        </h:form>
                     </h:column>
 
                     <h:column>
