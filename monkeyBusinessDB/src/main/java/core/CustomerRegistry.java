@@ -10,7 +10,7 @@ import javax.persistence.TypedQuery;
  * All customers
  * @author hajo
  */
-public final class CustomerRegistry extends AbstractDAO<Customer, Long> implements ICustomerRegistry {
+public final class CustomerRegistry extends AbstractDAO<Customer, String> implements ICustomerRegistry {
 
     public static ICustomerRegistry newInstance(String puName) {
         return new CustomerRegistry(puName);
@@ -53,4 +53,5 @@ public final class CustomerRegistry extends AbstractDAO<Customer, Long> implemen
         }
         return found;
     }
+    
 }

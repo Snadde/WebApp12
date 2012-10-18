@@ -18,7 +18,7 @@ import javax.inject.Named;
  * @author Patrik Thituson, Gustaf Werlinder
  */
 @Named
-@SessionScoped
+@ApplicationScoped
 public class CustomerRegistryBean implements Serializable {
 
     private final transient ICustomerRegistry customerRegistry = JPAShop.INSTANCE.getCustomerRegistry();
@@ -29,19 +29,11 @@ public class CustomerRegistryBean implements Serializable {
      * @param customer
      */
     public void add(Customer customer) {
-        if (customerRegistry.find(customer.getId()) == null) {
             customerRegistry.add(customer);
-        }
     }
 
-    /**
-     * Returns the customer with the same id as the parameter id
-     *
-     * @param id
-     * @return customer
-     */
-    public Customer find(Long id) {
-        return customerRegistry.find(id);
+    public Customer find(String userName) {
+        return customerRegistry.findByUserName(userName);
     }
 
     /**
@@ -68,13 +60,9 @@ public class CustomerRegistryBean implements Serializable {
         customerRegistry.update(customer);
     }
 
-    /**
-     * Removes the customer
-     *
-     * @param id
-     */
-    public void remove(Long id) {
-        customerRegistry.remove(id);
+    public void remove(String userName) {
+        customerRegistry.remove(userName);
+
     }
 
     /**

@@ -9,7 +9,6 @@ package backingbeans;
  * @author Patrik Thituson
  */
 import java.io.Serializable;
-import java.util.Map;
 import javax.enterprise.context.*;
 import javax.inject.Named;
 import javax.validation.constraints.Max;

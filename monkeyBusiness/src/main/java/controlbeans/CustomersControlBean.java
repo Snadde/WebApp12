@@ -4,7 +4,6 @@ package controlbeans;
  * @author thituson
  */
 import core.Customer;
-import core.Product;
 import java.io.Serializable;
 import java.util.List;
 import javax.enterprise.context.*;
@@ -24,13 +23,8 @@ public class CustomersControlBean implements Serializable{
     {
         customerRegistryBean.add(customer);
     }
-    
- 
+     
     public List<Customer> getAll() {
         return customerRegistryBean.getAll();
     }
-        
-    
-    
-    
 }

@@ -3,12 +3,11 @@ package modelbeans;
 
 
 import core.Cart;
-import core.JPAShop;
 import core.Product;
 import java.io.Serializable;
-import java.util.List;
 import java.util.Map;
 import javax.enterprise.context.*;
+import javax.inject.Named;
 
 /*
  * To change this template, choose Tools | Templates
@@ -17,9 +16,9 @@ import javax.enterprise.context.*;
 
 /**
  *
- * @author thituson
+ * @author Martin Augustsson && Gustaf Werlinder
  */
-
+@Named
 @SessionScoped
 public class CartModelBean implements Serializable {
     

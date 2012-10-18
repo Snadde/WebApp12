@@ -8,10 +8,8 @@
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <link href="./../resources/css/default.css" rel="stylesheet" type="text/css" />
-        <link href="./../resources/css/cssLayout.css" rel="stylesheet" type="text/css" />        
-        <h:outputScript library="./js/lib" name="jquery-1.7.1.min.js"  target="head" />
-        <h:outputScript library="./js/events" name="events.js" target="head" /> 
-        <title>Monkey Business</title>
+        <link href="./../resources/css/cssLayout.css" rel="stylesheet" type="text/css" />
+        <title>Facelets Template</title>
     </h:head>
 
     <h:body>
@@ -22,23 +20,16 @@
             </ui:insert>
 
             <h:form>
-                <h:panelGroup rendered="#{simpleLogin.isLoggedIn(request.remoteUser)}">
 
-                    <h:commandButton value="Logout" 
-                                     action="#{simpleLogin.logout()}" />
-                    <h:outputText value=" Logged in as ${request.remoteUser}" />
-                    <h:commandLink value=" Edit Profile" 
-                                   actionListener="#{editCustomerControlBean.actionListener}"
-                                   action="editCustomer?faces-redirect=true">
-                        <f:attribute name="customer" value="${simpleLogin.customer}"/>
-                    </h:commandLink><br/>   
-                </h:panelGroup>
+                <h:commandButton value="Logout" 
+                                 action="#{simpleLogin.logout()}" />
+                <h:outputText value=" Logged in as ${request.remoteUser}" />
+                <h:commandLink value=" Edit Profile" 
+                               actionListener="#{editCustomerControlBean.actionListener}"
+                               action="editCustomer?faces-redirect=true">
+                    <f:attribute name="customer" value="${simpleLogin.customer}"/>
+                </h:commandLink><br/>    
             </h:form>
-            <h:panelGroup rendered="#{!simpleLogin.isLoggedIn(request.remoteUser)}">
-                <h:link value="Login" outcome="login"/> ||
-                <h:link value="Register" outcome="newCustomer"/> ||
-                <h:link value="Admin Page" outcome="/admins/adminProducts?faces-redirect=true"/>
-            </h:panelGroup>
         </div>
         <div>
             <div id="left">
@@ -46,20 +37,14 @@
                 <nav>
 
                     <h:form>
-                        <h:commandLink id="showCart" value="Show Cart" action="showCart?faces-redirect=true"
+                        <h:commandLink id="showCart" value="Show Cart" action="/jsf/showCart?faces-redirect=true"
                                        actionListener="#{cartControlBean.actionListener}"/><br/>
-                        <h:commandLink value="Purchase Orders" 
+                         <h:commandLink value="Purchase Orders" 
                                        action="#{customerPurchaseOrdersControlBean.action(request.remoteUser)}"/><br/>
                     </h:form>
-
-                    <h:link value="Products" outcome="shopProducts"/><br/>
-                    <h:link value="Search" outcome="searchEngine"/><br/>
-                </nav>
-                <hr />
-
-
-
-                <h:dataTable id="tablefastCart" style="font-size: 10px;" value="#{showCartBackingBean.cartProductList}" 
+                    <h:link value="Products" outcome="/jsf/shopProducts"/><br/>
+                    <h:link value="Search" outcome="/jsf/searchEngine"/><br/>
+                                    <h:dataTable id="tablefastCart" style="font-size: 10px;" value="#{showCartBackingBean.cartProductList}" 
                              var="entry" cellpadding="5" cellspacing="1" first="0" width="100px" dir="LTR" frame="hsides" 
                              rules="all">
 
@@ -89,22 +74,18 @@
                     <h:column>
                         <f:facet name="header">
                             <h:outputText value="+/-" />
+                        </f:facet> 
+                        <h:form>     
 
-                         </f:facet> 
-                             <h:form>     
-
-                                 <h:commandLink id="plusButton" value="+" onclick="addProduct()"
-                                                  actionListener="#{cartControlBean.actionListener}">
-                                     <f:attribute name="prod" value="${entry.key}"/>
-                                     </h:commandLink>
-                             </h:form>
-                        
-                        <h:form id="deleteButton">
-                            <h:commandLink id="minusButton" value="–" onclick="delProduct()"
-                                               actionListener="#{cartControlBean.actionListener}">
-                                     <f:attribute name="prod" value="${entry.key}"/>
-                                 </h:commandLink><br/>
-                            </h:form>  
+                            <h:commandLink id="plusButton" value="+" 
+                                           actionListener="#{cartControlBean.actionListener}">
+                                <f:attribute name="prod" value="${entry.key}"/>
+                            </h:commandLink>
+                            <h:commandLink id="minusButton" value="–" 
+                                           actionListener="#{cartControlBean.actionListener}">
+                                <f:attribute name="prod" value="${entry.key}"/>
+                            </h:commandLink><br/>
+                        </h:form>  
 
                     </h:column>
 
@@ -120,8 +101,8 @@
                                      action="/customers/purchase?faces-redirect=true">
                     </h:commandButton>
                 </h:form>
-
-                <ui:insert name="left"></ui:insert>
+                </nav>
+                <ui:insert name="left">Left</ui:insert>
             </div>
             <div id="content" class="left_content">
                 <ui:insert name="content">Content</ui:insert>

@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <body>
+
+        <ui:composition template="./customerTemplate.xhtml">
+
+            <ui:define name="top">
+
+            </ui:define>
+
+            <ui:define name="left">
+
+            </ui:define>
+
+            <ui:define name="content">
+                
+                <h:dataTable id="purchaseOrdersTable" 
+                             value="#{customerPurchaseOrdersBackingBean.customerPurchaseOrdersList}" 
+                             var="purchaseOrders" 
+                             bgcolor="#F1F1F1" 
+                             border="3"
+                             cellpadding="5" 
+                             cellspacing="3" 
+                             first="0" 
+                             width="70%" 
+                             dir="LTR" 
+                             frame="border" 
+                             rules="all"  >
+
+                    <f:facet name="header">
+                        <h:outputText value="Purchase Orders" />
+                    </f:facet> 
+                    
+                    <h:column>
+                         <f:facet name="header">
+                            <h:outputText value="Date" />
+                         </f:facet> 
+                        <h:form>
+                            <h:commandLink value="#{purchaseOrders.date}" actionListener="#{customerShowPurchaseOrderControlBean.actionListener}"
+                                          action="customerShowPurchaseOrder?faces-redirect=true">
+                            <f:attribute name="purchaseOrder" value="${purchaseOrders}"/>
+                        </h:commandLink>
+                        </h:form>
+                    </h:column>
+
+                    <h:column>
+                         <f:facet name="header">
+                            <h:outputText value="State" />
+                         </f:facet> 
+                         <h:outputText value="#{purchaseOrders.state}"></h:outputText>
+                    </h:column>
+                    
+                </h:dataTable>
+                             
+            </ui:define>
+
+            <ui:define name="bottom">
+                
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
+
+

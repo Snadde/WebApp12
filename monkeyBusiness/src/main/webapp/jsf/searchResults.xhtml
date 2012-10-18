@@ -64,15 +64,12 @@
                     <h:column>
                          <f:facet name="header">
                             <h:outputText value="Option" />
-                         </f:facet> 
-                             <h:form>     
+                         </f:facet>   
                                  <h:commandLink id="Addbutton" value="Add" 
-                                               action="shopProducts?faces-redirect=true"
                                                actionListener="#{cartControlBean.actionListener}"> 
                                                <f:attribute name="prod" value="${product}" />            
                                  </h:commandLink>
-                     
-                            </h:form> <br/>
+                            <br/>
 
                     </h:column>>
  
