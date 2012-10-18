@@ -26,8 +26,6 @@ public class EditCustomerBackingBean implements Serializable{
     private Conversation conv;
 
     @NotNull
-    private Long id;
-    @NotNull
     @Pattern(regexp = "^[a-zA-Z]*")
     @Size(min = 1, message = "Must enter a name")
     private  String fname;
@@ -38,16 +36,10 @@ public class EditCustomerBackingBean implements Serializable{
     private  Address address;
     private String userName;
     private String password;
+    private boolean isAdmin;
     
     public EditCustomerBackingBean(){}
         
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getFname() {
         return fname;
@@ -95,6 +87,14 @@ public class EditCustomerBackingBean implements Serializable{
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public boolean isIsAdmin() {
+        return isAdmin;
+    }
+
+    public void setIsAdmin(boolean isAdmin) {
+        this.isAdmin = isAdmin;
     }
     
 }
