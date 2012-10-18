@@ -1,13 +1,11 @@
 package controlbeans;
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
+ * This class acts like the controller and is requestScoped. It gets all the
+ * attributes from the backing bean (view part). It creates a product and adds
+ * it to the product catalogue bean (model).
  *
- * @author thituson
+ * @author Patrik Thituson
  */
 import backingbeans.AddProductBackingBean;
 import core.Product;
@@ -19,15 +17,22 @@ import javax.inject.Named;
 import modelbeans.ProductCatalogueBean;
 
 @Named
-@SessionScoped
-public class AddProductControlBean implements Serializable{
+@RequestScoped
+public class AddProductControlBean implements Serializable {
+
     @Inject
     private ProductCatalogueBean prodCat;
     @Inject
     private AddProductBackingBean addProductbb;
-    
-    public AddProductControlBean(){}
-    
+
+    public AddProductControlBean() {
+    }
+
+    /**
+     * Creates a product with the attributes from the backing bean
+     *
+     * @return the page which the suer should be redirected to
+     */
     @RolesAllowed("Admin")
     public String action() {
         String name = addProductbb.getName();
@@ -35,14 +40,8 @@ public class AddProductControlBean implements Serializable{
         Long requiredSkill = addProductbb.getRequiredSkill();
         Long category = addProductbb.getCategory();
         Product product = new Product(name, price, requiredSkill, category);
+        product.setImageLink(addProductbb.getImageLink());
         prodCat.add(product);
         return "adminProducts?faces-redirect=true";  // Where to go, navigate 
     }
-    
-    
-
-
-    
-    
-    
 }
