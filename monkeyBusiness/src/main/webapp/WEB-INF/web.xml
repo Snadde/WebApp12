@@ -13,13 +13,13 @@
     <error-page>
         <!-- Access denied (bad role response) -->
         <error-code>403</error-code>
-        <location>/shopProducts.xhtml</location>
+        <location>/jsf/shopProducts.xhtml</location>
     </error-page>
 
     <security-constraint>
         <web-resource-collection>
             <web-resource-name>Admin</web-resource-name>
-            <url-pattern>/faces/admins/*</url-pattern>
+            <url-pattern>/admins/*</url-pattern>
             <http-method>GET</http-method>
             <http-method>POST</http-method>
         </web-resource-collection>

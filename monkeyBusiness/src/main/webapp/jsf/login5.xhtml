@@ -15,8 +15,8 @@
             <h:panelGrid columns="2">
                 <h:outputLabel for="j_username" value="Username" />
                 <h:inputText id="j_username" size="10" autocomplete="off"/>             
-                <h:outputLabel for="j_password" value="Password (should use h:secret..)" />
-                <h:inputText id="j_password" size="10" autocomplete="off" />
+                <h:outputLabel for="j_password" value="Password" />
+                <h:inputSecret id="j_password" size="10" autocomplete="off" />
                 <h:panelGrid columns="2">
                     <h:commandButton id="login" value="Login" />
                     <h:button outcome="/index" value="Cancel"  />

@@ -4,11 +4,16 @@ import modelbeans.CustomerRegistryBean;
 import core.Customer;
 import java.io.Serializable;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.enterprise.inject.Produces;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
 
 @Named
 @SessionScoped
@@ -20,7 +25,9 @@ public class SimpleLogin implements Serializable {
     private String loginname;
     private String password;
     private Customer customer;
-
+    
+    private static final Logger log = Logger.getLogger(SimpleLogin.class.getName());
+    
     public SimpleLogin() {
     }
 
@@ -66,30 +73,23 @@ public class SimpleLogin implements Serializable {
         return "purchase?faces-redirect=true";
     }
 
-    public void setLogout() {
+        public String logout() {
+        String result = ".././jsf/index?faces-redirect=true";
 
-        System.out.println("LOGGED OUT MOTHERFUCKER!!!!");
-        customer = null;
+        FacesContext context = FacesContext.getCurrentInstance();
+        HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
 
-    }
-
-    public boolean getIsLoggedIn() {
-
-        return customer != null;
-
-    }
-
-    public boolean getIsAdmin() {
-        if (customer == null) {
-            return false;
-        } else {
-            return customer.isIsAdmin();
+        try {
+            request.logout();
+        } catch (ServletException e) {
+            log.log(Level.SEVERE, "Failed to logout user!", e);
+            result = "/loginError?faces-redirect=true";
         }
 
+        return result;
     }
 
-    //@Produces
-    //@LoggedIn 
+
     public Customer getCurrentUser() {
 
         return customer;

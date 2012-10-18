@@ -47,14 +47,13 @@ public class EditCustomerControlBean implements Serializable{
         }
         try 
         {
-            Long id = editCustomerBackingBean.getId();
             Address address = editCustomerBackingBean.getAddress();
             String fname = editCustomerBackingBean.getFname();
             String lname = editCustomerBackingBean.getLname();
             String email = editCustomerBackingBean.getEmail();
             String userName =editCustomerBackingBean.getUserName();
             String password = editCustomerBackingBean.getPassword();
-            Customer customer = new Customer(id, address, fname, lname, email, userName, password);
+            Customer customer = new Customer(address, fname, lname, email, userName, password);
             customerRegistryBean.update(customer);
             return "showCustomers?faces-redirect=true"; // Go back
         } catch (Exception e) {
@@ -73,7 +72,7 @@ public class EditCustomerControlBean implements Serializable{
         }else{
 
         }
-        editCustomerBackingBean.setId(customer.getId());
+ //       editCustomerBackingBean.setId(customer.getId());
         editCustomerBackingBean.setFname(customer.getFname());
         editCustomerBackingBean.setLname(customer.getLname());
         editCustomerBackingBean.setEmail(customer.getEmail());

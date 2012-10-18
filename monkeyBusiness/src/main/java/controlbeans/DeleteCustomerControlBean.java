@@ -47,9 +47,9 @@ public class DeleteCustomerControlBean implements Serializable{
         }
         try 
         {
-            Long id = deleteCustomerBackingBean.getId();
+            String userName = deleteCustomerBackingBean.getUserName();
             
-            customerRegistryBean.remove(id);
+            customerRegistryBean.remove(userName);
             return "showCustomers?faces-redirect=true"; // Go back
         } catch (Exception e) {
             // Not implemented
@@ -67,7 +67,7 @@ public class DeleteCustomerControlBean implements Serializable{
         }else{
 
         }
-        deleteCustomerBackingBean.setId(customer.getId());
+//        deleteCustomerBackingBean.setId(customer.getId());
         deleteCustomerBackingBean.setFname(customer.getFname());
         deleteCustomerBackingBean.setLname(customer.getLname());
         deleteCustomerBackingBean.setEmail(customer.getEmail());

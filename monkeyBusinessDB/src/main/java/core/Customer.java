@@ -30,16 +30,16 @@ import javax.persistence.Table;
 @Table(name="CUSTOMER")
 
 public class Customer implements Serializable{
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private  Long id;
+    private  String userName;
     private transient Cart cart = new Cart();
     @Embedded
     private  Address address;
     private  String fname;
     private  String lname;
     private  String email;
-    private  String userName;
+    
     private  String password;
     private  boolean isAdmin = false;
     @ElementCollection(fetch = FetchType.LAZY)
@@ -50,21 +50,9 @@ public class Customer implements Serializable{
             
     public Customer() {}
 
-    public Customer(Long id, Address address, String fname,
-            String lname, String email, String userName, String password) {
-        this.id = id;
-        this.address = address;
-        this.fname = fname;
-        this.lname = lname;
-        this.email = email;
-        this.userName = userName;
-        this.password = password;
-    }
-
     public Customer(Address address, String fname,
             String lname, String email, String userName, String password) {
-        // For now. Later database will generate id
-        //this.id = new Long(new Random().nextInt(100));
+
         this.address = address;
         this.fname = fname;
         this.lname = lname;
@@ -111,10 +99,6 @@ public class Customer implements Serializable{
         return fname;
     }
 
-    public Long getId() {
-        return id;
-    }
-
     public String getLname() {
         return lname;
     }
@@ -130,17 +114,9 @@ public class Customer implements Serializable{
        this.password = password; 
    }
 
-    public boolean isIsAdmin() {
-        return isAdmin;
-    }
-
-    public void setIsAdmin(boolean isAdmin) {
-        this.isAdmin = isAdmin;
-    }
-
     @Override
     public String toString() {
-        return "Customer{" + "id=" + id + ", address=" + address + ", fname=" + fname + ", lname=" + lname + ", email=" + email + '}';
+        return "Customer{" + "user name"+userName + ", address=" + address + ", fname=" + fname + ", lname=" + lname + ", email=" + email + '}';
     }        
      public void addGroup(Group group) {
         groups.add(group);

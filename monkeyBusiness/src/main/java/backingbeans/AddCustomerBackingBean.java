@@ -23,8 +23,7 @@ import javax.validation.constraints.Size;
 @ConversationScoped
 public class AddCustomerBackingBean implements Serializable{
 
-    @NotNull
-    private Long id;
+
     @NotNull
     @Pattern(regexp = "^[a-zA-Z]*")
     @Size(min = 1, message = "Must enter a name")
@@ -42,15 +41,7 @@ public class AddCustomerBackingBean implements Serializable{
     private String password;
     
     public AddCustomerBackingBean(){}
- 
-        
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getFname() {
         return fname;
