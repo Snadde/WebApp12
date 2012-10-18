@@ -29,7 +29,8 @@
                         
                         Skill   <h:selectOneMenu value="#{addProductBackingBean.requiredSkill}">
                                     <f:selectItems value="#{productCatalogueBean.getSkillValues()}" />
-                                </h:selectOneMenu>           
+                                </h:selectOneMenu>
+                        Image link<h:inputText value="#{addProductBackingBean.imageLink}"  />
                     </h:panelGrid>
                     <h:commandButton value="add" 
                                      action="#{addProductControlBean.action}" />

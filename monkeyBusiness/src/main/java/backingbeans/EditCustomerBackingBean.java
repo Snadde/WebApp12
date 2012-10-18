@@ -19,7 +19,7 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 @Named
-@ConversationScoped
+@SessionScoped
 public class EditCustomerBackingBean implements Serializable{
     
     @Inject // Handled by system, don't need to create class.

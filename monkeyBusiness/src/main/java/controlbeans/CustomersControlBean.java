@@ -1,12 +1,6 @@
-package backingbeans;
-
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+package controlbeans;
 
 /**
- *
  * @author thituson
  */
 import core.Customer;
@@ -17,13 +11,13 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import modelbeans.CustomerRegistryBean;
 
-@Named("customers")
+@Named
 @SessionScoped
-public class CustomersBackingBean implements Serializable{
+public class CustomersControlBean implements Serializable{
     @Inject
     private CustomerRegistryBean customerRegistryBean;
     
-    public CustomersBackingBean(){}
+    public CustomersControlBean(){}
     
     public void add(Customer customer)
     {
