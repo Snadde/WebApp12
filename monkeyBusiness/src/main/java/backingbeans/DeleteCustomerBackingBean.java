@@ -14,7 +14,6 @@ import java.io.Serializable;
 import javax.enterprise.context.*;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -26,8 +25,7 @@ public class DeleteCustomerBackingBean implements Serializable{
     @Inject // Handled by system, don't need to create class.
     private Conversation conv;
 
-    @NotNull
-    private Long id;
+
     @NotNull
     @Pattern(regexp = "^[a-zA-Z]*")
     @Size(min = 1, message = "Must enter a name")
@@ -37,17 +35,19 @@ public class DeleteCustomerBackingBean implements Serializable{
     private  String lname;
     private  String email;
     private  Address address;
-    
+    private String userName;
     
     public DeleteCustomerBackingBean(){}
-        
-    public Long getId() {
-        return id;
+
+    public String getUserName() {
+        return userName;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
+    
+    
 
     public String getFname() {
         return fname;

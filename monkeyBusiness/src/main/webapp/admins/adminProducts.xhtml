@@ -7,7 +7,7 @@
 
     <body>
 
-        <ui:composition template="./template.xhtml">
+        <ui:composition template="./adminTemplate.xhtml">
 
             <ui:define name="top">
 
@@ -18,7 +18,7 @@
             </ui:define>
 
             <ui:define name="content">
-                <h:panelGroup rendered="#{simpleLogin.isAdmin}">
+                
                     <h:dataTable id="table" value="#{adminProductsBackingBean.getAll()}" var="product" bgcolor="#F1F1F1" border="10" cellpadding="5" cellspacing="3" first="0" width="50%" dir="LTR" frame="hsides" rules="all"  >
                         <f:facet name="header">
                             <h:outputText value="Products      " />
@@ -80,7 +80,7 @@
                         </h:column>>
 
                     </h:dataTable>
-                </h:panelGroup>>        
+                   
             </ui:define>
 
             <ui:define name="bottom">

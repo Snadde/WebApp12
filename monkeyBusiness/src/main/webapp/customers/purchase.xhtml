@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <body>
+
+        <ui:composition template="./customerTemplate.xhtml">
+
+            <ui:define name="top">
+
+            </ui:define>
+
+            <ui:define name="left">
+                left
+            </ui:define>
+
+            <ui:define name="content">
+                <h:dataTable id="table" 
+                             value="#{showCartBackingBean.cartProductList}" 
+                             var="entry" 
+                             bgcolor="#F1F1F1" 
+                             border="10" 
+                             cellpadding="5" 
+                             cellspacing="3" 
+                             first="0" 
+                             width="50%" 
+                             dir="LTR" 
+                             frame="hsides" 
+                             rules="all"  >
+                    <f:facet name="header">
+                        <h:outputText value="Shopping Cart" />
+                    </f:facet> 
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Name" />
+                        </f:facet> 
+                        <h:outputText value="#{entry.key.name}"></h:outputText>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Price" />
+                        </f:facet> 
+                        <h:outputText value="#{entry.key.price}"></h:outputText>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Required Skill" />
+                        </f:facet> 
+                        <h:outputText value="#{entry.key.requiredSkill}"></h:outputText>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Amount" />
+                        </f:facet> 
+                        <h:outputText value="#{entry.value}"></h:outputText>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Cost" />
+                        </f:facet> 
+                        <h:outputText value="#{entry.value*entry.key.price}"></h:outputText>
+                    </h:column>
+
+                </h:dataTable>
+                <h:outputText value="Total Cost: #{showCartBackingBean.totalCartCost}"/>
+                <h:button value="Edit cart" outcome="/jsf/showCart?faces-redirect=true"/>
+
+                <h:form>
+                    <h:commandButton id="buyButton" value="Buy!" style="background-color: forestgreen; color: #ffffff;"
+                                     actionListener="#{completePurchaseControlBean.actionListener}"
+
+                                     action="customerPurchaseOrders?faces-redirect=true">
+                        <f:attribute name="userName" value="${request.remoteUser}"/>
+                    </h:commandButton>
+                </h:form>
+            </ui:define>
+
+            <ui:define name="bottom">
+                bottom
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

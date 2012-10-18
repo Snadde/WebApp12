@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <body>
+
+        <ui:composition template="./customerTemplate.xhtml">
+
+            <ui:define name="top">
+               
+            </ui:define>
+
+            <ui:define name="left">
+                
+            </ui:define>
+
+            <ui:define name="content">
+                <h:dataTable id="purchaseOrderTable" 
+                             value="#{customerShowPurchaseOrderBackingBean.orderitemList}" 
+                             var="orderItem" 
+                             bgcolor="#F1F1F1" 
+                             border="3"
+                             cellpadding="5" 
+                             cellspacing="3" 
+                             first="0" 
+                             width="70%" 
+                             dir="LTR" 
+                             frame="border" 
+                             rules="all"  >
+
+                    <f:facet name="header">
+                        <h:outputText value="Purchase Order" />
+                    </f:facet> 
+                    
+                    <h:column>
+                         <f:facet name="header">
+                            <h:outputText value="Product" />
+                         </f:facet> 
+                        <h:outputText value="#{orderItem.product.name}"/>
+                       
+                    </h:column>
+
+                    <h:column>
+                         <f:facet name="header">
+                            <h:outputText value="Required Skill" />
+                         </f:facet> 
+                         <h:outputText value="#{orderItem.product.requiredSkill}"/>
+                    </h:column>
+                    
+                    <h:column>
+                         <f:facet name="header">
+                            <h:outputText value="Price" />
+                         </f:facet> 
+                         <h:outputText value="#{orderItem.product.price}"/>
+                    </h:column>
+                    
+                    <h:column>
+                         <f:facet name="header">
+                            <h:outputText value="Required Skill" />
+                         </f:facet> 
+                         <h:outputText value="#{orderItem.quantity}"/>
+                    </h:column>
+                    
+                    <h:column>
+                         <f:facet name="header">
+                            <h:outputText value="Cost" />
+                         </f:facet> 
+                         <h:outputText value="#{orderItem.product.price * orderItem.quantity}"/>
+                    </h:column>
+                    
+                </h:dataTable>
+                <h:outputText value="Total Cost: #{customerShowPurchaseOrderBackingBean.totalOrderCost}"/>
+            </ui:define>
+
+            <ui:define name="bottom">
+               
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

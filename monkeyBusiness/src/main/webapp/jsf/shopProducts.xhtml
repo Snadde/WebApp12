@@ -4,9 +4,9 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core">
-
+    
+    
     <body>
-
         <ui:composition template="./template.xhtml">
 
             <ui:define name="top">
@@ -32,10 +32,16 @@
                     </h:column>>
 
                     <h:column>
-                         <f:facet name="header">
+                        <f:facet name="header">
                             <h:outputText value="Name" />
                          </f:facet> 
-                         <h:outputText value="#{product.name}"></h:outputText>
+                        <h:form> 
+                        <h:commandLink id="showProduct" value="#{product.name}" 
+                                               action="showProduct?faces-redirect=true"
+                                               actionListener="#{showProductControlBean.actionListener}"> 
+                                               <f:attribute name="product" value="${product}" />            
+                        </h:commandLink>
+                        </h:form>    
                     </h:column>>
 
                     <h:column>
@@ -46,9 +52,16 @@
                     </h:column>>
                     <h:column>
                          <f:facet name="header">
-                            <h:outputText value="RequiredSkill" />
+                             <h:outputText value="RequiredSkill"/><abbr title="The required skill is an indication of how well versed you should be in the art of monkey whispering">&nbsp;INFO</abbr>
                          </f:facet> 
-                         <h:outputText value="#{product.requiredSkill}"></h:outputText>
+                         <h:outputText value="#{productCatalogueBean.getSkillStringValue(product.requiredSkill)}"></h:outputText>
+                    </h:column>>
+                    
+                     <h:column>
+                         <f:facet name="header">
+                             <h:outputText value="Category"/><abbr title="Monkeys come in all kinds and shape, select the one that fits your urban lifestyle">&nbsp;INFO</abbr>
+                         </f:facet> 
+                         <h:outputText value="#{productCatalogueBean.getCategoryStringValue(product.category)}"></h:outputText>
                     </h:column>>
                     
                     <h:column>
@@ -56,15 +69,15 @@
                             <h:outputText value="Option" />
                          </f:facet> 
                              <h:form>     
-                                 <h:commandLink id="Addbutton" value="Add" 
+                                 <h:commandLink id="Addbutton" onclick="addProduct()" value="Add" 
                                                action="shopProducts?faces-redirect=true"
                                                actionListener="#{cartControlBean.actionListener}"> 
                                                <f:attribute name="prod" value="${product}" />            
                                  </h:commandLink>
                      
-                            </h:form> <br/>
+                            </h:form>
 
-                    </h:column>>
+                    </h:column>
  
                 </h:dataTable>
             </ui:define>
