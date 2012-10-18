@@ -36,6 +36,7 @@ public class EditCustomerBackingBean implements Serializable{
     private  Address address;
     private String userName;
     private String password;
+    private boolean isAdmin;
     
     public EditCustomerBackingBean(){}
         
@@ -86,6 +87,14 @@ public class EditCustomerBackingBean implements Serializable{
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public boolean isIsAdmin() {
+        return isAdmin;
+    }
+
+    public void setIsAdmin(boolean isAdmin) {
+        this.isAdmin = isAdmin;
     }
     
 }

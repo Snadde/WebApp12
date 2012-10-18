@@ -71,7 +71,7 @@ public class DeleteCustomerControlBean implements Serializable{
         deleteCustomerBackingBean.setFname(customer.getFname());
         deleteCustomerBackingBean.setLname(customer.getLname());
         deleteCustomerBackingBean.setEmail(customer.getEmail());
-        System.out.println("FORNAMNET: " + customer.getFname());
+        deleteCustomerBackingBean.setUserName(customer.getUserName());
         Address address;
         address = customer.getAddress();
         deleteCustomerBackingBean.setAddress(address);

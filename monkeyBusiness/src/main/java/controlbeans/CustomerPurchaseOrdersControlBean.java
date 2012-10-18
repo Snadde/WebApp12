@@ -8,6 +8,7 @@ import backingbeans.CustomerPurchaseOrdersBackingBean;
 import core.Customer;
 import java.io.Serializable;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.event.ActionEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
 import modelbeans.OrderBookModelBean;
@@ -32,16 +33,17 @@ public class CustomerPurchaseOrdersControlBean implements Serializable{
     
     public void CustomerPurcchaseOrdersControlBean(){}
         
-    public void actionListener() {
-        this.action();
+    public void actionListener(ActionEvent ae) {
+        String userName = (String) ae.getComponent().getAttributes().get("userName");
+        this.action(userName);
     }
     
-    public String action(){
-        Customer customer = simpleLogin.getCustomer();
+    public String action(String userName) {
+        
+        Customer customer = simpleLogin.getCustomer(userName);
         customerPOBackingBean.setCustomer(customer);
         customerPOBackingBean.setCustomerPurchaseOrdersList(orderBookModelBean.getByCustomer(customer));
                 
-        return "customerPurchaseOrders?faces-redirect=true";
+        return "/customers/customerPurchaseOrders?faces-redirect=true";
     } 
-    
 }

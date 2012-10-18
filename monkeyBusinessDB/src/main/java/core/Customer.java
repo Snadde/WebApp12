@@ -36,7 +36,6 @@ public class Customer implements Serializable{
     private  String email;
     
     private  String password;
-    private  boolean isAdmin = false;
     @ElementCollection(fetch = FetchType.LAZY)
     @CollectionTable(name = "CUSTOMER_GROUP")
     @Enumerated(EnumType.STRING)
@@ -109,6 +108,10 @@ public class Customer implements Serializable{
        this.password = password; 
    }
 
+    public String getPassword() {
+        return password;
+    }
+   
     @Override
     public String toString() {
 
@@ -123,6 +126,22 @@ public class Customer implements Serializable{
 
     public List<Group> getGroups() {
         return groups;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public void setFname(String fname) {
+        this.fname = fname;
+    }
+
+    public void setLname(String lname) {
+        this.lname = lname;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
 

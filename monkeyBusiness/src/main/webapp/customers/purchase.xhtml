@@ -75,7 +75,9 @@
                 <h:form>
                     <h:commandButton id="buyButton" value="Buy!" style="background-color: forestgreen; color: #ffffff;"
                                      actionListener="#{completePurchaseControlBean.actionListener}"
+
                                      action="customerPurchaseOrders?faces-redirect=true">
+                        <f:attribute name="userName" value="${request.remoteUser}"/>
                     </h:commandButton>
                 </h:form>
             </ui:define>

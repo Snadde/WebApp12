@@ -34,7 +34,8 @@
             </h:form>
             <h:panelGroup rendered="#{!simpleLogin.isLoggedIn(request.remoteUser)}">
                 <h:link value="Login" outcome="login"/> ||
-                <h:link value="Register" outcome="newCustomer"/>
+                <h:link value="Register" outcome="newCustomer"/> ||
+                <h:link value="Admin Page" outcome="/admins/adminProducts?faces-redirect=true"/>
             </h:panelGroup>
         </div>
         <div>
@@ -45,7 +46,7 @@
                         <h:commandLink id="showCart" value="Show Cart" action="showCart?faces-redirect=true"
                                        actionListener="#{cartControlBean.actionListener}"/><br/>
                         <h:commandLink value="Purchase Orders" 
-                                       action="#{customerPurchaseOrdersControlBean.action}"/><br/>
+                                       action="#{customerPurchaseOrdersControlBean.action(request.remoteUser)}"/><br/>
                     </h:form>
 
                     <h:link value="Products" outcome="shopProducts"/><br/>
@@ -109,7 +110,7 @@
                 <h:form>
                     <h:commandButton id="buyButton" value="Proceed to checkout" style="background-color: forestgreen; color: #ffffff;"
                                      actionListener="#{cartControlBean.actionListener}"
-                                     action="purchase?faces-redirect=true">
+                                     action="/customers/purchase?faces-redirect=true">
                     </h:commandButton>
                 </h:form>
 

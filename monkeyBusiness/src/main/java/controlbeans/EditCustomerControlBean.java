@@ -13,6 +13,7 @@ import backingbeans.AddAddressBackingBean;
 import backingbeans.EditCustomerBackingBean;
 import core.Address;
 import core.Customer;
+import core.Group;
 import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -36,7 +37,7 @@ public class EditCustomerControlBean implements Serializable{
     private EditCustomerBackingBean editCustomerBackingBean;
     @Inject
     private CustomerRegistryBean customerRegistryBean;
-        
+    private Customer customer ;    
     public EditCustomerControlBean(){}
         
 
@@ -48,13 +49,21 @@ public class EditCustomerControlBean implements Serializable{
         }
         try 
         {
+            
             Address address = editCustomerBackingBean.getAddress();
             String fname = editCustomerBackingBean.getFname();
             String lname = editCustomerBackingBean.getLname();
             String email = editCustomerBackingBean.getEmail();
-            String userName =editCustomerBackingBean.getUserName();
-            String password = editCustomerBackingBean.getPassword();
-            Customer customer = new Customer(address, fname, lname, email, userName, password);
+            Customer customer = new Customer(address, fname, lname, email, this.customer.getUserName(), this.customer.getPassword());
+            
+            if(editCustomerBackingBean.isIsAdmin())
+            {
+                customer.addGroup(Group.ADMIN);
+            }
+            else
+            {
+                customer.addGroup(Group.CUSTOMER);
+            }    
             customerRegistryBean.update(customer);
             
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Profile saved"));
@@ -68,7 +77,7 @@ public class EditCustomerControlBean implements Serializable{
      
     public void actionListener(ActionEvent ae) 
     { 
-        Customer customer = (Customer) ae.getComponent().getAttributes().get("customer");
+        customer = (Customer) ae.getComponent().getAttributes().get("customer");
         if (conv.isTransient()) {
             conv.begin();
              Logger.getAnonymousLogger().log(Level.INFO, "CONVERSATION BEGINS: Got pnumb {0}", customer);
@@ -82,6 +91,6 @@ public class EditCustomerControlBean implements Serializable{
         Address address;
         address = customer.getAddress();
         editCustomerBackingBean.setAddress(address);
-    }
+        }
         
 }
