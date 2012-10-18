@@ -14,20 +14,17 @@ import java.io.Serializable;
 import javax.enterprise.context.*;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 @Named
-@ConversationScoped
+@SessionScoped
 public class EditCustomerBackingBean implements Serializable{
     
     @Inject // Handled by system, don't need to create class.
     private Conversation conv;
 
-    @NotNull
-    private Long id;
     @NotNull
     @Pattern(regexp = "^[a-zA-Z]*")
     @Size(min = 1, message = "Must enter a name")
@@ -39,16 +36,10 @@ public class EditCustomerBackingBean implements Serializable{
     private  Address address;
     private String userName;
     private String password;
+    private boolean isAdmin;
     
     public EditCustomerBackingBean(){}
         
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getFname() {
         return fname;
@@ -96,6 +87,14 @@ public class EditCustomerBackingBean implements Serializable{
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public boolean isIsAdmin() {
+        return isAdmin;
+    }
+
+    public void setIsAdmin(boolean isAdmin) {
+        this.isAdmin = isAdmin;
     }
     
 }

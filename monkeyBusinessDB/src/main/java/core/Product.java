@@ -22,7 +22,7 @@ public class Product implements Serializable {
     private  double price;
     private  Long requiredSkill;
     private Long category;
-
+    private String imageLink;
 
 
     public Product() {
@@ -70,6 +70,14 @@ public class Product implements Serializable {
 
     public void setCategory(Long category) {
         this.category = category;
+    }
+
+    public String getImageLink() {
+        return imageLink;
+    }
+
+    public void setImageLink(String imageLink) {
+        this.imageLink = imageLink;
     }
     
     

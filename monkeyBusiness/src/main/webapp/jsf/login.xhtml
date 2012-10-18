@@ -10,32 +10,32 @@
         <ui:composition template="./template.xhtml">
 
             <ui:define name="top">
-                
+
             </ui:define>
 
             <ui:define name="left">
-                
             </ui:define>
 
             <ui:define name="content">
-                
-              <h:form>
-				<table>
-					<tr>
-						<td><h:outputText value="Enter Login ID: " /></td>
-						<td><h:inputText id="loginname" value="#{simpleLogin.loginname}" /></td>
-					</tr>
-					<tr>
-						<td><h:outputText value="Enter Password: " /></td>
-						<td><h:inputSecret id="password" value="#{simpleLogin.password}" /></td>
-					</tr>
-					<tr>
-						<td>&nbsp;</td>
-						<td><h:commandButton value="Login" action="#{simpleLogin.CheckValidUser}" /></td>
-					</tr>
-				</table>
-		</h:form>
-                
+
+                <form method="post" action="j_security_check">
+                    <table>
+                        <tr>
+                            <td><h:outputLabel for="j_username" value="Username" /></td>
+                            <td><h:inputText id="j_username" size="15" autocomplete="off"/></td>
+                        </tr>
+                        <tr>
+                            <td><h:outputLabel for="j_password" value="Password" /></td>
+                            <td><h:inputSecret id="j_password" size="15" autocomplete="off" /></td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td> <h:commandButton id="login" value="Login" /> 
+                                <h:button outcome="/jsf/index" value="Cancel"  /></td>
+                        </tr>
+                    </table>
+                </form>
+
             </ui:define>
 
             <ui:define name="bottom">

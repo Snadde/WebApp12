@@ -10,7 +10,7 @@ import javax.persistence.TypedQuery;
  * All customers
  * @author hajo
  */
-public final class CustomerRegistry extends AbstractDAO<Customer, Long> implements ICustomerRegistry {
+public final class CustomerRegistry extends AbstractDAO<Customer, String> implements ICustomerRegistry {
 
     public static ICustomerRegistry newInstance(String puName) {
         return new CustomerRegistry(puName);
@@ -42,4 +42,16 @@ public final class CustomerRegistry extends AbstractDAO<Customer, Long> implemen
         System.out.println("HAR KOMMER LISTA FRAN DATABAS: " + customers);
         return customers;
     }    
+
+    @Override
+    public Customer findByUserName(String name) {
+        Customer found = null;
+        for (Customer c : getAll()) {
+            if (c.getUserName().equals(name) ) {
+                return c;
+            }
+        }
+        return found;
+    }
+    
 }

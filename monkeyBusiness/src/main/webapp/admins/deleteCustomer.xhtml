@@ -7,7 +7,7 @@
 
     <body>
 
-        <ui:composition template="./template.xhtml">
+        <ui:composition template="./adminTemplate.xhtml">
 
             <ui:define name="top">
                 
@@ -19,18 +19,18 @@
 
             <ui:define name="content">
                 <h:form>
-                    <h1>Edit Profile</h1>
+                    <h1>Delete Profile</h1>
                     <h:panelGrid id="panel" columns="2" border="1" cellpadding="0" cellspacing="2">
-                        First Name <h:inputText value="#{editCustomerBackingBean.fname}"  />
-                        Last Name <h:inputText value="#{editCustomerBackingBean.lname}"  />
-                        E-mail <h:inputText value="#{editCustomerBackingBean.email}"  />
-                        Street <h:inputText value="#{editCustomerBackingBean.address.street}"  />
-                        Nr <h:inputText value="#{editCustomerBackingBean.address.nbr}"  />
-                        City <h:inputText value="#{editCustomerBackingBean.address.town}"  />
+                        First Name <h:outputText value="#{deleteCustomerBackingBean.fname}"  />
+                        Last Name <h:outputText value="#{deleteCustomerBackingBean.lname}"  />
+                        E-mail <h:outputText value="#{deleteCustomerBackingBean.email}"  />
+                        Street <h:outputText value="#{deleteCustomerBackingBean.address.street}"  />
+                        Nr <h:outputText value="#{deleteCustomerBackingBean.address.nbr}"  />
+                        City <h:outputText value="#{deleteCustomerBackingBean.address.town}"  />
                     </h:panelGrid>
                     
-                    <h:commandButton value="edit" 
-                                     action="#{editCustomerControlBean.action}" />
+                    <h:commandButton value="delete" 
+                                     action="#{deleteCustomerControlBean.action}" />
                 </h:form>
             </ui:define>
 
