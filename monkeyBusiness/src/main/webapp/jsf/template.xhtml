@@ -20,20 +20,21 @@
             </ui:insert>
 
             <h:form>
-
-                <h:commandButton value="Logout" 
-                                 action="#{simpleLogin.logout()}" />
-                <h:outputText value=" Logged in as ${request.remoteUser}" />
-                <h:commandLink value=" Edit Profile" 
-                               actionListener="#{editCustomerControlBean.actionListener}"
-                               action="editCustomer?faces-redirect=true">
-                    <f:attribute name="customer" value="${simpleLogin.customer}"/>
-                </h:commandLink><br/>    
+                <h:panelGroup rendered="#{simpleLogin.isLoggedIn(request.remoteUser)}">
+                    <h:commandButton value="Logout" 
+                                     action="#{simpleLogin.logout()}" />
+                    <h:outputText value=" Logged in as ${request.remoteUser}" />
+                    <h:commandLink value=" Edit Profile" 
+                                   actionListener="#{editCustomerControlBean.actionListener}"
+                                   action="editCustomer?faces-redirect=true">
+                        <f:attribute name="customer" value="${simpleLogin.customer}"/>
+                    </h:commandLink><br/>   
+                </h:panelGroup>
             </h:form>
-            
+            <h:panelGroup rendered="#{!simpleLogin.isLoggedIn(request.remoteUser)}">
                 <h:link value="Login" outcome="login"/> ||
                 <h:link value="Register" outcome="newCustomer"/>
-
+            </h:panelGroup>
         </div>
         <div>
             <div id="left">

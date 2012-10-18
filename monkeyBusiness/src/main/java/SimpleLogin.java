@@ -88,6 +88,15 @@ public class SimpleLogin implements Serializable {
 
         return result;
     }
+    
+    public boolean isLoggedIn(String name)
+    {
+        if (name.equals("")){
+        return false;    
+        }
+        else
+            return true;
+    }
 
 
     public Customer getCurrentUser() {

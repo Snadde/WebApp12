@@ -7,7 +7,7 @@
 
     <body>
 
-        <ui:composition template="./template.xhtml">
+        <ui:composition template="./customerTemplate.xhtml">
 
             <ui:define name="top">
 
@@ -61,7 +61,7 @@
 
                     </h:dataTable>
                     <h:outputText value="Total Cost: #{showCartBackingBean.totalCartCost}"/>
-                    <h:button value="Edit cart" outcome="showCart?faces-redirect=true"/>
+                    <h:button value="Edit cart" outcome="/jsf/showCart?faces-redirect=true"/>
 
 
 
