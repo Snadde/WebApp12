@@ -8,7 +8,9 @@
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <link href="./../resources/css/default.css" rel="stylesheet" type="text/css" />
-        <link href="./../resources/css/cssLayout.css" rel="stylesheet" type="text/css" />
+        <link href="./../resources/css/cssLayout.css" rel="stylesheet" type="text/css" />        
+        <h:outputScript library="./js/lib" name="jquery-1.7.1.min.js"  target="head" />
+        <h:outputScript library="./js/events" name="events.js" target="head" /> 
         <title>Monkey Business</title>
     </h:head>
 
@@ -44,7 +46,7 @@
                     <h:panelGroup rendered="#{simpleLogin.isAdmin}">
                         <h:link value="AdminProducts" outcome="adminProducts"/><br/>
                         <h:link value="Show Customers" outcome="showCustomers"/><br/>
-                        <h:link value="Add Customer" outcome="newCustomer"/><br/>
+                        <h:link value="Add Customer" outcome="newCustomer"/><br/>         
                     </h:panelGroup>
                         <h:form>
                             <h:commandLink id="showCart" value="Show Cart" action="showCart?faces-redirect=true"
@@ -88,13 +90,16 @@
                          <f:facet name="header">
                             <h:outputText value="+/-" />
                          </f:facet> 
-                             <h:form>     
+                             <h:form id="Addbutton">     
 
-                                 <h:commandLink id="plusButton" value="+" 
+                                 <h:commandLink id="plusButton" value="+" onclick="addProduct()"
                                                   actionListener="#{cartControlBean.actionListener}">
                                      <f:attribute name="prod" value="${entry.key}"/>
                                      </h:commandLink>
-                                 <h:commandLink id="minusButton" value="–" 
+                             </h:form>
+                        
+                        <h:form id="deleteButton">
+                            <h:commandLink id="minusButton" value="–" onclick="delProduct()"
                                                actionListener="#{cartControlBean.actionListener}">
                                      <f:attribute name="prod" value="${entry.key}"/>
                                  </h:commandLink><br/>

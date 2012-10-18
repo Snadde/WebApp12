@@ -4,9 +4,9 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core">
-
+    
+    
     <body>
-
         <ui:composition template="./template.xhtml">
 
             <ui:define name="top">
@@ -66,7 +66,7 @@
                             <h:outputText value="Option" />
                          </f:facet> 
                              <h:form>     
-                                 <h:commandLink id="Addbutton" value="Add" 
+                                 <h:commandLink id="Addbutton" onclick="addProduct()" value="Add" 
                                                action="shopProducts?faces-redirect=true"
                                                actionListener="#{cartControlBean.actionListener}"> 
                                                <f:attribute name="prod" value="${product}" />            
