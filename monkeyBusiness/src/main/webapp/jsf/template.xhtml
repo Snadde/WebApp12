@@ -7,8 +7,8 @@
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <link href="./../resources/css/default.css" rel="stylesheet" type="text/css" />
-        <link href="./../resources/css/cssLayout.css" rel="stylesheet" type="text/css" />        
+        <h:outputStylesheet library="css" name="default.css"  />
+        <h:outputStylesheet library="css" name="cssLayout.css"  />
         <h:outputScript library="./js/lib" name="jquery-1.7.1.min.js"  target="head" />
         <h:outputScript library="./js/events" name="events.js" target="head" /> 
         <title>Monkey Business</title>
@@ -60,7 +60,7 @@
 
 
                 <h:dataTable id="tablefastCart" style="font-size: 10px;" value="#{showCartBackingBean.cartProductList}" 
-                             var="entry" cellpadding="5" cellspacing="1" first="0" width="100px" dir="LTR" frame="hsides" 
+                             var="entry" cellpadding="5" cellspacing="1" first="0" width="100px" dir="LTR" frame="border" 
                              rules="all">
 
 
@@ -128,7 +128,11 @@
         </div>
         <div style="clear: both;" />
         <div id="bottom">
-            <ui:insert name="bottom">Bottom</ui:insert>
+            © MonkeyBusiness │ Kontakt: 
+            <h:outputLink value="mailto:support@monkey.business.com">
+                <h:outputText value="support@monkey.business.com" />
+            </h:outputLink> │ Tel: 031-987654
+            <ui:insert name="bottom"></ui:insert>
         </div>
 
     </h:body>
