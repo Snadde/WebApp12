@@ -13,7 +13,7 @@
             </ui:define>
 
             <ui:define name="left">
-                
+
             </ui:define>
 
             <ui:define name="content">
@@ -21,78 +21,84 @@
 
                     <f:facet name="header">
                         <h:outputText value="Customers      " />
-                        
+
                     </f:facet> 
-                    
-                                       <h:column>
-                         <f:facet name="header">
+
+                    <h:column>
+                        <f:facet name="header">
                             <h:outputText value="First Name" />
-                         </f:facet> 
-                         <h:outputText value="#{customer.fname}"></h:outputText>
-                    </h:column>>
-                    
-                   <h:column>
-                         <f:facet name="header">
-                            <h:outputText value="Last Name" />
-                         </f:facet> 
-                         <h:outputText value="#{customer.lname}"></h:outputText>
+                        </f:facet> 
+                        <h:outputText value="#{customer.fname}"></h:outputText>
                     </h:column>>
 
                     <h:column>
-                         <f:facet name="header">
+                        <f:facet name="header">
+                            <h:outputText value="Last Name" />
+                        </f:facet> 
+                        <h:outputText value="#{customer.lname}"></h:outputText>
+                    </h:column>>
+
+                    <h:column>
+                        <f:facet name="header">
                             <h:outputText value="E-mail" />
-                         </f:facet> 
-                         <h:outputText value="#{customer.email}"></h:outputText>
+                        </f:facet> 
+                        <h:outputText value="#{customer.email}"></h:outputText>
                     </h:column>>
-                    
+
                     <h:column>
-                         <f:facet name="header">
+                        <f:facet name="header">
                             <h:outputText value="Street" />
-                         </f:facet> 
-                         <h:outputText value="#{customer.address.street}"></h:outputText>
+                        </f:facet> 
+                        <h:outputText value="#{customer.address.street}"></h:outputText>
                     </h:column>>
-                    
+
                     <h:column>
-                         <f:facet name="header">
+                        <f:facet name="header">
                             <h:outputText value="Number" />
-                         </f:facet> 
-                         <h:outputText value="#{customer.address.nbr}"></h:outputText>
+                        </f:facet> 
+                        <h:outputText value="#{customer.address.nbr}"></h:outputText>
                     </h:column>>
-                    
+
                     <h:column>
-                         <f:facet name="header">
+                        <f:facet name="header">
                             <h:outputText value="Town" />
-                         </f:facet> 
-                         <h:outputText value="#{customer.address.town}"></h:outputText>
+                        </f:facet> 
+                        <h:outputText value="#{customer.address.town}"></h:outputText>
                     </h:column>>
-                    
                     <h:column>
-                         <f:facet name="header">
+                        <f:facet name="header">
+                            <h:outputText value="Group" />
+                        </f:facet> 
+                        <h:outputText value="#{customer.groups.get(0)}"></h:outputText>
+                    </h:column>>
+
+                    <h:column>
+                        <f:facet name="header">
                             <h:outputText value="Option" />
-                         </f:facet>
-                        
+                        </f:facet>
+
                         <h:form>     
-                           <h:commandLink value="Edit" 
-                                          actionListener="#{editCustomerControlBean.actionListener}"
-                                          action="editCustomer?faces-redirect=true">
+                            <h:commandLink value="Edit" 
+                                           actionListener="#{editCustomerControlBean.actionListener}"
+                                           action="editCustomer?faces-redirect=true">
                                 <f:attribute name="customer" value="${customer}"/>
-                           </h:commandLink><br/>    
+                            </h:commandLink><br/>    
                         </h:form>  
-                        
+
                         <h:form>     
-                           <h:commandLink value="Delete" 
-                                          actionListener="#{deleteCustomerControlBean.actionListener}"
-                                          action="deleteCustomer?faces-redirect=true">
+                            <h:commandLink value="Delete" 
+                                           actionListener="#{deleteCustomerControlBean.actionListener}"
+                                           action="deleteCustomer?faces-redirect=true">
                                 <f:attribute name="customer" value="${customer}"/>
-                           </h:commandLink><br/>    
+                            </h:commandLink><br/>    
                         </h:form>  
                     </h:column>>
- 
+
                 </h:dataTable>
             </ui:define>
 
             <ui:define name="bottom">
-                
+
             </ui:define>
 
         </ui:composition>
