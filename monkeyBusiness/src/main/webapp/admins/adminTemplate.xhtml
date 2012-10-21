@@ -19,10 +19,15 @@
 
             </ui:insert>
             <h:form>   
-             <h:commandButton action="#{simpleLogin.logout()}" value="Logout" />
-             <h:outputText value=" Logged in as ${request.remoteUser}" />
-             </h:form>
-             
+                <h:commandButton action="#{simpleLogin.logout()}" value="Logout" />
+                <h:outputText value=" Logged in as ${request.remoteUser}" />
+                <h:commandLink value=" Edit Profile" 
+                               actionListener="#{editCustomerControlBean.actionListener}"
+                               action="/admins/editCustomer?faces-redirect=true">
+                    <f:attribute name="customer" value="#{simpleLogin.getCustomer(request.remoteUser)}"/>
+                </h:commandLink><br/>   
+            </h:form>
+
         </div>
         <div>
             <div id="left">
@@ -30,7 +35,7 @@
                 <nav>
                     <h:link value="AdminProducts" outcome="adminProducts"/><br/>
                     <h:link value="Show Customers" outcome="showCustomers"/><br/>
-                                   </nav>
+                </nav>
                 <ui:insert name="left">Left</ui:insert>
             </div>
             <div id="content" class="left_content">
