@@ -14,7 +14,7 @@
             </ui:define>
 
             <ui:define name="left">
-               
+
             </ui:define>
 
             <ui:define name="content">
@@ -76,14 +76,17 @@
                     <h:commandButton id="buyButton" value="Buy!"
                                      actionListener="#{completePurchaseControlBean.actionListener}"
 
-                                     action="customerPurchaseOrders?faces-redirect=true">
+                                     action="#{completePurchaseControlBean.action}">
                         <f:attribute name="userName" value="${request.remoteUser}"/>
                     </h:commandButton>
                 </h:form>
+                <h:outputText id="noItems"/>
+               <FONT COLOR="#FF0000"> <h:message class="error" for="noItems" id="noItems2"  /></FONT>
+
             </ui:define>
 
             <ui:define name="bottom">
-               
+
             </ui:define>
 
         </ui:composition>

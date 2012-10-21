@@ -23,39 +23,44 @@
 
             <h:form>
                 <h:panelGroup rendered="#{simpleLogin.isLoggedIn(request.remoteUser)}">
-
-                    <h:commandButton value="Logout" 
-                                     action="#{simpleLogin.logout()}" />
                     <h:outputText value=" Logged in as ${request.remoteUser}" />
-                    <h:commandLink value=" Edit Profile" 
+                    <h:commandLink rendered="#{facesContext.externalContext.isUserInRole('customer')}"
+                                   value=" Edit Profile" 
                                    actionListener="#{editCustomerControlBean.actionListener}"
                                    action="/customers/editProfile?faces-redirect=true">
                         <f:attribute name="customer" value="#{simpleLogin.getCustomer(request.remoteUser)}"/>
-                    </h:commandLink><br/>    
+                    </h:commandLink>
+                    <h:commandLink rendered="#{facesContext.externalContext.isUserInRole('admin')}"
+                                   value=" Edit Profile" 
+                                   actionListener="#{editCustomerControlBean.actionListener}"
+                                   action="/admins/editCustomer?faces-redirect=true">
+                        <f:attribute name="customer" value="#{simpleLogin.getCustomer(request.remoteUser)}"/>
+                    </h:commandLink>
+                    ||<h:commandLink action="#{simpleLogin.logout()}" value=" Logout" /><br/> 
                 </h:panelGroup>
             </h:form>
             <h:panelGroup rendered="#{!simpleLogin.isLoggedIn(request.remoteUser)}">
                 <h:link value="Login" outcome="login"/> ||
-                <h:link value="Register" outcome="newCustomer"/> ||
-                <h:link value="Admin Page" outcome="/admins/adminProducts?faces-redirect=true"/>
+                <h:link value="Register" outcome="newCustomer"/>
             </h:panelGroup>
         </div>
         <div>
             <div id="left">
 
                 <nav>
-
+                    <h:panelGroup rendered="#{facesContext.externalContext.isUserInRole('admin')}">
+                        <h:link value=" Admin Page" outcome="/admins/adminProducts?faces-redirect=true"/><br/>
+                    </h:panelGroup>                   
+                    <h:link value="Search" outcome="searchEngine"/><br/>
+                    <h:link value="Products" outcome="shopProducts"/><br/>
                     <h:form>
                         <h:commandLink id="showCart" value="Show Cart" action="showCart?faces-redirect=true"
                                        actionListener="#{cartControlBean.actionListener}"/><br/>
-                        <h:panelGroup rendered="#{simpleLogin.isLoggedIn(request.remoteUser)}">
+                        <h:panelGroup rendered="#{facesContext.externalContext.isUserInRole('customer')}">
                             <h:commandLink value="Purchase Orders" 
                                            action="#{customerPurchaseOrdersControlBean.action(request.remoteUser)}"/><br/>
                         </h:panelGroup>
                     </h:form>
-
-                    <h:link value="Products" outcome="shopProducts"/><br/>
-                    <h:link value="Search" outcome="searchEngine"/><br/>
                 </nav>
                 <hr />
 

@@ -55,4 +55,9 @@ public class CustomerShowPurchaseOrderControlBean implements Serializable {
         this.makeOrderitemList();
         this.calculateTotalOrderCost();
     }
+
+    public void setPurchaseOrder(PurchaseOrder purchaseOrder) {
+        this.purchaseOrder = purchaseOrder;
+    }
+    
 }

@@ -22,30 +22,27 @@
             </ui:insert>
 
             <h:form>
-
-                <h:commandButton value="Logout" 
-                                 action="#{simpleLogin.logout()}" />
                 <h:outputText value=" Logged in as ${request.remoteUser}" />
                 <h:commandLink value=" Edit Profile" 
                                actionListener="#{editCustomerControlBean.actionListener}"
                                action="editProfile?faces-redirect=true">
                     <f:attribute name="customer" value="#{simpleLogin.getCustomer(request.remoteUser)}"/>
-                </h:commandLink><br/>    
+                </h:commandLink>
+                ||<h:commandLink action="#{simpleLogin.logout()}" value=" Logout" /><br/>    
             </h:form>
         </div>
         <div>
             <div id="left">
 
-                <nav>
-
+                <nav>                
+                    <h:link value="Search" outcome="/jsf/searchEngine"/><br/>
+                    <h:link value="Products" outcome="/jsf/shopProducts"/><br/>
                     <h:form>
                         <h:commandLink id="showCart" value="Show Cart" action="/jsf/showCart?faces-redirect=true"
                                        actionListener="#{cartControlBean.actionListener}"/><br/>
                         <h:commandLink value="Purchase Orders" 
                                        action="#{customerPurchaseOrdersControlBean.action(request.remoteUser)}"/><br/>
                     </h:form>
-                    <h:link value="Products" outcome="/jsf/shopProducts"/><br/>
-                    <h:link value="Search" outcome="/jsf/searchEngine"/><br/>
                     <h:dataTable id="tablefastCart" style="font-size: 10px;" value="#{showCartBackingBean.cartProductList}" 
                                  var="entry" cellpadding="5" cellspacing="1" first="0" width="100px" dir="LTR" frame="hsides" 
                                  rules="all">
@@ -112,7 +109,7 @@
         </div>
         <div style="clear: both;" />
         <div id="bottom">
-                        © MonkeyBusiness │ Kontakt: 
+            © MonkeyBusiness │ Kontakt: 
             <h:outputLink value="mailto:support@monkey.business.com">
                 <h:outputText value="support@monkey.business.com" />
             </h:outputLink> │ Tel: 031-987654
