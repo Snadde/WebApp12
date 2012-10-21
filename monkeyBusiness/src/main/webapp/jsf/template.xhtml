@@ -24,9 +24,16 @@
             <h:form>
                 <h:panelGroup rendered="#{simpleLogin.isLoggedIn(request.remoteUser)}">
                     <h:outputText value=" Logged in as ${request.remoteUser}" />
-                    <h:commandLink value=" Edit Profile" 
+                    <h:commandLink rendered="#{facesContext.externalContext.isUserInRole('customer')}"
+                                   value=" Edit Profile" 
                                    actionListener="#{editCustomerControlBean.actionListener}"
                                    action="/customers/editProfile?faces-redirect=true">
+                        <f:attribute name="customer" value="#{simpleLogin.getCustomer(request.remoteUser)}"/>
+                    </h:commandLink>
+                    <h:commandLink rendered="#{facesContext.externalContext.isUserInRole('admin')}"
+                                   value=" Edit Profile" 
+                                   actionListener="#{editCustomerControlBean.actionListener}"
+                                   action="/admins/editCustomer?faces-redirect=true">
                         <f:attribute name="customer" value="#{simpleLogin.getCustomer(request.remoteUser)}"/>
                     </h:commandLink>
                     ||<h:commandLink action="#{simpleLogin.logout()}" value=" Logout" /><br/> 
