@@ -31,11 +31,10 @@
                                    actionListener="#{editCustomerControlBean.actionListener}"
                                    action="/customers/editProfile?faces-redirect=true">
                         <f:attribute name="customer" value="#{simpleLogin.getCustomer(request.remoteUser)}"/>
-                    </h:commandLink>  
-
-                </h:panelGroup>
-                <h:panelGroup rendered="#{facesContext.externalContext.isUserInRole('admin')}">
-                  ||<h:link value=" Admin Page" outcome="/admins/adminProducts?faces-redirect=true"/>
+                    </h:commandLink>
+                    <h:panelGroup rendered="#{facesContext.externalContext.isUserInRole('admin')}">
+                     ||<h:link value=" Admin Page" outcome="/admins/adminProducts?faces-redirect=true"/>
+                    </h:panelGroup>
                 </h:panelGroup>
             </h:form>
             <h:panelGroup rendered="#{!simpleLogin.isLoggedIn(request.remoteUser)}">
