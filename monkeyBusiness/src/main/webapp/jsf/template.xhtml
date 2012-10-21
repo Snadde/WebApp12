@@ -23,18 +23,13 @@
 
             <h:form>
                 <h:panelGroup rendered="#{simpleLogin.isLoggedIn(request.remoteUser)}">
-
-                    <h:commandButton value="Logout" 
-                                     action="#{simpleLogin.logout()}" />
                     <h:outputText value=" Logged in as ${request.remoteUser}" />
                     <h:commandLink value=" Edit Profile" 
                                    actionListener="#{editCustomerControlBean.actionListener}"
                                    action="/customers/editProfile?faces-redirect=true">
                         <f:attribute name="customer" value="#{simpleLogin.getCustomer(request.remoteUser)}"/>
                     </h:commandLink>
-                    <h:panelGroup rendered="#{facesContext.externalContext.isUserInRole('admin')}">
-                     ||<h:link value=" Admin Page" outcome="/admins/adminProducts?faces-redirect=true"/>
-                    </h:panelGroup>
+                    ||<h:commandLink action="#{simpleLogin.logout()}" value=" Logout" /><br/> 
                 </h:panelGroup>
             </h:form>
             <h:panelGroup rendered="#{!simpleLogin.isLoggedIn(request.remoteUser)}">
@@ -46,7 +41,11 @@
             <div id="left">
 
                 <nav>
-
+                    <h:panelGroup rendered="#{facesContext.externalContext.isUserInRole('admin')}">
+                        <h:link value=" Admin Page" outcome="/admins/adminProducts?faces-redirect=true"/><br/>
+                    </h:panelGroup>                   
+                    <h:link value="Search" outcome="searchEngine"/><br/>
+                    <h:link value="Products" outcome="shopProducts"/><br/>
                     <h:form>
                         <h:commandLink id="showCart" value="Show Cart" action="showCart?faces-redirect=true"
                                        actionListener="#{cartControlBean.actionListener}"/><br/>
@@ -55,9 +54,6 @@
                                            action="#{customerPurchaseOrdersControlBean.action(request.remoteUser)}"/><br/>
                         </h:panelGroup>
                     </h:form>
-
-                    <h:link value="Products" outcome="shopProducts"/><br/>
-                    <h:link value="Search" outcome="searchEngine"/><br/>
                 </nav>
                 <hr />
 
