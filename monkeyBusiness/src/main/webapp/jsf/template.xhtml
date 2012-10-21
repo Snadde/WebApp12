@@ -31,13 +31,16 @@
                                    actionListener="#{editCustomerControlBean.actionListener}"
                                    action="/customers/editProfile?faces-redirect=true">
                         <f:attribute name="customer" value="#{simpleLogin.getCustomer(request.remoteUser)}"/>
-                    </h:commandLink><br/>    
+                    </h:commandLink>  
+
+                </h:panelGroup>
+                <h:panelGroup rendered="#{facesContext.externalContext.isUserInRole('admin')}">
+                  ||<h:link value=" Admin Page" outcome="/admins/adminProducts?faces-redirect=true"/>
                 </h:panelGroup>
             </h:form>
             <h:panelGroup rendered="#{!simpleLogin.isLoggedIn(request.remoteUser)}">
                 <h:link value="Login" outcome="login"/> ||
-                <h:link value="Register" outcome="newCustomer"/> ||
-                <h:link value="Admin Page" outcome="/admins/adminProducts?faces-redirect=true"/>
+                <h:link value="Register" outcome="newCustomer"/>
             </h:panelGroup>
         </div>
         <div>
@@ -48,7 +51,7 @@
                     <h:form>
                         <h:commandLink id="showCart" value="Show Cart" action="showCart?faces-redirect=true"
                                        actionListener="#{cartControlBean.actionListener}"/><br/>
-                        <h:panelGroup rendered="#{simpleLogin.isLoggedIn(request.remoteUser)}">
+                        <h:panelGroup rendered="#{facesContext.externalContext.isUserInRole('customer')}">
                             <h:commandLink value="Purchase Orders" 
                                            action="#{customerPurchaseOrdersControlBean.action(request.remoteUser)}"/><br/>
                         </h:panelGroup>
