@@ -42,13 +42,6 @@
 
                         <h:column>
                             <f:facet name="header">
-                                <h:commandLink action="#{searchBackingBean.sortByPrice()}" value="Price" />
-                            </f:facet> 
-                            <h:outputText value="#{product.price}"></h:outputText>
-                        </h:column>>
-
-                        <h:column>
-                            <f:facet name="header">
                                 <h:commandLink action="#{searchBackingBean.sortBySkill()}" value="Required Skill" />
                             </f:facet> 
                             <h:outputText value="#{product.requiredSkill}"></h:outputText>
@@ -59,9 +52,15 @@
                                 <h:commandLink action="#{searchBackingBean.sortByCategory()}" value="Category" />
                             </f:facet> 
                             <h:outputText value="#{product.category}"></h:outputText>
-                        </h:column>>
-
-
+                        </h:column>                        
+                        
+                        <h:column>
+                            <f:facet name="header">
+                                <h:commandLink action="#{searchBackingBean.sortByPrice()}" value="Price" />
+                            </f:facet> 
+                            <h:outputText value="#{product.price}"></h:outputText>
+                        </h:column>
+                        
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="Option" />

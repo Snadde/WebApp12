@@ -41,12 +41,6 @@
 
                     <h:column>
                          <f:facet name="header">
-                            <h:outputText value="Price" />
-                         </f:facet> 
-                         <h:outputText value="#{product.price}"></h:outputText>
-                    </h:column>>
-                    <h:column>
-                         <f:facet name="header">
                              <h:outputText value="RequiredSkill"/><abbr title="The required skill is an indication of how well versed you should be in the art of monkey whispering">&nbsp;INFO</abbr>
                          </f:facet> 
                          <h:outputText value="#{productCatalogueBean.getSkillStringValue(product.requiredSkill)}"></h:outputText>
@@ -58,6 +52,14 @@
                          </f:facet> 
                          <h:outputText value="#{productCatalogueBean.getCategoryStringValue(product.category)}"></h:outputText>
                     </h:column>>
+                    
+                    
+                    <h:column>
+                         <f:facet name="header">
+                            <h:outputText value="Price" />
+                         </f:facet> 
+                         <h:outputText value="#{product.price}"></h:outputText>
+                    </h:column>
                     
                     <h:column>
                          <f:facet name="header">
