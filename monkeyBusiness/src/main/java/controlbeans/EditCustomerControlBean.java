@@ -15,6 +15,7 @@ import core.Address;
 import core.Customer;
 import core.Group;
 import java.io.Serializable;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.enterprise.context.*;
@@ -85,6 +86,15 @@ public class EditCustomerControlBean implements Serializable{
 
         }
  //       editCustomerBackingBean.setId(customer.getId());
+        List<Group> listOfGroups = customer.getGroups();
+        for(Group group : listOfGroups)
+        {
+            if (group.equals(Group.ADMIN))
+            {
+                editCustomerBackingBean.setIsAdmin(true);
+            }
+        }
+        
         editCustomerBackingBean.setFname(customer.getFname());
         editCustomerBackingBean.setLname(customer.getLname());
         editCustomerBackingBean.setEmail(customer.getEmail());
