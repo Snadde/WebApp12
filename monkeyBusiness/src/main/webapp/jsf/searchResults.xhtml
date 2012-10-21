@@ -19,7 +19,9 @@
 
             <ui:define name="content">
                 <h:form>
-                <h:dataTable id="table" value="#{searchBackingBean.resultProducts}" var="product" bgcolor="#F1F1F1" border="10" cellpadding="5" cellspacing="3" first="0" width="50%" dir="LTR" frame="hsides" rules="all"  >
+                <h:dataTable id="table" value="#{searchBackingBean.resultProducts}" var="product" 
+                             bgcolor="#F1F1F1" border="10" cellpadding="5" cellspacing="3" first="0" 
+                             width="50%" dir="LTR" frame="border" rules="all"  >
 
                     <f:facet name="header">
                         <h:outputText value="Products" />
@@ -51,7 +53,7 @@
                             <h:commandLink action="#{searchBackingBean.sortBySkill()}" value="Required Skill" />
                          </f:facet> 
                          <h:outputText value="#{product.requiredSkill}"></h:outputText>
-                    </h:column>>
+                    </h:column>
                                        
                     <h:column>
                          <f:facet name="header">
@@ -78,7 +80,7 @@
             </ui:define>
 
             <ui:define name="bottom">
-                bottom
+               
             </ui:define>
 
         </ui:composition>
