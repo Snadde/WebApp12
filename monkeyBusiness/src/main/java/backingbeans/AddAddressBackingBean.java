@@ -34,47 +34,52 @@ public class AddAddressBackingBean implements Serializable {
     @Max(value = 10000, message = "To big")
     private int nbr;
 
+    /**
+     * The default constructor
+     */
     public AddAddressBackingBean() {
     }
 
     /**
-     *
-     * @return street
+     * Get method for the street variable
+     * @return street represented in string
      */
     public String getStreet() {
         return street;
     }
+    
     /**
-     * Sets the street
-     * @param street 
+     * Set method for the street variable
+     * @param street a string setting the street variable
      */
     public void setStreet(String street) {
         this.street = street;
     }
     /**
-     * 
-     * @return town
+     * Get method for the town variable
+     * @return town a string representing the costumer's town
      */
     public String getTown() {
         return town;
     }
+    
     /**
-     * sets the town
-     * @param town 
+     * sets the town variable
+     * @param town string representing the town
      */
     public void setTown(String town) {
         this.town = town;
     }
     /**
-     * 
-     * @return number
+     * Get method for the number on the street where the customer lives
+     * @return number and int representing the street number
      */
     public int getNbr() {
         return nbr;
     }
     /**
-     * Sets the number
-     * @param nbr 
+     * Sets the number of the street number of the customer's address
+     * @param nbr an int representing street number
      */
     public void setNbr(int nbr) {
         this.nbr = nbr;
