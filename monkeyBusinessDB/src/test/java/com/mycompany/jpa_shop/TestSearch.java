@@ -18,14 +18,14 @@ import static org.junit.Assert.*;
  *
  * @author hajo
  */
-public class TestAdd {
+public class TestSearch {
 
     private static ProductCatalogue preg;
 
 
     @BeforeClass
     public static void setUpClass() {
-        preg = (ProductCatalogue) JPAShop.INSTANCE.getProductCatalogue();
+        preg = (ProductCatalogue) ProductCatalogue.newInstance("shop_test_pu");
 
         
     }
@@ -35,22 +35,6 @@ public class TestAdd {
         preg = null;
         
     }
-
-    // Database will generate id's 
-//    @Test
-//    public void addProduct() {
-//        Product p = new Product("test", 999);
-//
-//        // We have no cascade her so have to insert all
-//        // in correct order (Cascade better)
-//        preg.add(p);  // pnumb set after this operation
-//        Product pp = preg.find(p.getId());
-//        System.out.println(p);
-//        
-//        System.out.println(pp);
-//        Assert.assertTrue(p.toString().equals(pp.toString()));
-//
-//    }
     
     @Test
     public void testSearch() {
@@ -75,7 +59,7 @@ public class TestAdd {
        Assert.assertTrue(results2.get(0).getName().equals("1hej"));
        //test getByNameLike
        List<Product> results = preg.getByNameLike("test");
-     //  Assert.assertTrue(results.size()==3);
+       Assert.assertTrue(results.size()==3);
         
         
     }
