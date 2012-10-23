@@ -45,64 +45,69 @@
                         <h:commandLink value="Purchase Orders" 
                                        action="#{customerPurchaseOrdersControlBean.action(request.remoteUser)}"/><br/>
                     </h:form>
-                    <h:dataTable id="tablefastCart" style="font-size: 10px;" value="#{showCartBackingBean.cartProductList}" 
-                                 var="entry" cellpadding="5" cellspacing="1" first="0" width="100px" dir="LTR" frame="hsides" 
-                                 rules="all">
-
-
-                        <h:column>
-
-                            <f:facet name="header">
-                                <h:outputText value="Name" />
-                            </f:facet> 
-                            <h:outputText value="#{entry.key.name}"></h:outputText>
-                        </h:column>
-
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="No." />
-                            </f:facet> 
-                            <h:outputText value="#{entry.value}"></h:outputText>
-                        </h:column>
-
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="Cost" />
-                            </f:facet> 
-                            <h:outputText value="#{entry.value*entry.key.price}"></h:outputText>
-                        </h:column>
-
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="+/-" />
-                            </f:facet> 
-                            <h:form>     
-
-                                <h:commandLink id="plusButton" value="+" onclick="addProduct()"
-                                               actionListener="#{cartControlBean.actionListener}">
-                                    <f:attribute name="prod" value="${entry.key}"/>
-                                </h:commandLink>
-                                <h:commandLink id="minusButton" value="–" onclick="delProduct()"
-                                               actionListener="#{cartControlBean.actionListener}">
-                                    <f:attribute name="prod" value="${entry.key}"/>
-                                </h:commandLink><br/>
-                            </h:form>  
-
-                        </h:column>
-
-
-                    </h:dataTable>              
-
-                    <h:outputText value="Total Cost: #{showCartBackingBean.totalCartCost}"/>
-
-                    <br/><br/>
-                    <h:form>
-                        <h:commandButton id="buyButton" value="Proceed to checkout"
-                                         actionListener="#{cartControlBean.actionListener}"
-                                         action="/customers/purchase?faces-redirect=true">
-                        </h:commandButton>
-                    </h:form>
                 </nav>
+                <hr />
+
+                <h:dataTable id="tablefastCart" style="font-size: 10px;" value="#{showCartBackingBean.cartProductList}" 
+                             var="entry" cellpadding="5" cellspacing="1" first="0" width="100px" dir="LTR" frame="border" 
+                             rules="all">
+
+
+                    <h:column>
+
+                        <f:facet name="header">
+                            <h:outputText value="Name" />
+                        </f:facet> 
+                        <h:outputText value="#{entry.key.name}"></h:outputText>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="No." />
+                        </f:facet> 
+                        <h:outputText value="#{entry.value}"></h:outputText>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Cost" />
+                        </f:facet> 
+                        <h:outputText value="#{entry.value*entry.key.price}"></h:outputText>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="+/-" />
+
+                        </f:facet> 
+                        <h:form>     
+                            <h:commandLink id="plusButton" value="+" onclick="addProduct()"
+                                           actionListener="#{cartControlBean.actionListener}">
+                                <f:attribute name="prod" value="${entry.key}"/>
+                            </h:commandLink>
+                        </h:form>
+
+                        <h:form id="deleteButton">
+                            <h:commandLink id="minusButton" value="–" onclick="delProduct()"
+                                           actionListener="#{cartControlBean.actionListener}">
+                                <f:attribute name="prod" value="${entry.key}"/>
+                            </h:commandLink><br/>
+                        </h:form>  
+
+                    </h:column>
+
+
+                </h:dataTable>              
+
+                <h:outputText value="Total Cost: #{showCartBackingBean.totalCartCost}"/>
+
+                <br/><br/>
+                <h:form>
+                    <h:commandButton id="buyButton" value="Proceed to checkout"
+                                     actionListener="#{cartControlBean.actionListener}"
+                                     action="/customers/purchase?faces-redirect=true">
+                    </h:commandButton>
+                </h:form>
                 <ui:insert name="left">Left</ui:insert>
             </div>
             <div id="content" class="left_content">
