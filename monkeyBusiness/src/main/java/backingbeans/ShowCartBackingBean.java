@@ -10,6 +10,7 @@ package backingbeans;
  * @author Martin Augustsson && Gustaf Werlinder
  */
 import controlbeans.CartControlBean;
+import core.Customer;
 import core.Product;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -27,6 +28,7 @@ public class ShowCartBackingBean implements Serializable{
     
     private List cartProductList;
     private double totalCartCost;
+    private Customer customer;
     
     public ShowCartBackingBean(){}
 
@@ -45,6 +47,15 @@ public class ShowCartBackingBean implements Serializable{
 
     public void setTotalCartCost(double totalCartCost) {
         this.totalCartCost = totalCartCost;
+    }
+
+    public Customer getCustomer() {
+        cartControlBean.getAndSetUser();
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
     
     

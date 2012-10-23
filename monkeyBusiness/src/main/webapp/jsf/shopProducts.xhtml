@@ -4,81 +4,81 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core">
-    
-    
+
     <body>
+
         <ui:composition template="./template.xhtml">
 
             <ui:define name="top">
-                
+
             </ui:define>
 
             <ui:define name="left">
-                
+
             </ui:define>
 
             <ui:define name="content">
-                <h:dataTable id="table" value="#{shopProductsBackingBean.getAll()}" var="product" 
-                             bgcolor="#F1F1F1" border="10" cellpadding="5" cellspacing="3" 
-                             first="0" width="50%" dir="LTR" frame="border" rules="all"  >
+                <h:form>
+                    <h:dataTable id="table" value="#{searchBackingBean.resultProducts}" var="product" 
+                                 bgcolor="#F1F1F1" border="10" cellpadding="5" cellspacing="3" first="0" 
+                                 width="100%" dir="LTR" frame="border" rules="all"  >
 
-                    <f:facet name="header">
-                        <h:outputText value="Products" />
-                    </f:facet> 
-                    
-                    <h:column>
                         <f:facet name="header">
-                            <h:outputText value="Name" />
-                         </f:facet> 
-                        <h:form> 
-                        <h:commandLink id="showProduct" value="#{product.name}" 
-                                               action="showProduct?faces-redirect=true"
-                                               actionListener="#{showProductControlBean.actionListener}"> 
-                                               <f:attribute name="product" value="${product}" />            
-                        </h:commandLink>
-                        </h:form>    
-                    </h:column>>
+                            <h:outputText value="Products" />
+                        </f:facet> 
 
-                    <h:column>
-                         <f:facet name="header">
-                            <h:outputText value="Price" />
-                         </f:facet> 
-                         <h:outputText value="#{product.price}"></h:outputText>
-                    </h:column>>
-                    <h:column>
-                         <f:facet name="header">
-                             <h:outputText value="RequiredSkill"/><abbr title="The required skill is an indication of how well versed you should be in the art of monkey whispering">&nbsp;INFO</abbr>
-                         </f:facet> 
-                         <h:outputText value="#{productCatalogueBean.getSkillStringValue(product.requiredSkill)}"></h:outputText>
-                    </h:column>>
-                    
-                     <h:column>
-                         <f:facet name="header">
-                             <h:outputText value="Category"/><abbr title="Monkeys come in all kinds and shape, select the one that fits your urban lifestyle">&nbsp;INFO</abbr>
-                         </f:facet> 
-                         <h:outputText value="#{productCatalogueBean.getCategoryStringValue(product.category)}"></h:outputText>
-                    </h:column>>
-                    
-                    <h:column>
-                         <f:facet name="header">
-                            <h:outputText value="Option" />
-                         </f:facet> 
-                             <h:form>     
-                                 <h:commandLink id="Addbutton" onclick="addProduct()" value="Add" 
-                                               action="shopProducts?faces-redirect=true"
-                                               actionListener="#{cartControlBean.actionListener}"> 
-                                               <f:attribute name="prod" value="${product}" />            
-                                 </h:commandLink>
-                     
-                            </h:form>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:commandLink action="#{searchBackingBean.sortByName()}" value="Name" />
+                            </f:facet> 
 
-                    </h:column>
- 
-                </h:dataTable>
+                            <h:commandLink id="showProduct" value="#{product.name}" 
+                                           action="showProduct?faces-redirect=true"
+                                           actionListener="#{showProductControlBean.actionListener}"> 
+                                <f:attribute name="product" value="${product}" />            
+                            </h:commandLink>
+
+                        </h:column>>
+
+                        <h:column>
+                            <f:facet name="header">
+                                <h:commandLink action="#{searchBackingBean.sortBySkill()}" value="Required Skill" /><abbr title="The required skill is an indication of how well versed you should be in the art of monkey whispering">&nbsp;INFO</abbr>
+                            </f:facet> 
+                            <h:outputText value="#{productCatalogueBean.getSkillStringValue(product.requiredSkill)}"></h:outputText>
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">
+                                <h:commandLink action="#{searchBackingBean.sortByCategory()}" value="Category" /><abbr title="Monkeys come in all kinds and shape, select the one that fits your urban lifestyle">&nbsp;INFO</abbr>
+                            </f:facet> 
+                            <h:outputText value="#{productCatalogueBean.getCategoryStringValue(product.category)}"></h:outputText>
+                        </h:column>                        
+                        
+                        <h:column>
+                            <f:facet name="header">
+                                <h:commandLink action="#{searchBackingBean.sortByPrice()}" value="Price" />
+                            </f:facet> 
+                            <h:outputText value="#{product.price}"></h:outputText>
+                        </h:column>
+                        
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Option" />
+                            </f:facet>   
+                            <h:commandLink id="Addbutton" value="Add" onclick="addProduct()"
+                                           actionListener="#{cartControlBean.actionListener}"> 
+                                <f:attribute name="prod" value="${product}" />            
+                            </h:commandLink>
+                            <br/>
+
+                        </h:column>>
+
+                    </h:dataTable>
+                </h:form>
             </ui:define>
 
             <ui:define name="bottom">
-              
+
             </ui:define>
 
         </ui:composition>
