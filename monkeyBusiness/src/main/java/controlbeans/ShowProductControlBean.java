@@ -1,14 +1,14 @@
 package controlbeans;
 
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+* To change this template, choose Tools | Templates
+* and open the template in the editor.
+*/
 
 /**
- *
- * @author thituson
- */
+*
+* @author thituson
+*/
 import backingbeans.DeleteProductBackingBean;
 import backingbeans.ShowProductBackingBean;
 import core.Product;
@@ -30,14 +30,14 @@ public class ShowProductControlBean implements Serializable{
     @Inject
     private ProductCatalogueBean prodCat;
     @Inject
-    private ShowProductBackingBean showProductBackingBean;      
+    private ShowProductBackingBean showProductBackingBean;
             
     
     
     public ShowProductControlBean(){}
     
 
-    public void actionListener(ActionEvent ae) { 
+    public void actionListener(ActionEvent ae) {
         Product product = (Product) ae.getComponent().getAttributes().get("product");
        
         showProductBackingBean.setProd(product);
