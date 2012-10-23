@@ -40,8 +40,10 @@ public class CompletePurchaseControlBean implements Serializable {
     private CustomerShowPurchaseOrderControlBean customerShowPurchaseOrderControlBean; 
     @Inject
     private CartModelBean cartModelBean;
-    PurchaseOrder purchaseOrder;
-    Customer customer;
+    @Inject
+    private CartControlBean cartControlBean;        
+    private PurchaseOrder purchaseOrder;
+    private Customer customer;
 
     public void completePurchaseOrder() {
     }
@@ -52,7 +54,6 @@ public class CompletePurchaseControlBean implements Serializable {
         customer = simpleLogin.getCustomer(userName);
         System.out.println("Customer:" + customer);
         customer.setCart(cartModelBean.getCart());
-        
     }
     public String action()
     {
@@ -65,6 +66,7 @@ public class CompletePurchaseControlBean implements Serializable {
             orderBookModelBean.addOrder(purchaseOrder);
             cartModelBean.clearCart();
             customer.setCart(cartModelBean.getCart());
+                    cartControlBean.getAll();
             customerPurchaseOrdersControlBean.action(customer.getUserName());
             
             customerShowPurchaseOrderControlBean.setPurchaseOrder(purchaseOrder);
