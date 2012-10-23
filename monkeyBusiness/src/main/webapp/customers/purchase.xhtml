@@ -74,11 +74,22 @@
 
                 <br/><br/>
                 <h:outputText value="Shipping adress" style="text-decoration: underline; font-weight: bold;"/> <br/> <br/>
-                <h:outputText value="First name: #{showCartBackingBean.customer.fname}"/> <br/>
-                <h:outputText value="Last name: #{showCartBackingBean.customer.lname}"/> <br/>
-                <h:outputText value="Street: #{showCartBackingBean.customer.address.street}"/> <br/>
-                <h:outputText value="Nr: #{showCartBackingBean.customer.address.nbr}"/> <br/>
-                <h:outputText value="Town: #{showCartBackingBean.customer.address.town}"/> <br/>
+                <table>
+                    <td>
+                        <h:outputText value="First name: "/> <br/>
+                        <h:outputText value="Last name: "/> <br/>
+                        <h:outputText value="Street: "/> <br/>
+                        <h:outputText value="Nr: "/> <br/>
+                        <h:outputText value="Town: "/> <br/>
+                    </td>
+                    <td>
+                        <h:outputText value="#{showCartBackingBean.customer.fname}"/> <br/>
+                        <h:outputText value="#{showCartBackingBean.customer.lname}"/> <br/>
+                        <h:outputText value="#{showCartBackingBean.customer.address.street}"/> <br/>
+                        <h:outputText value="#{showCartBackingBean.customer.address.nbr}"/> <br/>
+                        <h:outputText value="#{showCartBackingBean.customer.address.town}"/> <br/>
+                    </td>
+                </table>
                 <br/><br/>
                 <h:form>
                     <h:commandButton id="buyButton" value="Buy!"
