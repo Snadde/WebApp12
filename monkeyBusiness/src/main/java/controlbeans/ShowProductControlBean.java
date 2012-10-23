@@ -15,7 +15,8 @@ import modelbeans.ProductCatalogueBean;
 /**
 * This class support the ShowProductBackingBean with info that it needs
 * to show product info.
-* @author Patrik Thituson
+* @author Martin Augustsson, Markus Schützer, Gustaf Werlinder och Patrik
+* Thituson
 */
 
 @Named

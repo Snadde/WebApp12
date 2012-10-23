@@ -16,8 +16,13 @@ import modelbeans.CartModelBean;
 import monkeybusiness.SimpleLogin;
 
 /**
- *
- * @author Gustaf Werlinder & Martin Augustsson
+ * This class acts like a control bean for different backingbeans that needs 
+ * to communicate with the cart model bean. And its sessionscoped. The action
+ * listner checks which id the link/button that calld the method have, and then
+ * the switch case desides what to do.
+ * 
+ * @author Martin Augustsson, Markus Schützer, Gustaf Werlinder och Patrik
+ * Thituson
  */
 
 @Named
@@ -33,7 +38,9 @@ public class CartControlBean implements Serializable {
     @Inject
     private SimpleLogin simpleLogin;
 
-
+    /**
+     * Default constructor
+     */
     public CartControlBean() {
     }
 

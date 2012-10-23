@@ -12,8 +12,8 @@ import javax.inject.Named;
 import modelbeans.ProductCatalogueBean;
 
 /**
- *
- * @author Patrik Thituson
+ * @author Martin Augustsson, Markus Schützer, Gustaf Werlinder och Patrik
+ * Thituson
  */
 
 @Named

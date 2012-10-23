@@ -18,8 +18,8 @@ import javax.inject.Named;
 import modelbeans.CustomerRegistryBean;
 
 /**
- *
- * @author Patrik Thituson
+ * @author Martin Augustsson, Markus Schützer, Gustaf Werlinder och Patrik
+ * Thitusonn
  */
 
 @Named
