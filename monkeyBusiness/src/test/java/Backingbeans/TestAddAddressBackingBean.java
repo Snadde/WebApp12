@@ -4,6 +4,8 @@
  */
 package Backingbeans;
 
+import backingbeans.AddAddressBackingBean;
+import junit.framework.Assert;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -12,32 +14,40 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
+ * This class tests the getters and setters for AddAddressBackingBean
  *
  * @author thituson
  */
 public class TestAddAddressBackingBean {
-    
+
+    private AddAddressBackingBean bean;
+
     public TestAddAddressBackingBean() {
     }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
+
     @Before
     public void setUp() {
+        bean = new AddAddressBackingBean();
     }
-    
+
     @After
     public void tearDown() {
+        bean = null;
     }
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+
+    /**
+     * Tests all the getters and setters
+     */
+    @Test
+    public void testGettersAndSetters() {
+        String street = "tempStreet";
+        String town = "tempTown";
+        int nbr = 5;
+        bean.setStreet(street);
+        Assert.assertEquals(bean.getStreet(),street);
+        bean.setNbr(nbr);
+        Assert.assertTrue(bean.getNbr()==nbr);
+        bean.setTown(town);
+        Assert.assertEquals(bean.getTown(),town);
+    }
 }
