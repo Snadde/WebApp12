@@ -7,60 +7,76 @@
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <link href="./../resources/css/default.css" rel="stylesheet" type="text/css" />
-        <link href="./../resources/css/cssLayout.css" rel="stylesheet" type="text/css" />        
+        <h:outputStylesheet library="css" name="default.css"  />
+        <h:outputStylesheet library="css" name="cssLayout.css"  />
         <h:outputScript library="./js/lib" name="jquery-1.7.1.min.js"  target="head" />
         <h:outputScript library="./js/events" name="events.js" target="head" /> 
         <title>Monkey Business</title>
     </h:head>
 
     <h:body>
+            <header>
+                <hgroup>
+                    <h1>Monkey Business</h1>
+                    <h2>Monkeys for everyone!</h2>
+                </hgroup>
+            </header>
 
         <div id="top">
+
             <ui:insert name="top">                            
 
             </ui:insert>
 
             <h:form>
                 <h:panelGroup rendered="#{simpleLogin.isLoggedIn(request.remoteUser)}">
-
-                    <h:commandButton value="Logout" 
-                                     action="#{simpleLogin.logout()}" />
                     <h:outputText value=" Logged in as ${request.remoteUser}" />
-                    <h:commandLink value=" Edit Profile" 
+                    <h:commandLink rendered="#{facesContext.externalContext.isUserInRole('customer')}"
+                                   value=" Edit Profile" 
                                    actionListener="#{editCustomerControlBean.actionListener}"
-                                   action="editCustomer?faces-redirect=true">
-                        <f:attribute name="customer" value="${simpleLogin.customer}"/>
-                    </h:commandLink><br/>   
+                                   action="/customers/editProfile?faces-redirect=true">
+                        <f:attribute name="customer" value="#{simpleLogin.getCustomer(request.remoteUser)}"/>
+                    </h:commandLink>
+                    <h:commandLink rendered="#{facesContext.externalContext.isUserInRole('admin')}"
+                                   value=" Edit Profile" 
+                                   actionListener="#{editCustomerControlBean.actionListener}"
+                                   action="/admins/editCustomer?faces-redirect=true">
+                        <f:attribute name="customer" value="#{simpleLogin.getCustomer(request.remoteUser)}"/>
+                    </h:commandLink>
+                    ||<h:commandLink action="#{simpleLogin.logout()}" value=" Logout" /><br/> 
                 </h:panelGroup>
             </h:form>
             <h:panelGroup rendered="#{!simpleLogin.isLoggedIn(request.remoteUser)}">
                 <h:link value="Login" outcome="login"/> ||
-                <h:link value="Register" outcome="newCustomer"/> ||
-                <h:link value="Admin Page" outcome="/admins/adminProducts?faces-redirect=true"/>
+                <h:link value="Register" outcome="newCustomer"/>
             </h:panelGroup>
         </div>
         <div>
             <div id="left">
 
                 <nav>
-
+                    <h:panelGroup rendered="#{facesContext.externalContext.isUserInRole('admin')}">
+                        <h:link value=" Admin Page" outcome="/admins/adminProducts?faces-redirect=true"/><br/>
+                    </h:panelGroup>                   
+                    <h:link value="Search" outcome="searchEngine"/><br/>
+                    <h:form>
+                        <h:commandLink value="Products" action="#{searchControlBean.setAll}"/><br/>
+                    </h:form>
                     <h:form>
                         <h:commandLink id="showCart" value="Show Cart" action="showCart?faces-redirect=true"
                                        actionListener="#{cartControlBean.actionListener}"/><br/>
-                        <h:commandLink value="Purchase Orders" 
-                                       action="#{customerPurchaseOrdersControlBean.action(request.remoteUser)}"/><br/>
+                        <h:panelGroup rendered="#{facesContext.externalContext.isUserInRole('customer')}">
+                            <h:commandLink value="Purchase Orders" 
+                                           action="#{customerPurchaseOrdersControlBean.action(request.remoteUser)}"/><br/>
+                        </h:panelGroup>
                     </h:form>
-
-                    <h:link value="Products" outcome="shopProducts"/><br/>
-                    <h:link value="Search" outcome="searchEngine"/><br/>
                 </nav>
                 <hr />
 
 
 
                 <h:dataTable id="tablefastCart" style="font-size: 10px;" value="#{showCartBackingBean.cartProductList}" 
-                             var="entry" cellpadding="5" cellspacing="1" first="0" width="100px" dir="LTR" frame="hsides" 
+                             var="entry" cellpadding="5" cellspacing="1" first="0" width="100px" dir="LTR" frame="border" 
                              rules="all">
 
 
@@ -114,21 +130,26 @@
 
                 <br/><br/>
                 <h:form>
-                    <h:commandButton id="buyButton" value="Proceed to checkout" style="background-color: forestgreen; color: #ffffff;"
+                    <h:commandButton id="checkOutButton" value="Proceed to checkout"
                                      actionListener="#{cartControlBean.actionListener}"
                                      action="/customers/purchase?faces-redirect=true">
+                        <f:attribute name="userName" value="${request.remoteUser}"/>
                     </h:commandButton>
                 </h:form>
 
                 <ui:insert name="left"></ui:insert>
             </div>
             <div id="content" class="left_content">
-                <ui:insert name="content">Content</ui:insert>
+                <ui:insert name="content"></ui:insert>
             </div>
         </div>
         <div style="clear: both;" />
         <div id="bottom">
-            <ui:insert name="bottom">Bottom</ui:insert>
+            © MonkeyBusiness │ Kontakt: 
+            <h:outputLink value="mailto:support@monkey.business.com">
+                <h:outputText value="support@monkey.business.com" />
+            </h:outputLink> │ Tel: 031-987654
+            <ui:insert name="bottom"></ui:insert>
         </div>
 
     </h:body>

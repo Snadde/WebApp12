@@ -5,7 +5,8 @@ package controlbeans;
  * attributes from the backing bean (view part). It creates a product and adds
  * it to the product catalogue bean (model).
  *
- * @author Patrik Thituson
+ * @author Martin Augustsson, Markus Schützer, Gustaf Werlinder och Patrik
+ * Thituson
  */
 import backingbeans.AddProductBackingBean;
 import core.Product;

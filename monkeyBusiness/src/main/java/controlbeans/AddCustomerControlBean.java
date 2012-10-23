@@ -1,15 +1,5 @@
 package controlbeans;
 
-/**
- * This class acts like the controller and is conversationScoped. It starts a
- * conversation to get all the attributes from the backing bean (view par). It
- * checks so the username isn´t in use before it ends the conversation and sends
- * an add request to the customer registry bean. If the username is in use it
- * sends back a message and the attributes is still in the form because the
- * conversation is not ended.
- *
- * @author Patrik Thituson
- */
 import backingbeans.AddAddressBackingBean;
 import backingbeans.AddCustomerBackingBean;
 import core.Address;
@@ -18,6 +8,7 @@ import core.Group;
 import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.annotation.security.RolesAllowed;
 import javax.enterprise.context.*;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -25,8 +16,21 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import modelbeans.CustomerRegistryBean;
 
+/**
+ * This class acts like the controller and is conversationScoped. It starts a
+ * conversation to get all the attributes from the backing bean (view par). It
+ * checks so the username isn´t in use before it ends the conversation and sends
+ * an add request to the customer registry bean. If the username is in use it
+ * sends back a message and the attributes is still in the form because the
+ * conversation is not ended.
+ *
+ * @author Martin Augustsson, Markus Schützer, Gustaf Werlinder och Patrik
+ * Thituson
+ */
+
 @Named
 @ConversationScoped
+@RolesAllowed("admin")
 public class AddCustomerControlBean implements Serializable {
 
     @Inject 

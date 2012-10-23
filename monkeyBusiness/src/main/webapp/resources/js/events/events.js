@@ -1,4 +1,10 @@
-     function addProduct()
+
+       /**
+        * This jquery script gets called from xhtml when adding a product to the cart,
+        * it will make the cart flash green momentarily to signal that a product has
+        * been added to the cart
+        */
+        function addProduct()
         {
             color = $("#tablefastCart").css("background-color");
             //$(this).css("background-color", "green");
@@ -12,6 +18,11 @@
                 }
         }
         
+        /**
+         * This jquery script gets called from xhtml when adding a product to the cart,
+         * it will make the cart flash green momentarily to signal that a product has
+         * been added to the cart
+         */
         function delProduct()
         {
             color = $("#tablefastCart").css("background-color");

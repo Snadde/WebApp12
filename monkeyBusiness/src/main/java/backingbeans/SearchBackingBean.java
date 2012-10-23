@@ -1,13 +1,5 @@
 package backingbeans;
 
-/*
- * The sorting algorithm for sorting results is inspired by http://www.mkyong.com/jsf2/jsf-2-datatable-sorting-example/
- */
-
-/**
- *
- * @author marschu & thituson
- */
 import core.Product;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -17,6 +9,14 @@ import java.util.List;
 import javax.enterprise.context.*;
 import javax.inject.Named;
 
+/**
+ * This class is used for searching for products. As of now user can only search
+ * for the name of a product. This class also helps sorting the lists of search
+ * results. The algorithm for this is inspired by http://www.mkyong.com/jsf2/jsf
+ * -2-datatable-sorting-example/
+ * 
+ * @author Patrik Thituson, Martin Augustsson, Gustaf Werlinder, Markus Schutzer
+ */
 @Named
 @SessionScoped
 public class SearchBackingBean implements Serializable{
@@ -30,27 +30,48 @@ public class SearchBackingBean implements Serializable{
     private boolean sortSkillUp = true;
     private boolean sortCategoryUp = true;
 
+    /**
+     * Default constructor
+     */
     public SearchBackingBean(){}
 
+    /**
+     * Get method for the search name to use to search for the product
+     * @return searchName the search string
+     */
     public String getSearchName() {
         return searchName;
     }
 
+    /**
+     * Set method for the search string to use to find a product
+     * @param searchString the string to use in search
+     */
     public void setSearchName(String searchString) {
         this.searchName = searchString;
     }
 
-
+    /**
+     * Set method for the found products of user search, the hits will be placed in list
+     * @param resultProducts list of found products 
+     */
     public void setResultProducts(List<Product> resultProducts) {
         this.resultProducts = resultProducts;
     }
 
+    /**
+     * Get method for the list of products that corresponded to the search string
+     * @return resultProducts list of found products
+     */
     public List<Product> getResultProducts() {
         return resultProducts;
 
     }
     
-    
+    /**
+     * Simple sorting algorithm by product name, can sort both descending and ascending
+     * @return null
+     */
     public String sortByName() 
     {
  
@@ -80,6 +101,10 @@ public class SearchBackingBean implements Serializable{
         return null;
     }
     
+    /**
+     * Simple sorting algorithm by product price, sorts descending and ascending
+     * @return null
+     */
     public String sortByPrice()
     {
         if(sortPriceUp)
@@ -108,6 +133,11 @@ public class SearchBackingBean implements Serializable{
         return null;
     }
     
+    /**
+     * Simple sorting algorithm in regards to the required skill of the product,
+     * ascending and descending
+     * @return null
+     */
     public String sortBySkill()
     {
         if(sortSkillUp)
@@ -136,6 +166,11 @@ public class SearchBackingBean implements Serializable{
         return null;
     }
     
+    /**
+     * Simple sorting algorithm in regards to product category, sorts ascending
+     * and descending
+     * @return null
+     */
     public String sortByCategory()
     {
         if(sortCategoryUp)

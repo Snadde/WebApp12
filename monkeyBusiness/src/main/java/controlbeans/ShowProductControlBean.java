@@ -1,14 +1,5 @@
 package controlbeans;
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author thituson
- */
 import backingbeans.DeleteProductBackingBean;
 import backingbeans.ShowProductBackingBean;
 import core.Product;
@@ -21,6 +12,13 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import modelbeans.ProductCatalogueBean;
 
+/**
+* This class support the ShowProductBackingBean with info that it needs
+* to show product info.
+* @author Martin Augustsson, Markus Schützer, Gustaf Werlinder och Patrik
+* Thituson
+*/
+
 @Named
 @RequestScoped
 public class ShowProductControlBean implements Serializable{
@@ -30,14 +28,16 @@ public class ShowProductControlBean implements Serializable{
     @Inject
     private ProductCatalogueBean prodCat;
     @Inject
-    private ShowProductBackingBean showProductBackingBean;      
+    private ShowProductBackingBean showProductBackingBean;
             
-    
-    
     public ShowProductControlBean(){}
-    
 
-    public void actionListener(ActionEvent ae) { 
+    /**
+     * Prepares the ShowProductBackingBean with right info about the 
+     * product that was clicked
+     * @param ae the action event that trigged this action listener
+     */
+    public void actionListener(ActionEvent ae) {
         Product product = (Product) ae.getComponent().getAttributes().get("product");
        
         showProductBackingBean.setProd(product);
@@ -46,9 +46,5 @@ public class ShowProductControlBean implements Serializable{
         String category = prodCat.getCategoryStringValue(product.getCategory());
         showProductBackingBean.setCategory(category);
 
-        
     }
-
- 
-      
 }

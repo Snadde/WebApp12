@@ -1,13 +1,5 @@
 package backingbeans;
 
-/**
- * * This class acts like a view part and holds the information of the Customer
- * class. The user sets the attributes in the form and the control bean will get
- * all attributes to create the class. It only contains attributes and getters
- * and setters
- *
- * @author Patrik Thituson
- */
 import core.Address;
 import java.io.Serializable;
 import javax.enterprise.context.*;
@@ -16,6 +8,14 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+/**
+ * * This class acts like a view part and holds the information of the Customer
+ * class. The user sets the attributes in the form and the control bean will get
+ * all attributes to create the class. It only contains attributes and getters
+ * and setters
+ *
+ * @author Patrik Thituson, Martin Augustsson, Gustaf Werlinder, Markus Schutzer
+ */
 @Named
 @ConversationScoped
 public class AddCustomerBackingBean implements Serializable {
@@ -34,88 +34,91 @@ public class AddCustomerBackingBean implements Serializable {
     @Size(min = 1, message = "Must enter a password")
     private String password;
 
+    /**
+     * Default constructor
+     */
     public AddCustomerBackingBean(){}
 
     /**
-     *
-     * @return fname
+     * Get method for the user's first name
+     * @return fname string of user's first name
      */
     public String getFname() {
         return fname;
     }
 
     /**
-     * Sets fname
+     * Sets first name of the user
      *
-     * @param fname
+     * @param fname the first name of user
      */
     public void setFname(String fname) {
         this.fname = fname;
     }
 
     /**
-     *
-     * @return lname
+     * Get method for user's last name
+     * @return lname the user's last name
      */
     public String getLname() {
         return lname;
     }
 
     /**
-     * Sets the lname
+     * Set method for user's last name
      *
-     * @param lname
+     * @param lname the last name of the user
      */
     public void setLname(String lname) {
         this.lname = lname;
     }
 
     /**
-     *
-     * @return email
+     * Get method for user's email
+     * @return email the user email
      */
     public String getEmail() {
         return email;
     }
 
     /**
-     * Sets the email
+     * Set method for user's email
      *
-     * @param email
+     * @param email the user's email
      */
     public void setEmail(String email) {
         this.email = email;
     }
 
     /**
-     *
-     * @return username
+     * Get method for user's username
+     * @return username the username in use by customer
      */
     public String getUserName() {
         return userName;
     }
 
     /**
-     * Sets the username
+     * Sets the username of the user
      *
-     * @param userName
+     * @param userName the username to be used by customer, used for login purposes
      */
     public void setUserName(String userName) {
         this.userName = userName;
     }
 
     /**
-     *
-     * @return password
+     * Get method for user's password 
+     * @return password the password in use by customer, in string from
      */
     public String getPassword() {
         return password;
     }
 
     /**
-     * Sets the password
+     * Set method for the user's password
      *
-     * @param password
+     * @param password the designated password for the user
      */
     public void setPassword(String password) {
         this.password = password;

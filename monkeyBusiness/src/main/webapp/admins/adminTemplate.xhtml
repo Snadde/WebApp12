@@ -7,20 +7,30 @@
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <link href="./../resources/css/default.css" rel="stylesheet" type="text/css" />
-        <link href="./../resources/css/cssLayout.css" rel="stylesheet" type="text/css" />
+        <h:outputStylesheet library="css" name="default.css"  />
+        <h:outputStylesheet library="css" name="cssLayout.css"  />
         <title>Facelets Template</title>
     </h:head>
 
     <h:body>
-
+        <header>
+            <hgroup>
+                <h1>Monkey Business</h1>
+                <h2>Monkeys for everyone!</h2>
+            </hgroup>
+        </header>
         <div id="top">
             <ui:insert name="top">                            
 
             </ui:insert>
             <h:form>   
-                <h:commandButton action="#{simpleLogin.logout()}" value="Logout" />
                 <h:outputText value=" Logged in as ${request.remoteUser}" />
+                <h:commandLink value=" Edit Profile" 
+                               actionListener="#{editCustomerControlBean.actionListener}"
+                               action="/admins/editCustomer?faces-redirect=true">
+                    <f:attribute name="customer" value="#{simpleLogin.getCustomer(request.remoteUser)}"/>
+                </h:commandLink>
+                ||<h:commandLink action="#{simpleLogin.logout()}" value=" Logout" /><br/>   
             </h:form>
 
         </div>
@@ -39,6 +49,10 @@
         </div>
         <div style="clear: both;" />
         <div id="bottom">
+            © MonkeyBusiness │ Kontakt: 
+            <h:outputLink value="mailto:support@monkey.business.com">
+                <h:outputText value="support@monkey.business.com" />
+            </h:outputLink> │ Tel: 031-987654
             <ui:insert name="bottom">Bottom</ui:insert>
         </div>
 

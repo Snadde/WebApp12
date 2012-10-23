@@ -41,12 +41,6 @@
 
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="Price" />
-                            </f:facet> 
-                            <h:outputText value="#{product.price}"></h:outputText>
-                        </h:column>>
-                        <h:column>
-                            <f:facet name="header">
                                 <h:outputText value="RequiredSkill" />
                             </f:facet> 
                             <h:outputText value="#{productCatalogueBean.getSkillStringValue(product.requiredSkill)}"></h:outputText>
@@ -59,6 +53,13 @@
                             <h:outputText value="#{productCatalogueBean.getCategoryStringValue(product.category)}"></h:outputText>
                         </h:column>>
 
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Price" />
+                            </f:facet> 
+                            <h:outputText value="#{product.price}"></h:outputText>
+                        </h:column>                        
+                        
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="Option" />
@@ -84,7 +85,7 @@
             </ui:define>
 
             <ui:define name="bottom">
-                bottom
+               
             </ui:define>
 
         </ui:composition>
