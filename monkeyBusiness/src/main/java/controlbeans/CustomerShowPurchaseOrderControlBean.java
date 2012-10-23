@@ -5,6 +5,7 @@ import core.OrderItem;
 import core.PurchaseOrder;
 import java.io.Serializable;
 import java.util.List;
+import javax.annotation.security.RolesAllowed;
 import javax.enterprise.context.*;
 import javax.faces.event.ActionEvent;
 import javax.inject.Inject;
@@ -20,6 +21,7 @@ import javax.inject.Named;
 
 @Named
 @SessionScoped
+@RolesAllowed("customer")
 public class CustomerShowPurchaseOrderControlBean implements Serializable {
 
     @Inject

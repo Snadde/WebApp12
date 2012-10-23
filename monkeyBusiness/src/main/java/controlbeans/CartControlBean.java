@@ -6,6 +6,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Set;
+import javax.annotation.security.RolesAllowed;
 import javax.enterprise.context.*;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
@@ -62,6 +63,7 @@ public class CartControlBean implements Serializable {
      * the showCartBackingBean.
      * 
      */
+    @RolesAllowed({"admin","customer"})
     public void getAndSetUser(){
         FacesContext context = FacesContext.getCurrentInstance();
         HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();

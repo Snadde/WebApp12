@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.annotation.security.RolesAllowed;
 import javax.enterprise.context.*;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -24,6 +25,7 @@ import modelbeans.CustomerRegistryBean;
 
 @Named
 @ConversationScoped
+@RolesAllowed({"admin","customer"})
 public class EditCustomerControlBean implements Serializable {
 
     @Inject // Handled by system, don't need to create class.

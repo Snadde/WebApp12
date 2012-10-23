@@ -1,5 +1,21 @@
 package controlbeans;
 
+import backingbeans.AddAddressBackingBean;
+import backingbeans.AddCustomerBackingBean;
+import core.Address;
+import core.Customer;
+import core.Group;
+import java.io.Serializable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.annotation.security.RolesAllowed;
+import javax.enterprise.context.*;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import javax.inject.Inject;
+import javax.inject.Named;
+import modelbeans.CustomerRegistryBean;
+
 /**
  * This class acts like the controller and is conversationScoped. It starts a
  * conversation to get all the attributes from the backing bean (view par). It
@@ -11,23 +27,10 @@ package controlbeans;
  * @author Martin Augustsson, Markus Schützer, Gustaf Werlinder och Patrik
  * Thituson
  */
-import backingbeans.AddAddressBackingBean;
-import backingbeans.AddCustomerBackingBean;
-import core.Address;
-import core.Customer;
-import core.Group;
-import java.io.Serializable;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.enterprise.context.*;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
-import javax.inject.Inject;
-import javax.inject.Named;
-import modelbeans.CustomerRegistryBean;
 
 @Named
 @ConversationScoped
+@RolesAllowed("admin")
 public class AddCustomerControlBean implements Serializable {
 
     @Inject 

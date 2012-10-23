@@ -3,6 +3,7 @@ package controlbeans;
 import core.Customer;
 import java.io.Serializable;
 import java.util.List;
+import javax.annotation.security.RolesAllowed;
 import javax.enterprise.context.*;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -19,6 +20,7 @@ import modelbeans.CustomerRegistryBean;
 
 @Named
 @SessionScoped
+@RolesAllowed("admin")
 public class CustomersControlBean implements Serializable{
     @Inject
     private CustomerRegistryBean customerRegistryBean;

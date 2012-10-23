@@ -5,6 +5,7 @@ import core.Product;
 import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.annotation.security.RolesAllowed;
 import javax.enterprise.context.*;
 import javax.faces.event.ActionEvent;
 import javax.inject.Inject;
@@ -18,6 +19,7 @@ import modelbeans.ProductCatalogueBean;
 
 @Named
 @ConversationScoped
+@RolesAllowed("admin")
 public class DeleteProductControlBean implements Serializable{
     
     @Inject // Handled by system, don't need to create class.

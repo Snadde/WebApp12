@@ -7,6 +7,7 @@ import core.Customer;
 import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.annotation.security.RolesAllowed;
 import javax.enterprise.context.*;
 import javax.faces.event.ActionEvent;
 import javax.inject.Inject;
@@ -19,6 +20,7 @@ import modelbeans.CustomerRegistryBean;
  */
 @Named
 @ConversationScoped
+@RolesAllowed("admin")
 public class DeleteCustomerControlBean implements Serializable {
 
     @Inject // Handled by system, don't need to create class.

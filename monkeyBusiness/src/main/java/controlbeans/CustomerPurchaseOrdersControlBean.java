@@ -3,6 +3,7 @@ package controlbeans;
 import backingbeans.CustomerPurchaseOrdersBackingBean;
 import core.Customer;
 import java.io.Serializable;
+import javax.annotation.security.RolesAllowed;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.event.ActionEvent;
 import javax.inject.Inject;
@@ -20,6 +21,7 @@ import monkeybusiness.SimpleLogin;
  */
 @Named
 @SessionScoped
+@RolesAllowed("customer")
 public class CustomerPurchaseOrdersControlBean implements Serializable{
     
     @Inject
