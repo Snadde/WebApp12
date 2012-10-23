@@ -1,13 +1,5 @@
 package controlbeans;
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-/**
- *
- * @author Gustaf Werlinder && Martin Augustsson
- */
 import backingbeans.CustomerShowPurchaseOrderBackingBean;
 import core.OrderItem;
 import core.PurchaseOrder;
@@ -18,6 +10,12 @@ import javax.faces.event.ActionEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+/**
+ * This class is a control bean that prepares the CustomerShowPurchaseOrderBackingBean
+ * to show the information about a specific pruchase order.
+ * 
+ * @author Gustaf Werlinder & Martin Augustsson
+ */
 
 @Named
 @SessionScoped
@@ -33,13 +31,18 @@ public class CustomerShowPurchaseOrderControlBean implements Serializable {
     }
     
     /**
-     * 
+     * Gets the list of items from the purchase order and sets OrderitemList in
+     * customerShowPurchaseOrderBackingBean
      */
     public void makeOrderitemList() {
         orderitemsList = purchaseOrder.getItems();
         customerShowPurchaseOrderBackingBean.setOrderitemList(orderitemsList);
     }
-
+    
+    /**
+     * Calculate total order cost and set it in  
+     * customerShowPurchaseOrderBackingBean
+     */
     public void calculateTotalOrderCost() {
         double cost = 0;
         for(OrderItem o : orderitemsList)
@@ -49,6 +52,11 @@ public class CustomerShowPurchaseOrderControlBean implements Serializable {
         customerShowPurchaseOrderBackingBean.setTotalOrderCost(cost);
     }
 
+    /**
+     * Gets which purchase order is clicked and call methods that 
+     * prepares the customerShowPurchaseOrderBackingBean
+     * @param ae 
+     */
     public void actionListener(ActionEvent ae) {
 
         purchaseOrder = (PurchaseOrder) ae.getComponent().getAttributes().get("purchaseOrder");
@@ -56,6 +64,10 @@ public class CustomerShowPurchaseOrderControlBean implements Serializable {
         this.calculateTotalOrderCost();
     }
 
+    /**
+     * Sets the local Purchase Order
+     * @param purchaseOrder 
+     */
     public void setPurchaseOrder(PurchaseOrder purchaseOrder) {
         this.purchaseOrder = purchaseOrder;
     }
