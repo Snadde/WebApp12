@@ -8,7 +8,6 @@ package controlbeans;
  *
  * @author Gustaf Werlinder && Martin Augustsson
  */
-import backingbeans.ShopProductsBackingBean;
 import backingbeans.ShowCartBackingBean;
 import core.Product;
 import java.io.Serializable;
@@ -29,8 +28,6 @@ public class CartControlBean implements Serializable {
     private Conversation conv;
     @Inject
     private CartModelBean cartModelBean;
-    @Inject
-    private ShopProductsBackingBean shopProductsBackingBean;
     @Inject
     private ShowCartBackingBean showCartBackingBean;
 

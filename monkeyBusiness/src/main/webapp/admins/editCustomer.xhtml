@@ -10,11 +10,11 @@
         <ui:composition template="./adminTemplate.xhtml">
 
             <ui:define name="top">
-                
+
             </ui:define>
 
             <ui:define name="left">
-                
+
             </ui:define>
 
             <ui:define name="content">
@@ -29,14 +29,16 @@
                         City <h:inputText value="#{editCustomerBackingBean.address.town}"  />
                         <h:selectBooleanCheckbox value="#{editCustomerBackingBean.isAdmin}"/> Admin
                     </h:panelGrid>
-                    
+
                     <h:commandButton value="edit" 
                                      action="#{editCustomerControlBean.action}" />
                 </h:form>
+                <h:outputText id="profilesaved"/>
+                <FONT COLOR="#FF0000"><h:message class="error" for="profilesaved" /></FONT>
             </ui:define>
 
             <ui:define name="bottom">
-             
+
             </ui:define>
 
         </ui:composition>
