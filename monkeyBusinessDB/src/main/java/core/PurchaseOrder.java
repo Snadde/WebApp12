@@ -17,7 +17,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 /**
- * A purchase order based on hajo's shop
+ * A purchase order inspired by hajo's shop
  *
  * @author Martin Augustsson, Markus Schützer, Gustaf Werlinder 
  * och Patrik Thituson
