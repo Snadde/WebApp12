@@ -8,7 +8,8 @@ package controlbeans;
  * sends back a message and the attributes is still in the form because the
  * conversation is not ended.
  *
- * @author Patrik Thituson
+ * @author Martin Augustsson, Markus Schützer, Gustaf Werlinder och Patrik
+ * Thituson
  */
 import backingbeans.AddAddressBackingBean;
 import backingbeans.AddCustomerBackingBean;

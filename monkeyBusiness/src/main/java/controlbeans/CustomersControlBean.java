@@ -13,7 +13,8 @@ import modelbeans.CustomerRegistryBean;
  * the list of all customers registred and also to add more customers to the 
  * registry
  * 
- * @author Patrik Thituson
+ * @author Martin Augustsson, Markus Schützer, Gustaf Werlinder och Patrik
+ * Thituson
  */
 
 @Named
