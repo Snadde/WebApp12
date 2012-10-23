@@ -9,6 +9,7 @@ import core.Customer;
 import core.OrderItem;
 import core.PurchaseOrder;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
@@ -50,14 +51,14 @@ public class CompletePurchaseControlBean implements Serializable {
 
     public void actionListener(ActionEvent ae) {
         String userName = (String) ae.getComponent().getAttributes().get("userName");
-        System.out.println(userName);
         customer = simpleLogin.getCustomer(userName);
-        System.out.println("Customer:" + customer);
         customer.setCart(cartModelBean.getCart());
     }
     public String action()
     {
         purchaseOrder = customer.finishShopping();
+        Date date = new Date();
+        purchaseOrder.setDate(date);
         List<OrderItem> listOfItems = purchaseOrder.getItems();
         if (listOfItems.isEmpty()) {
             FacesContext.getCurrentInstance().addMessage("noItems", new FacesMessage("Your cart is empty"));

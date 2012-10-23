@@ -26,7 +26,7 @@ public class PurchaseOrder  implements Serializable {
 
     public enum State {  
         ACCEPTED,
-        CANCELLED,
+        CANCELED,
         INVOICED,
         UNINVOIDED,
         SHIPPED,}
@@ -36,7 +36,7 @@ public class PurchaseOrder  implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id ; //= new Long(new Random().nextInt(100));
     @Temporal(TemporalType.TIMESTAMP)
-    private transient Date date = new Date();
+    private Date date;
     @OneToMany(fetch= FetchType.EAGER, cascade={CascadeType.PERSIST, CascadeType.REMOVE})
     private  List<OrderItem> items;
     @ManyToOne//( cascade={CascadeType.REFRESH},fetch = FetchType.EAGER)
@@ -47,7 +47,10 @@ public class PurchaseOrder  implements Serializable {
     public PurchaseOrder() {
     }
 
-    // Can't create order with no Customer
+    /**
+     * 
+     * @param customer 
+     */
     public PurchaseOrder(Customer customer) {
         this.customer = customer;
         items = new ArrayList<>();
@@ -57,27 +60,62 @@ public class PurchaseOrder  implements Serializable {
         }
     }
 
+    /**
+     * 
+     * @return date when purchase order was created
+     */
     public Date getDate() {
         return date;
     }
+    
+    /**
+     * 
+     * @param date 
+     *      the date when customer order is created
+     */
+    public void setDate(Date date)
+    {   this.date = new Date();
+        this.date = date;
+    }
 
+    /**
+     * 
+     * @return a List of the items in the Purchase order
+     */
     public List<OrderItem> getItems() {
         return items;
     }
 
+    /**
+     * 
+     * @return the customer that made the Purchase order
+     */
     public Customer getCustomer() {
         return customer;
     }
 
+    /**
+     * 
+     * @return the state that tells if the purchase order i.e. accepted,
+     * canceled, invoiced, uninvoiced or shipped.
+     */
     public State getState() {
         return state;
     }
 
-
+    /**
+     * 
+     * @return id of the purchase order
+     */
     public Long getId() {
         return id;
     }
 
+    /**
+     * 
+     * @return a sting consisting of id, date, items, costumer and state
+     * of the purchase order.
+     */
     @Override
     public String toString() {
         return "PurchaseOrder{" + "id=" + id + ", date=" + date + 
