@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package controlbeans;
 
 import backingbeans.CustomerPurchaseOrdersBackingBean;
@@ -22,7 +18,10 @@ import modelbeans.OrderBookModelBean;
 import monkeybusiness.SimpleLogin;
 
 /**
- *
+ *This class is a control bean that prepares the saves the purchase orders
+ * to the database. Also checking if the purchase order is empty before
+ * saving it to database.
+ * 
  * @author Gustaf Werlinder
  */
 @Named
@@ -49,11 +48,25 @@ public class CompletePurchaseControlBean implements Serializable {
     public void completePurchaseOrder() {
     }
 
+    /**
+     * Gets the customer that is logged in and set customers cart so it refers
+     * to the cartModelBean that is assosiated with the session.
+     * @param ae 
+     */
     public void actionListener(ActionEvent ae) {
         String userName = (String) ae.getComponent().getAttributes().get("userName");
         customer = simpleLogin.getCustomer(userName);
         customer.setCart(cartModelBean.getCart());
     }
+    
+    /**
+     * Makes a purchase order by calling the finishShopping in customer.
+     * Checks if the purchase order is empty, if it is then we are note saving it
+     * else save it to the database and make a new cart for the customer if 
+     * she/he wants to buy something else.
+     * 
+     * @return the page that we should redirect to.
+     */
     public String action()
     {
         purchaseOrder = customer.finishShopping();

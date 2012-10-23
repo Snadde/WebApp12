@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package controlbeans;
 
 import backingbeans.CustomerPurchaseOrdersBackingBean;
@@ -16,7 +12,9 @@ import monkeybusiness.SimpleLogin;
 
 
 /**
- *
+ * This class is a control bean that prepares the CustomerPurchaseOrdersBackingBean
+ * to show the information about a specific pruchase order.
+ * 
  * @author Gustaf Werlinder && Martin Augustsson
  */
 @Named
@@ -32,12 +30,22 @@ public class CustomerPurchaseOrdersControlBean implements Serializable{
 
     
     public void CustomerPurcchaseOrdersControlBean(){}
-        
+    
+    /**
+     * Get which user is calling this function, then pass it to the action method
+     * @param ae 
+     */
     public void actionListener(ActionEvent ae) {
         String userName = (String) ae.getComponent().getAttributes().get("userName");
         this.action(userName);
     }
     
+    /**
+     * Sets the customer and the list of purchase orders done by that 
+     * customer to CustomerPurchaseOrdersBackingBean  
+     * @param userName
+     * @return the site to redirect to.
+     */
     public String action(String userName) {
         
         Customer customer = simpleLogin.getCustomer(userName);
