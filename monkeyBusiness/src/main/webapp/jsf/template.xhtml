@@ -15,8 +15,15 @@
     </h:head>
 
     <h:body>
+            <header>
+                <hgroup>
+                    <h1><a href="#">Monkey Business</a></h1>
+                    <h2>Monkeys for everyone!</h2>
+                </hgroup>
+            </header>
 
         <div id="top">
+
             <ui:insert name="top">                            
 
             </ui:insert>
@@ -123,9 +130,10 @@
 
                 <br/><br/>
                 <h:form>
-                    <h:commandButton id="buyButton" value="Proceed to checkout"
+                    <h:commandButton id="checkOutButton" value="Proceed to checkout"
                                      actionListener="#{cartControlBean.actionListener}"
                                      action="/customers/purchase?faces-redirect=true">
+                        <f:attribute name="userName" value="${request.remoteUser}"/>
                     </h:commandButton>
                 </h:form>
 

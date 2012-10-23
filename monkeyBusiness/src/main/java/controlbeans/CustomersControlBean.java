@@ -1,8 +1,5 @@
 package controlbeans;
 
-/**
- * @author thituson
- */
 import core.Customer;
 import java.io.Serializable;
 import java.util.List;
@@ -10,6 +7,14 @@ import javax.enterprise.context.*;
 import javax.inject.Inject;
 import javax.inject.Named;
 import modelbeans.CustomerRegistryBean;
+
+/**
+ * This class acts like the controller and is sessionscoped. It is used to get
+ * the list of all customers registred and also to add more customers to the 
+ * registry
+ * 
+ * @author Patrik Thituson
+ */
 
 @Named
 @SessionScoped
@@ -19,11 +24,19 @@ public class CustomersControlBean implements Serializable{
     
     public CustomersControlBean(){}
     
+    /**
+     * Add a customer to the database
+     * @param customer 
+     */
     public void add(Customer customer)
     {
         customerRegistryBean.add(customer);
     }
-     
+    
+    /**
+     * 
+     * @return all customers in the database
+     */ 
     public List<Customer> getAll() {
         return customerRegistryBean.getAll();
     }

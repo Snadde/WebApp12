@@ -17,9 +17,10 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 /**
- * A purchase order
+ * A purchase order based on hajo's shop
  *
- * @author hajo
+ * @author Martin Augustsson, Markus Schützer, Gustaf Werlinder 
+ * och Patrik Thituson
  */
 @Entity
 public class PurchaseOrder  implements Serializable {
@@ -30,17 +31,15 @@ public class PurchaseOrder  implements Serializable {
         INVOICED,
         UNINVOIDED,
         SHIPPED,}
-    
-    // For now. Later database will generate id
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id ; //= new Long(new Random().nextInt(100));
+    private Long id ; 
     @Temporal(TemporalType.TIMESTAMP)
     private Date date;
     @OneToMany(fetch= FetchType.EAGER, cascade={CascadeType.PERSIST, CascadeType.REMOVE})
     private  List<OrderItem> items;
-    @ManyToOne//( cascade={CascadeType.REFRESH},fetch = FetchType.EAGER)
-    //@JoinColumn(name = "CUSTOMER_ID")
+    @ManyToOne
     private  Customer customer;
     private State state = State.ACCEPTED;
 
@@ -48,7 +47,8 @@ public class PurchaseOrder  implements Serializable {
     }
 
     /**
-     * 
+     * Makes the Purchase Order by taking the customer as a param
+     * to get ref to the shoppingcart
      * @param customer 
      */
     public PurchaseOrder(Customer customer) {
@@ -71,7 +71,7 @@ public class PurchaseOrder  implements Serializable {
     /**
      * 
      * @param date 
-     *      the date when customer order is created
+     * the date when customer order is created
      */
     public void setDate(Date date)
     {   this.date = new Date();

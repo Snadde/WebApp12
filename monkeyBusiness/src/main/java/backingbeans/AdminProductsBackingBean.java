@@ -19,9 +19,13 @@ public class AdminProductsBackingBean implements Serializable{
     @Inject
     private ProductCatalogueBean productCatalogueBean;
 
-    public AdminProductsBackingBean(){}
     /**
-     * 
+     * Default constructor
+     */
+    public AdminProductsBackingBean(){}
+    
+    /**
+     * Get method for all products in the product catalogue
      * @return List of all the products
      */
     public List<Product> getAll() {

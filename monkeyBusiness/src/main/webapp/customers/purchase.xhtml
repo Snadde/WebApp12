@@ -72,6 +72,25 @@
                 <h:outputText value="Total Cost: #{showCartBackingBean.totalCartCost}"/>
                 <h:button value="Edit cart" outcome="/jsf/showCart?faces-redirect=true"/>
 
+                <br/><br/>
+                <h:outputText value="Shipping adress" style="text-decoration: underline; font-weight: bold;"/> <br/> <br/>
+                <table>
+                    <td>
+                        <h:outputText value="First name: "/> <br/>
+                        <h:outputText value="Last name: "/> <br/>
+                        <h:outputText value="Street: "/> <br/>
+                        <h:outputText value="Nr: "/> <br/>
+                        <h:outputText value="Town: "/> <br/>
+                    </td>
+                    <td>
+                        <h:outputText value="#{showCartBackingBean.customer.fname}"/> <br/>
+                        <h:outputText value="#{showCartBackingBean.customer.lname}"/> <br/>
+                        <h:outputText value="#{showCartBackingBean.customer.address.street}"/> <br/>
+                        <h:outputText value="#{showCartBackingBean.customer.address.nbr}"/> <br/>
+                        <h:outputText value="#{showCartBackingBean.customer.address.town}"/> <br/>
+                    </td>
+                </table>
+                <br/><br/>
                 <h:form>
                     <h:commandButton id="buyButton" value="Buy!"
                                      actionListener="#{completePurchaseControlBean.actionListener}"
@@ -79,9 +98,10 @@
                                      action="#{completePurchaseControlBean.action}">
                         <f:attribute name="userName" value="${request.remoteUser}"/>
                     </h:commandButton>
+
                 </h:form>
                 <h:outputText id="noItems"/>
-               <FONT COLOR="#FF0000"> <h:message class="error" for="noItems" id="noItems2"  /></FONT>
+                <FONT COLOR="#FF0000"> <h:message class="error" for="noItems" id="noItems2"  /></FONT>
 
             </ui:define>
 

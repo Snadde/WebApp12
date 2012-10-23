@@ -38,75 +38,79 @@ public class AddProductBackingBean implements Serializable{
     private Long category;
     private String imageLink;
      
-    
+    /**
+     * Default constructor
+     */
     public AddProductBackingBean(){}
 
     /**
-     * Sets the price
-     * @param price 
+     * Set method for the price of this product
+     * @param price double representing product price
      */
     public void setPrice(double price) {
         this.price = price;
     }
     /**
-     * Sets the name
-     * @param name 
+     * Set method for name of product
+     * @param name of product
      */
     public void setName(String name) {
         this.name = name;
     }
     /**
-     * 
-     * @return name
+     * Get method for name of product
+     * @return name the name of the product
      */
     public String getName() {
         return name;
     }
     /**
-     * 
-     * @return price
+     * Get method for the price of the product
+     * @return price the cost of the product
      */
     public double getPrice() {
         return price;
     }
     /**
-     * 
-     * @return required skill
+     * Get method for the product skill
+     * @return required skill a long representing skill level
      */
     public Long getRequiredSkill() {
         return requiredSkill;
     }
     /**
-     * sets the required skill
-     * @param requiredSkill 
+     * set method for the required skill
+     * @param requiredSkill the skill required for present product
      */
     public void setRequiredSkill(Long requiredSkill) {
         this.requiredSkill = requiredSkill;
     }
     /**
-     * 
-     * @return category
+     * Get method for product category
+     * @return category a long representing product category
      */
     public Long getCategory() {
         return category;
     }
     /**
-     * Sets the category
-     * @param category 
+     * Set method for product category
+     * @param category the category to which this product belongs
      */
     public void setCategory(Long category) {
         this.category = category;
     }
+    
     /**
-     * 
-     * @return imageLink
+     * Get method for imagelink of this product
+     * @return imageLink a string which links to this product's image
      */
     public String getImageLink() {
         return imageLink;
     }
+    
     /**
-     * Sets the imageLink
-     * @param imageLink 
+     * Set method for the product's imagelink
+     * @param imageLink the imagelink to represent the product
      */
     public void setImageLink(String imageLink) {
         this.imageLink = imageLink;

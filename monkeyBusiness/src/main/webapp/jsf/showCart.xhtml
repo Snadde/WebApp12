@@ -103,6 +103,7 @@
                     <h:commandButton id="checkOutButton" value="Proceed to checkout" 
                                  actionListener="#{cartControlBean.actionListener}"
                                  action="/customers/purchase?faces-redirect=true">
+                        <f:attribute name="userName" value="${request.remoteUser}"/>
                     </h:commandButton>
                 </h:form>
             </ui:define>
