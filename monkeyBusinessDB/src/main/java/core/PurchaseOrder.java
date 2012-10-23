@@ -19,7 +19,8 @@ import javax.persistence.TemporalType;
 /**
  * A purchase order based on hajo's shop
  *
- * @author Martin Augustsson, Markus Schütser, Gustaf Werlinder och Patrik Thituson
+ * @author Martin Augustsson, Markus Schützer, Gustaf Werlinder 
+ * och Patrik Thituson
  */
 @Entity
 public class PurchaseOrder  implements Serializable {

@@ -15,7 +15,7 @@ import javax.persistence.criteria.Root;
  *
  * K is type of id (primary key)
  *
- * @author Martin Augustsson, Markus Schütser, Gustaf Werlinder och Patrik
+ * @author Martin Augustsson, Markus Schützer, Gustaf Werlinder och Patrik
  * Thituson
  */
 public abstract class AbstractDAO<T, K> implements IDAO<T, K> {
