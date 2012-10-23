@@ -39,7 +39,6 @@ public final class CustomerRegistry extends AbstractDAO<Customer, String> implem
         tq.setParameter("userName", userName);
         tq.setParameter("password", password);
         List<Customer> customers = tq.getResultList();
-        System.out.println("HAR KOMMER LISTA FRAN DATABAS: " + customers);
         return customers;
     }    
 
