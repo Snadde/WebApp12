@@ -1,14 +1,5 @@
 package backingbeans;
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author thituson
- */
 import core.Address;
 import java.io.Serializable;
 import javax.enterprise.context.*;
@@ -18,6 +9,10 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+/**
+ *
+ * @author Patrik Thituson, Martin Augustsson, Gustaf Werlinder, Markus Schutzer
+ */
 @Named
 @SessionScoped
 public class EditCustomerBackingBean implements Serializable{

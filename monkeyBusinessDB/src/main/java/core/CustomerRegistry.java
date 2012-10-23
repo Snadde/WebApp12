@@ -7,8 +7,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
 /**
- * All customers
- * @author hajo
+ * CustomerRegistry class inspired by hajo's CustomerRegistry class.
+ * This class implements some functions to the customer registry part of
+ * the database
+ * 
+ * @author Patrik Thituson, Martin Augustsson, Gustaf Werlinder, Markus Schutzer
  */
 public final class CustomerRegistry extends AbstractDAO<Customer, String> implements ICustomerRegistry {
 
@@ -16,10 +19,19 @@ public final class CustomerRegistry extends AbstractDAO<Customer, String> implem
         return new CustomerRegistry(puName);
     }
     
+    /**
+     * Constructor
+     * @param puName the name of the database 
+     */
     public CustomerRegistry(String puName) {
         super(Customer.class, puName);
     }
 
+    /**
+     * Searches the database for customer name and returns a list with matches
+     * @param name the name to search for
+     * @return found a list of all name matches
+     */
     @Override
     public List<Customer> getByName(String name) {
         List<Customer> found = new ArrayList<>();
@@ -31,6 +43,13 @@ public final class CustomerRegistry extends AbstractDAO<Customer, String> implem
         return found;
     }
     
+    /**
+     * Used by login to make sure that username and password match and that the
+     * customer should be granted access.
+     * @param userName customer's input user name
+     * @param password customer's input password
+     * @return customers a list of the match
+     */
     @Override
     public List<Customer> validateLogin(String userName, String password) {
         EntityManager em = emf.createEntityManager();
@@ -39,10 +58,14 @@ public final class CustomerRegistry extends AbstractDAO<Customer, String> implem
         tq.setParameter("userName", userName);
         tq.setParameter("password", password);
         List<Customer> customers = tq.getResultList();
-        System.out.println("HAR KOMMER LISTA FRAN DATABAS: " + customers);
         return customers;
     }    
 
+    /**
+     * Search method for the user name
+     * @param name the user name to search
+     * @return null if no user name found, the customer object otherwise
+     */
     @Override
     public Customer findByUserName(String name) {
         Customer found = null;

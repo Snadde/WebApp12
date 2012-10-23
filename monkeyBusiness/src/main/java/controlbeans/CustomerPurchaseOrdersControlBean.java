@@ -3,6 +3,7 @@ package controlbeans;
 import backingbeans.CustomerPurchaseOrdersBackingBean;
 import core.Customer;
 import java.io.Serializable;
+import javax.annotation.security.RolesAllowed;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.event.ActionEvent;
 import javax.inject.Inject;
@@ -15,10 +16,12 @@ import monkeybusiness.SimpleLogin;
  * This class is a control bean that prepares the CustomerPurchaseOrdersBackingBean
  * to show the information about a specific pruchase order.
  * 
- * @author Gustaf Werlinder && Martin Augustsson
+ * @author Martin Augustsson, Markus Schützer, Gustaf Werlinder och Patrik
+ * Thituson
  */
 @Named
 @SessionScoped
+@RolesAllowed("customer")
 public class CustomerPurchaseOrdersControlBean implements Serializable{
     
     @Inject

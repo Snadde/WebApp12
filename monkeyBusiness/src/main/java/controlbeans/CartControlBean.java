@@ -6,6 +6,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Set;
+import javax.annotation.security.RolesAllowed;
 import javax.enterprise.context.*;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
@@ -16,8 +17,13 @@ import modelbeans.CartModelBean;
 import monkeybusiness.SimpleLogin;
 
 /**
- *
- * @author Gustaf Werlinder & Martin Augustsson
+ * This class acts like a control bean for different backingbeans that needs 
+ * to communicate with the cart model bean. And its sessionscoped. The action
+ * listner checks which id the link/button that calld the method have, and then
+ * the switch case desides what to do.
+ * 
+ * @author Martin Augustsson, Markus Schützer, Gustaf Werlinder och Patrik
+ * Thituson
  */
 
 @Named
@@ -33,7 +39,9 @@ public class CartControlBean implements Serializable {
     @Inject
     private SimpleLogin simpleLogin;
 
-
+    /**
+     * Default constructor
+     */
     public CartControlBean() {
     }
 
@@ -55,6 +63,7 @@ public class CartControlBean implements Serializable {
      * the showCartBackingBean.
      * 
      */
+    @RolesAllowed({"admin","customer"})
     public void getAndSetUser(){
         FacesContext context = FacesContext.getCurrentInstance();
         HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();

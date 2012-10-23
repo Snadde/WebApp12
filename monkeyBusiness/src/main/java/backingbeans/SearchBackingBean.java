@@ -1,13 +1,5 @@
 package backingbeans;
 
-/**
- * This class is used for searching for products. As of now user can only search
- * for the name of a product. This class also helps sorting the lists of search
- * results. The algorithm for this is inspired by http://www.mkyong.com/jsf2/jsf
- * -2-datatable-sorting-example/
- * 
- * @author marschu & thituson
- */
 import core.Product;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -17,6 +9,14 @@ import java.util.List;
 import javax.enterprise.context.*;
 import javax.inject.Named;
 
+/**
+ * This class is used for searching for products. As of now user can only search
+ * for the name of a product. This class also helps sorting the lists of search
+ * results. The algorithm for this is inspired by http://www.mkyong.com/jsf2/jsf
+ * -2-datatable-sorting-example/
+ * 
+ * @author Patrik Thituson, Martin Augustsson, Gustaf Werlinder, Markus Schutzer
+ */
 @Named
 @SessionScoped
 public class SearchBackingBean implements Serializable{

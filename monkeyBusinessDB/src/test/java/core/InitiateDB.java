@@ -20,18 +20,21 @@ import org.junit.Test;
  * @author thituson
  */
 public class InitiateDB {
- private static IProductCatalogue productCatalogue;
-   
- @BeforeClass
+
+    private static IProductCatalogue productCatalogue;
+    private static Address addr;
+    private static Customer customerOne;
+
+    @BeforeClass
     public static void setUpClass() {
-       
+
         productCatalogue = (ProductCatalogue) JPAShop.INSTANCE.getProductCatalogue();
     }
 
     @AfterClass
     public static void tearDownClass() {
         productCatalogue = null;
-        
+
     }
 
     @Test
@@ -65,7 +68,9 @@ public class InitiateDB {
 //        productCatalogue.add(product7);
 //        productCatalogue.add(product8);
 //        productCatalogue.add(product9);
+
+//        addr = new Address("Gatan", 15, "GOTEBAAAARG");
+//        customerOne = new Customer(addr, "fornamn", "efternamn", "email.com", "apa", "apa");
+//        customerOne.addGroup(Group.ADMIN);
     }
-    
-    
 }

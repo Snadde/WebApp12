@@ -7,6 +7,7 @@ import core.PurchaseOrder;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import javax.annotation.security.RolesAllowed;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -18,14 +19,16 @@ import modelbeans.OrderBookModelBean;
 import monkeybusiness.SimpleLogin;
 
 /**
- *This class is a control bean that prepares the saves the purchase orders
+ * This class is a control bean that prepares the saves the purchase orders
  * to the database. Also checking if the purchase order is empty before
  * saving it to database.
  * 
- * @author Gustaf Werlinder
+ * @author Martin Augustsson, Markus Schützer, Gustaf Werlinder och Patrik
+ * Thituson
  */
 @Named
 @SessionScoped
+@RolesAllowed("customer")
 public class CompletePurchaseControlBean implements Serializable {
 
     @Inject

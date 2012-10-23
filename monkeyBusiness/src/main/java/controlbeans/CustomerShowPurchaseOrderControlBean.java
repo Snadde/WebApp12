@@ -5,6 +5,7 @@ import core.OrderItem;
 import core.PurchaseOrder;
 import java.io.Serializable;
 import java.util.List;
+import javax.annotation.security.RolesAllowed;
 import javax.enterprise.context.*;
 import javax.faces.event.ActionEvent;
 import javax.inject.Inject;
@@ -14,11 +15,13 @@ import javax.inject.Named;
  * This class is a control bean that prepares the CustomerShowPurchaseOrderBackingBean
  * to show the information about a specific pruchase order.
  * 
- * @author Gustaf Werlinder & Martin Augustsson
+ * @author Martin Augustsson, Markus Schützer, Gustaf Werlinder och Patrik
+ * Thituson
  */
 
 @Named
 @SessionScoped
+@RolesAllowed("customer")
 public class CustomerShowPurchaseOrderControlBean implements Serializable {
 
     @Inject

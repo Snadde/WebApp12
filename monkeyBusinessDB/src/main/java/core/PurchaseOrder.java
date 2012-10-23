@@ -17,7 +17,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 /**
- * A purchase order based on hajo's shop
+ * A purchase order inspired by hajo's shop
  *
  * @author Martin Augustsson, Markus Schützer, Gustaf Werlinder 
  * och Patrik Thituson
@@ -43,13 +43,16 @@ public class PurchaseOrder  implements Serializable {
     private  Customer customer;
     private State state = State.ACCEPTED;
 
+    /**
+     * Default constructor
+     */
     public PurchaseOrder() {
     }
 
     /**
      * Makes the Purchase Order by taking the customer as a param
      * to get ref to the shoppingcart
-     * @param customer 
+     * @param customer the customer to get the purchase order
      */
     public PurchaseOrder(Customer customer) {
         this.customer = customer;
@@ -61,7 +64,7 @@ public class PurchaseOrder  implements Serializable {
     }
 
     /**
-     * 
+     * Get method for the date of object
      * @return date when purchase order was created
      */
     public Date getDate() {
@@ -69,9 +72,8 @@ public class PurchaseOrder  implements Serializable {
     }
     
     /**
-     * 
-     * @param date 
-     * the date when customer order is created
+     * Set method for the date when the object is created
+     * @param date the date when customer order is created
      */
     public void setDate(Date date)
     {   this.date = new Date();
@@ -79,7 +81,7 @@ public class PurchaseOrder  implements Serializable {
     }
 
     /**
-     * 
+     * Get method for a items in a customer's purchase order
      * @return a List of the items in the Purchase order
      */
     public List<OrderItem> getItems() {
@@ -87,7 +89,7 @@ public class PurchaseOrder  implements Serializable {
     }
 
     /**
-     * 
+     * Get method for customer that holds a purchase order
      * @return the customer that made the Purchase order
      */
     public Customer getCustomer() {
@@ -95,7 +97,7 @@ public class PurchaseOrder  implements Serializable {
     }
 
     /**
-     * 
+     * Get method for the state
      * @return the state that tells if the purchase order i.e. accepted,
      * canceled, invoiced, uninvoiced or shipped.
      */
@@ -104,7 +106,8 @@ public class PurchaseOrder  implements Serializable {
     }
 
     /**
-     * 
+     * Get method for id of purchase order. Needed to link customer to purchase
+     * order
      * @return id of the purchase order
      */
     public Long getId() {
@@ -112,7 +115,7 @@ public class PurchaseOrder  implements Serializable {
     }
 
     /**
-     * 
+     * ToString method for making a string representation of purchase order
      * @return a sting consisting of id, date, items, costumer and state
      * of the purchase order.
      */
