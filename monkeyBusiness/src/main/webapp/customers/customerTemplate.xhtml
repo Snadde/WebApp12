@@ -36,13 +36,16 @@
 
                 <nav>                
                     <h:link value="Search" outcome="/jsf/searchEngine"/><br/>
-                    <h:link value="Products" outcome="/jsf/shopProducts"/><br/>
+                    <h:form>
+                        <h:commandLink value="Products" action="#{searchControlBean.setAll}"/>
+                    </h:form>
                     <h:form>
                         <h:commandLink id="showCart" value="Show Cart" action="/jsf/showCart?faces-redirect=true"
                                        actionListener="#{cartControlBean.actionListener}"/><br/>
                         <h:commandLink value="Purchase Orders" 
                                        action="#{customerPurchaseOrdersControlBean.action(request.remoteUser)}"/><br/>
                     </h:form>
+
                     <h:dataTable id="tablefastCart" style="font-size: 10px;" value="#{showCartBackingBean.cartProductList}" 
                                  var="entry" cellpadding="5" cellspacing="1" first="0" width="100px" dir="LTR" frame="hsides" 
                                  rules="all">
@@ -101,7 +104,9 @@
                             <f:attribute name="userName" value="${request.remoteUser}"/>
                         </h:commandButton>
                     </h:form>
+
                 </nav>
+                <hr />
                 <ui:insert name="left">Left</ui:insert>
             </div>
             <div id="content" class="left_content">

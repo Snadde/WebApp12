@@ -52,7 +52,9 @@
                         <h:link value=" Admin Page" outcome="/admins/adminProducts?faces-redirect=true"/><br/>
                     </h:panelGroup>                   
                     <h:link value="Search" outcome="searchEngine"/><br/>
-                    <h:link value="Products" outcome="shopProducts"/><br/>
+                    <h:form>
+                        <h:commandLink value="Products" action="#{searchControlBean.setAll}"/><br/>
+                    </h:form>
                     <h:form>
                         <h:commandLink id="showCart" value="Show Cart" action="showCart?faces-redirect=true"
                                        actionListener="#{cartControlBean.actionListener}"/><br/>

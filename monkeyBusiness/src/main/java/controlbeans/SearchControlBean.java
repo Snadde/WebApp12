@@ -47,15 +47,22 @@ public class SearchControlBean implements Serializable{
         try {
             String searchString = searchBackingBean.getSearchName();
             searchBackingBean.setResultProducts(prodCat.getByName(searchString));
-            return "searchResults?faces-redirect=true"; // Go back
+            return "shopProducts?faces-redirect=true"; // Go back
         } catch (Exception e) {
             // Not implemented
             //return "error?faces-redirect=true&amp;cause=" + e.getMessage();
             return null;
-        }
-
-        
+        } 
     }
- 
+    
+    public String setAll()
+    {
+        if (!conv.isTransient()) {
+            conv.end();
+             Logger.getAnonymousLogger().log(Level.INFO, "CONVERSATION ENDS");
+        }  
+        searchBackingBean.setResultProducts(prodCat.getAll());
+        return "/jsf/shopProducts?faces-redirect=true";
+    }
       
 }
