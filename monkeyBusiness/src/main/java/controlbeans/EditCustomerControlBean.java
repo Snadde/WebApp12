@@ -67,7 +67,7 @@ public class EditCustomerControlBean implements Serializable{
             }    
             customerRegistryBean.update(customer);
             
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Profile saved"));
+            FacesContext.getCurrentInstance().addMessage("profilesaved", new FacesMessage("Profile saved"));
             return null;
         } catch (Exception e) {
             // Not implemented
