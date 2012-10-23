@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package core;
 
 import java.util.List;
@@ -13,8 +9,8 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
- *
- * @author thituson
+ * Test class to test customer and customer registry
+ * @author Patrik Thituson
  */
 public class TestCustomer {
     
@@ -43,7 +39,9 @@ public class TestCustomer {
         
     }
     
-    
+    /**
+     * Test to add and to remove a customer
+     */
     @Test
     public void testAddandRemoveCustomer()
     {
@@ -57,10 +55,15 @@ public class TestCustomer {
         Assert.assertNull(cus3);
     }
     
+    /**
+     * Removes the customer
+     * @param customer the customer to remove
+     */
     private void removeCustomer(Customer customer)
     {
         customerReg.remove(customer.getUserName());
     }
+    
     /**
      * Add product to cart and create purchaseorder which adds to the orderbook
      * then remove and check
