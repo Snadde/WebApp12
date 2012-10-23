@@ -28,7 +28,7 @@
                     Skill<h:outputText value="#{showProductBackingBean.requiredSkill}"  />
                     Category<h:outputText value="#{showProductBackingBean.category}"  />
                     <h:form>
-                        <h:commandLink id="Addbutton" value="Add" 
+                        <h:commandLink id="Addbutton" value="Add" onclick="addProduct()"
                                        action="shopProducts?faces-redirect=true"
                                        actionListener="#{cartControlBean.actionListener}"> 
                             <f:attribute name="prod" value="${showProductBackingBean.prod}" />            
