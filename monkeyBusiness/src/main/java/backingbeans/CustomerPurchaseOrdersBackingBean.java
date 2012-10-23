@@ -9,7 +9,7 @@ import javax.inject.Named;
 
 /**
  *
- * @author Gustaf Werlinder && Martin Augustsson
+ * @author Patrik Thituson, Martin Augustsson, Gustaf Werlinder, Markus Schutzer
  */
 @Named
 @SessionScoped

@@ -1,14 +1,5 @@
 package backingbeans;
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author Martin Augustsson && Gustaf Werlinder
- */
 import controlbeans.CartControlBean;
 import core.Customer;
 import core.Product;
@@ -20,6 +11,9 @@ import javax.enterprise.context.*;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+/**
+ * @author Patrik Thituson, Martin Augustsson, Gustaf Werlinder, Markus Schutzer
+ */
 @Named
 @SessionScoped
 public class ShowCartBackingBean implements Serializable{

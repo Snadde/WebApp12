@@ -1,9 +1,5 @@
 package backingbeans;
 
-/**
- * This Class simply contains a method to get all products from the product catalogue
- * @author Patrik Thituson
- */
 import core.Product;
 import java.io.Serializable;
 import java.util.List;
@@ -12,6 +8,10 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import modelbeans.ProductCatalogueBean;
 
+/**
+ * This Class simply contains a method to get all products from the product catalogue
+ * @author Patrik Thituson, Martin Augustsson, Gustaf Werlinder, Markus Schutzer
+ */
 @Named
 @SessionScoped
 public class AdminProductsBackingBean implements Serializable{

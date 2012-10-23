@@ -1,20 +1,14 @@
 package backingbeans;
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author thituson
- */
-
 import java.io.Serializable;
 import javax.enterprise.context.*;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+/**
+ *
+ * @author Patrik Thituson, Martin Augustsson, Gustaf Werlinder, Markus Schutzer
+ */
 @Named
 @ConversationScoped
 public class DeleteProductBackingBean implements Serializable{

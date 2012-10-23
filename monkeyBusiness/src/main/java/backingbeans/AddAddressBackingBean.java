@@ -1,13 +1,5 @@
 package backingbeans;
 
-/**
- * This class acts like a view part and holds the information of the Address
- * class. The user sets the attributes in the form and the control bean will get
- * all attributes to create the class.  It only contains attributes and getters
- * and setters
- *
- * @author Patrik Thituson
- */
 import java.io.Serializable;
 import javax.enterprise.context.*;
 import javax.inject.Named;
@@ -17,6 +9,14 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+/**
+ * This class acts like a view part and holds the information of the Address
+ * class. The user sets the attributes in the form and the control bean will get
+ * all attributes to create the class.  It only contains attributes and getters
+ * and setters
+ *
+ * @author Patrik Thituson, Martin Augustsson, Gustaf Werlinder, Markus Schutzer
+ */
 @Named
 @ConversationScoped
 public class AddAddressBackingBean implements Serializable {
